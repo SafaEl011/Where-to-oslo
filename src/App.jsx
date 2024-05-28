@@ -5,6 +5,7 @@ import TileLayer from "ol/layer/Tile";
 import { View } from "ol";
 import { Map } from "ol";
 import {useGeographic} from "ol/proj";
+import RoutingMain from "./routing/RoutingMain";
 
 useGeographic()
 export function Application() {
@@ -29,7 +30,9 @@ export function Application() {
 
     return (
         <>
-            <div className={"map"} ref={mapRef}></div>
+            <div className={"map"} ref={mapRef}>
+                <RoutingMain/>
+            </div>
         </>
     )
 }
