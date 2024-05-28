@@ -8,6 +8,9 @@ import {useGeographic} from "ol/proj";
 
 useGeographic()
 export function Application() {
+
+
+
     const view = useMemo(() => new View({
         center: [10.5, 59.7], zoom: 11
     }), []);
