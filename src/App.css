@@ -1,3 +1,19 @@
+body, html, #root {
+    height: 100%;
+    margin: 0;
+}
+
+.main-content {
+    padding-bottom: 60px;
+}
+
+.navbar {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    width: 45%;
+}
 * {
     margin: 0;
 }

@@ -1,10 +1,11 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {CategoryView, IntroView, MapView, SearchView, SettingView, Top5View} from '../views'
+import BottomNavbar from "../components/shared/BottomNavbar";
 
 const RoutingMain = () => {
     return (
         <BrowserRouter>
-            <main className='container'>
+            <div className='main-content'>
                 <Routes>
                     <Route path="/" element={<IntroView/>}></Route>
                     <Route path="map" element={<MapView/>}></Route>
@@ -13,7 +14,8 @@ const RoutingMain = () => {
                     <Route path="top5" element={<Top5View/>}></Route>
                     <Route path="settings" element={<SettingView/>}></Route>
                 </Routes>
-            </main>
+            </div>
+            <BottomNavbar/>
         </BrowserRouter>
     )
 }
