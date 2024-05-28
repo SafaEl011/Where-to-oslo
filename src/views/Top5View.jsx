@@ -1,5 +1,5 @@
 
-const Top5Page = () => {
+const Top5View = () => {
     return (
         <section>
             <h4>Top 5</h4>
@@ -7,4 +7,4 @@ const Top5Page = () => {
     )
 }
 
-export default Top5Page;
+export default Top5View;

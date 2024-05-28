@@ -1,5 +1,5 @@
 
-const SearchPage = () => {
+const SearchView = () => {
     return (
         <section>
             <h4>Search</h4>
@@ -7,4 +7,4 @@ const SearchPage = () => {
     )
 }
 
-export default SearchPage;
+export default SearchView;

@@ -1,5 +1,5 @@
 
-const SettingPage = () => {
+const SettingView = () => {
     return (
         <section>
             <h4>Settings</h4>
@@ -7,4 +7,4 @@ const SettingPage = () => {
     )
 }
 
-export default SettingPage;
+export default SettingView;

@@ -1,5 +1,5 @@
 
-const MapPage = () => {
+const MapView = () => {
     return (
         <section>
             <h4>Map</h4>
@@ -7,4 +7,4 @@ const MapPage = () => {
     )
 }
 
-export default MapPage;
+export default MapView;

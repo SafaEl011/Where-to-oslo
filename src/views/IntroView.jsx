@@ -1,5 +1,5 @@
 
-const IntroPage = () => {
+const IntroView = () => {
     return (
         <section>
             <h4>Tutorial</h4>
@@ -7,4 +7,4 @@ const IntroPage = () => {
     )
 }
 
-export default IntroPage;
+export default IntroView;

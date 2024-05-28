@@ -1,5 +1,5 @@
 
-const CategoryPage = () => {
+const CategoryView = () => {
     return (
         <section>
             <h4>Categories</h4>
@@ -7,4 +7,4 @@ const CategoryPage = () => {
     )
 }
 
-export default CategoryPage;
+export default CategoryView;
