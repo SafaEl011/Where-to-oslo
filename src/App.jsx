@@ -13,7 +13,7 @@ export function Application() {
 
 
     const view = useMemo(() => new View({
-        center: [10.5, 59.7], zoom: 11
+        center: [10.75, 59.915], zoom: 15
     }), []);
     const map = useMemo(() => new Map({
         layers: [
