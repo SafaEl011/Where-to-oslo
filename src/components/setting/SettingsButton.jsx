@@ -1,19 +1,16 @@
 import React from "react";
 import settingsIcon from "/images/icons/settings.png";
 import "../../css/IconStyles.css"
+import IconButton from "../IconButtons/IconButton";
 
 
-const SettingsButton = ({ onClick, position }) => {
+const SettingsButton = ({ onClick }) => {
 
 
     return (
-        <button
-            className="icon-button position-fixed"
-            style={{ ...position, zIndex: 1000}}
-            onClick={onClick}
-        >
+        <IconButton className="settings-button" onClick={onClick}>
             <img src={settingsIcon} alt="Settings Icon" className="icon"/>
-        </button>
+        </IconButton>
     )
 }
 
