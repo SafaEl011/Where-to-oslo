@@ -1,4 +1,6 @@
-
+.position-relative {
+    position: relative;
+}
 .icon-button {
     background: none;
     border: none;
@@ -6,11 +8,72 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    height: 30px;
+    z-index: 1001;
+    margin-bottom: 5%;
 }
 
 .icon {
-    width: 24px;
-    height: 24px;
-    border: 1px solid #447151;
-    border-radius: 50%;
+     width: 24px;
+     height: 24px;
+     border: 1px solid #447151;
+     border-radius: 50%;
+ }
+
+.button-container {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1001;
 }
+
+.search-container {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    width: 0;
+    height: 30px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.search-container.expanded {
+    width: 45%;
+    right: 4.5%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    height: 30px;
+    padding: 0 10px;
+    outline: none;
+    background: none;
+}
+
+
+.list-group {
+    margin-top: 10px;
+}
+
+.list-group-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+

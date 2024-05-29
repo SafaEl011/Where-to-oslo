@@ -1,16 +1,13 @@
 import React from "react";
 import searchIcon from "/images/icons/search.png";
-import "../../css/IconStyles.css"
+import IconButton from "../IconButtons/IconButton";
 
-const SearchButton = ({ onClick, position}) => {
+
+const SearchButton = ({ onClick}) => {
     return (
-        <button
-        className="icon-button position-fixed"
-        style={{ ...position, zIndex: 1000}}
-        onClick={onClick}
-        >
+        <IconButton className="search-button" onClick={onClick}>
             <img src={searchIcon} alt="Search Icon" className="icon"/>
-        </button>
+        </IconButton>
     );
 };
 

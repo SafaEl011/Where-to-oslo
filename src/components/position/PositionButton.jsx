@@ -1,17 +1,13 @@
 import React from "react";
 import positionIcon from "/images/icons/position.png";
-import "../../css/IconStyles.css"
+import IconButton from "../IconButtons/IconButton";
 
-const PositionButton = ({ onClick, position }) => {
+const PositionButton = ({ onClick }) => {
 
     return (
-        <button
-            className="icon-button position-fixed"
-            style={{ ...position, zIndex: 1000}}
-            onClick={onClick}
-        >
+        <IconButton className="position-button" onClick={onClick}>
             <img src={positionIcon} alt="Position Icon" className="icon"/>
-        </button>
+        </IconButton>
     );
 };
 
