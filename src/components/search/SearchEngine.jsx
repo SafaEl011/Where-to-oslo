@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './SearchButton.css';
+import PositionButton from "../position/PositionButton";
 
 const SearchEngine = () => {
     const [showSearch, setShowSearch] = useState(false);
@@ -19,22 +19,33 @@ const SearchEngine = () => {
         ));
     };
 
+    const handlePositionClick = () => {
+        alert("Position button clicked!");
+    };
+
     return (
-        <div className="search-container">
-            <button className="search-button" onClick={handleSearchToggle}>
+        <div className="position-relative">
+            <button
+                className="btn btn-light rounded-circle position-fixed"
+                style={{ top: '20px', right: '20px', zIndex: 1000}}
+                onClick={handleSearchToggle}>
                 🔍 {/* Temporary icon */}
             </button>
+            <PositionButton onClick={handlePositionClick}/>
             {showSearch && (
-                <div className="search-box">
+                <div
+                    className="position-fixed"
+                    style={{ top: '80px', right: '20px', width: '300px', zIndex: 1000}}>
                     <input
                         type="text"
+                        className="form-control"
                         value={searchQuery}
                         onChange={handleSearchChange}
                         placeholder="Search..."
                     />
-                    <div className="search-results">
+                    <div className="list-group">
                         {searchResults.map((result, index) => (
-                            <div key={index} className="search-result">
+                            <div key={index} className="list-group-item">
                                 {result}
                             </div>
                         ))}
