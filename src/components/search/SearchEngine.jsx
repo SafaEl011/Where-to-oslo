@@ -1,24 +1,36 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import {map} from "react-bootstrap/ElementChildren";
-import {useMap} from "../../views/MapView";
-
-
+import { map } from "react-bootstrap/ElementChildren";
+import { useMap } from "../../views/MapView";
 
 const SearchEngine = () => {
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [cafe, setCafe] = useState([]);
-    const map = useMap();
-    useEffect(() => {
-        fetch("public/json/cafe.json").then((response) => response.json()).then((data) => {
-            setCafe(data.features)
-        })
-    }, []);
 
+    // State to hold data from all JSON files
+    const [allData, setAllData] = useState([]);
+
+    const map = useMap();
+
+    // Function to handle fetching data from multiple JSON files
+    const fetchData = async (filePaths) => {
+        const promises = filePaths.map(async (filePath) => {
+            const response = await fetch(filePath);
+            const data = await response.json();
+            return data.features; // Assuming features holds cafe data in each file
+        });
+
+        const allFeatures = await Promise.all(promises);
+        setAllData(allFeatures.flat()); // Combine features from all files
+    };
+
+    useEffect(() => {
+        // Provide an array of file paths to the fetchData function
+        fetchData(["/json/cafe.json", "/json/restaurants.json", "/json/drinks.json", "/json/store.json", "/json/activity.json"]);
+    }, []);
 
     const handleSearchToggle = () => {
         setShowSearch(!showSearch);
@@ -27,40 +39,36 @@ const SearchEngine = () => {
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
 
-        if(e.target.value){
+        if (e.target.value) {
             setSearchResults(
-                cafe.filter((cafes) => cafes.properties.name.toLowerCase().includes(e.target.value.toLowerCase()))
-            )
+                allData.filter((cafe) =>
+                    cafe.properties.name.toLowerCase().includes(e.target.value.toLowerCase())
+                )
+            );
         } else {
-            setSearchResults([])
+            setSearchResults([]);
         }
-
-
-        /*simulator
-        setSearchResults(['Result 1', 'Result 2', 'Result 3', 'Result 1', 'Result 2', 'Result 3'].filter(result =>
-            result.toLowerCase().includes(e.target.value.toLowerCase())
-        ));
-
-         */
     };
 
-    const handleSelect = (cafes) => {
-        setSearchQuery(cafes.properties.name)
-        setShowSearch(false)
+    const handleSelect = (cafe) => {
+        setSearchQuery(cafe.properties.name);
+        setShowSearch(false);
         map.getView().animate({
-            center: cafes.geometry.coordinates, zoom: 14,
-        })
-    }
+            center: cafe.geometry.coordinates,
+            zoom: 18,
+        });
+    };
 
     return (
         <div className="position-relative">
-            <SearchButton onClick={handleSearchToggle} position={{ top: '20px', right: '20px'}}/>
-            <PositionButton onClick={() => alert("Position button clicked!")} position={{ top: '80px', right: '20px'}}/>
-            <SettingsButton onClick={() => alert("Settings button clicked!")} position={{ top: '140px', right: '20px'}}/>
+            <SearchButton onClick={handleSearchToggle} position={{ top: '20px', right: '20px' }} />
+            <PositionButton onClick={() => alert("Position button clicked!")} position={{ top: '80px', right: '20px' }} />
+            <SettingsButton onClick={() => alert("Settings button clicked!")} position={{ top: '140px', right: '20px' }} />
             {showSearch && (
                 <div
                     className="position-fixed"
-                    style={{ top: '80px', right: '20px', width: '300px', zIndex: 1000}}>
+                    style={{ top: '80px', right: '20px', width: '300px', zIndex: 1000 }}
+                >
                     <input
                         type="text"
                         className="form-control"
@@ -69,13 +77,9 @@ const SearchEngine = () => {
                         placeholder="Search..."
                     />
                     <div className="list-group">
-                        {searchResults.map((cafes, index) => (
-                            <div key={index} className="list-group-item"
-                            onClick={() => handleSelect(cafes)}
-                                 style={{cursor: "pointer"}}
-                            >
-
-                                {cafes.properties.name}
+                        {searchResults.map((cafe, index) => (
+                            <div key={index} className="list-group-item" onClick={() => handleSelect(cafe)} style={{ cursor: "pointer" }}>
+                                {cafe.properties.name}
                             </div>
                         ))}
                     </div>

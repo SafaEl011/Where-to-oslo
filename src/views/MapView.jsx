@@ -2,9 +2,9 @@ import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
-import React, {createContext, Dispatch, SetStateAction, useContext, useEffect, useMemo, useRef} from "react";
-import {Layer} from "ol/layer";
+import React, {createContext, useContext, useEffect, useMemo, useRef} from "react";
 import SearchEngine from "../components/search/SearchEngine";
+
 
 
 const MapContext = createContext(null);
@@ -20,7 +20,6 @@ export const MapProvider = ({ map, children }) => {
         </MapContext.Provider>
     );
 };
-
 
 
   const MapView = () => {
@@ -44,11 +43,11 @@ export const MapProvider = ({ map, children }) => {
 
     return (
 <MapProvider map = {map}>
+        <SearchEngine/>
         <div className={"map"} ref={mapRef}>
-
             <h4>Map</h4>
 
-            <SearchEngine/>
+
         </div>
 </MapProvider>
     )
