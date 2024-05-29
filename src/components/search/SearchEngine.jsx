@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import PositionButton from "../position/PositionButton";
+import SettingsButton from "../setting/SettingsButton";
+import SearchButton from "./SearchButton";
 
 const SearchEngine = () => {
     const [showSearch, setShowSearch] = useState(false);
@@ -19,19 +21,11 @@ const SearchEngine = () => {
         ));
     };
 
-    const handlePositionClick = () => {
-        alert("Position button clicked!");
-    };
-
     return (
         <div className="position-relative">
-            <button
-                className="btn btn-light rounded-circle position-fixed"
-                style={{ top: '20px', right: '20px', zIndex: 1000}}
-                onClick={handleSearchToggle}>
-                🔍 {/* Temporary icon */}
-            </button>
-            <PositionButton onClick={handlePositionClick}/>
+            <SearchButton onClick={handleSearchToggle} position={{ top: '20px', right: '20px'}}/>
+            <PositionButton onClick={() => alert("Position button clicked!")} position={{ top: '80px', right: '20px'}}/>
+            <SettingsButton onClick={() => alert("Settings button clicked!")} position={{ top: '140px', right: '20px'}}/>
             {showSearch && (
                 <div
                     className="position-fixed"
