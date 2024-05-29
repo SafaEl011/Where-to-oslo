@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CategoryView from "../../views/CategoryView";
+import Top5View from "../../views/Top5View";
 import Button from "react-bootstrap/Button";
 
 const BottomNavbar = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [showCategoryModal, setShowCategoryModal] = useState(false);
+    const [showTop5Modal, setShowTop5Modal] = useState(false);
 
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    //Dette er for Category knappen
+    const handleClose = () => setShowCategoryModal(false);
+    const handleShow = () => setShowCategoryModal(true);
+
+    //Dette er for Top5 knappen
+    const handleShowTop5 = () => setShowTop5Modal(true);
+    const handleCloseTop5 = () => setShowTop5Modal(false);
 
     return (
         <>
@@ -17,10 +23,13 @@ const BottomNavbar = () => {
                     <Button variant="primary" onClick={handleShow}>
                         Category
                     </Button>
-                    <Link to="/top5" className="btn btn-primary">Top 5</Link>
+                    <Button variant="primary" onClick={handleShowTop5}>
+                        Top 5
+                    </Button>
                 </div>
             </nav>
-            <CategoryView show={showModal} handleClose={handleClose} />
+            <CategoryView show={showCategoryModal} handleClose={handleClose} />
+            <Top5View show={showTop5Modal} handleClose={handleCloseTop5} />
         </>
     );
 };

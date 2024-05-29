@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CategoryList from "../components/shared/Categories";
+import CategoryList from "../components/shared/CategoryList";
 
 const CategoryView = ({ show, handleClose }) => {
     return (
