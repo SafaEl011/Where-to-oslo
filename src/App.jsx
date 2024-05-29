@@ -11,7 +11,7 @@ import "ol/ol.css";
 useGeographic()
 export function Application() {
 
-
+// Legger til for å illustrere
 
     const view = useMemo(() => new View({
         center: [10.75, 59.915], zoom: 15
