@@ -1,8 +1,10 @@
 import React from "react";
-import positionIcon from "/images/icons/position.png";
+import settingsIcon from "/images/icons/settings.png";
 import "../../css/IconStyles.css"
 
-const PositionButton = ({ onClick, position }) => {
+
+const SettingsButton = ({ onClick, position }) => {
+
 
     return (
         <button
@@ -10,9 +12,9 @@ const PositionButton = ({ onClick, position }) => {
             style={{ ...position, zIndex: 1000}}
             onClick={onClick}
         >
-            <img src={positionIcon} alt="Position Icon" className="icon"/>
+            <img src={settingsIcon} alt="Settings Icon" className="icon"/>
         </button>
-    );
-};
+    )
+}
 
-export default PositionButton;
+export default SettingsButton;
