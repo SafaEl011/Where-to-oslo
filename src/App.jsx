@@ -6,6 +6,7 @@ import { View } from "ol";
 import { Map } from "ol";
 import {useGeographic} from "ol/proj";
 import RoutingMain from "./routing/RoutingMain";
+import "ol/ol.css";
 
 useGeographic()
 export function Application() {
