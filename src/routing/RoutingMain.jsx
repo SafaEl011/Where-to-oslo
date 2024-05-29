@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {CategoryView, IntroView, MapView, SearchView, SettingView, Top5View} from '../views'
 import BottomNavbar from "../components/shared/BottomNavbar";
+import CategoryList from "../components/shared/Categories";
 
 const RoutingMain = () => {
     return (
@@ -16,7 +17,9 @@ const RoutingMain = () => {
                     <Route path="settings" element={<SettingView/>}></Route>
                 </Routes>
             </div>
+
             <BottomNavbar/>
+            <CategoryList/>
         </BrowserRouter>
     )
 }

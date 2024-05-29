@@ -6,5 +6,4 @@ const CategoryView = () => {
         </section>
     )
 }
-
 export default CategoryView;
