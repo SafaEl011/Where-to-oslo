@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import { map } from "react-bootstrap/ElementChildren";
 import { useMap } from "../../views/MapView";
 
 const SearchEngine = () => {
@@ -57,6 +56,9 @@ const SearchEngine = () => {
             center: cafe.geometry.coordinates,
             zoom: 18,
         });
+        setSearchQuery('');
+        setShowSearch(false);
+        setSearchResults([]);
     };
 
     return (
