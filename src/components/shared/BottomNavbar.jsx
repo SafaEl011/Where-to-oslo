@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CategoryView from "../../views/CategoryView";
 import Top5View from "../../views/Top5View";
 import Button from "react-bootstrap/Button";
+import "../../css/BottomNavbar.css"
+
+
 
 const BottomNavbar = () => {
     const [showCategoryModal, setShowCategoryModal] = useState(false);
@@ -20,11 +23,11 @@ const BottomNavbar = () => {
         <>
             <nav className="navbar fixed-bottom navbar-light bg-light">
                 <div className="container-fluid d-flex justify-content-around">
-                    <Button variant="primary" onClick={handleShow}>
-                        Category
+                    <Button variant="primary" className="categoryBtn" onClick={handleShow}>
+                        <img src="/images/icons/Categories.png" alt="Categories Icon" className="CategoryBtnIcon"/>
                     </Button>
-                    <Button variant="primary" onClick={handleShowTop5}>
-                        Top 5
+                    <Button variant="primary" className="top5Btn" onClick={handleShowTop5}>
+                        <img src="/images/icons/Top5.png" alt="Categories Icon" className="Top5BtnIcon"/>
                     </Button>
                 </div>
             </nav>
