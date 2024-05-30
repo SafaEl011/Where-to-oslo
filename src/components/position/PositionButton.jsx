@@ -1,5 +1,5 @@
 import React from "react";
-import positionIcon from "/images/icons/position.png";
+import positionIcon from "/images/icons/position.svg";
 import IconButton from "../IconButtons/IconButton";
 
 const PositionButton = ({ onClick }) => {
