@@ -24,10 +24,10 @@ const BottomNavbar = () => {
             <nav className="navbar fixed-bottom navbar-light bg-light">
                 <div className="container-fluid d-flex justify-content-around">
                     <Button variant="primary" className="categoryBtn" onClick={handleShow}>
-                        <img src="/images/icons/Categories.png" alt="Categories Icon" className="CategoryBtnIcon"/>
+                        <img src="/images/icons/categories.svg" alt="Categories Icon" className="CategoryBtnIcon"/>
                     </Button>
                     <Button variant="primary" className="top5Btn" onClick={handleShowTop5}>
-                        <img src="/images/icons/Top5.png" alt="Categories Icon" className="Top5BtnIcon"/>
+                        <img src="/images/icons/Top5.svg" alt="Categories Icon" className="Top5BtnIcon"/>
                     </Button>
                 </div>
             </nav>
