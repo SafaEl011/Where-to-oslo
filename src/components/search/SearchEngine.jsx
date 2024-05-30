@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import { useMap } from "../../views/MapView";
+import mapView, { useMap } from "../../views/MapView";
+import {handleZoomToUser} from "../position/PositionEngine";
 
 const SearchEngine = () => {
     const [showSearch, setShowSearch] = useState(false);
@@ -65,7 +66,7 @@ const SearchEngine = () => {
         <div className="position-relative">
             <div className="button-container">
                 <SearchButton onClick={handleSearchToggle}/>
-                <PositionButton onClick={() => alert("Position button clicked!")}/>
+                <PositionButton onClick={() => handleZoomToUser(map)} />
                 <SettingsButton onClick={() => alert("Settings button clicked!")}/>
             </div>
             <div className={`search-container ${showSearch ? 'expanded' : ''}`}>
