@@ -1,40 +1,37 @@
-body, html, #root {
-    height: 100%;
-    margin: 0;
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
 }
 
 .main-content {
-    padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .navbar {
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn {
-    width: 20%;
+  width: 20%;
 }
 * {
-    margin: 0;
+  margin: 0;
 }
-.map{
-    position: fixed;
-    width: 100dvw;
-    height: 100dvh;
+.map {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
 }
-
 
 div.ol-control.ol-unselectable.ol-control button.ol-zoom-in,
 div.ol-control.ol-unselectable.ol-control button.ol-zoom-out {
-    background-color: rgba(0, 0, 0, 0.37);
-    color: rgba(75, 72, 75, 0.73);
-    border-style: solid;
-    border-radius: 40%;
-    border-width: thin;
-    transition: transform 0.3s; /* Add a transition for smoother scaling */
-    transform: translate(-20%, -20%) scale(1.5);
+  background-color: rgba(0, 0, 0, 0.37);
+  color: rgba(75, 72, 75, 0.73);
+  border-style: solid;
+  border-radius: 40%;
+  border-width: thin;
+  transition: transform 0.3s; /* Add a transition for smoother scaling */
+  transform: translate(-20%, -20%) scale(1.5);
 }
-
-
-
-

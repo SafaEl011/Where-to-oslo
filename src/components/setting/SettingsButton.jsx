@@ -1,17 +1,14 @@
 import React from "react";
 import settingsIcon from "/images/icons/settings.svg";
-import "../../css/IconStyles.css"
+import "../../css/IconStyles.css";
 import IconButton from "../IconButtons/IconButton";
 
-
 const SettingsButton = ({ onClick }) => {
-
-
-    return (
-        <IconButton className="settings-button" onClick={onClick}>
-            <img src={settingsIcon} alt="Settings Icon" className="icon"/>
-        </IconButton>
-    )
-}
+  return (
+    <IconButton className="settings-button" onClick={onClick}>
+      <img src={settingsIcon} alt="Settings Icon" className="icon" />
+    </IconButton>
+  );
+};
 
 export default SettingsButton;
