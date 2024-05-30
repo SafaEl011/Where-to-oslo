@@ -71,12 +71,14 @@ const SearchEngine = () => {
             <div className={`search-container ${showSearch ? 'expanded' : ''}`}>
                 {showSearch && (
                     <>
-                        <input
-                            type="text"
-                            className="search-input"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                        />
+                        <div className="search-input-container">
+                            <input
+                                type="text"
+                                className="search-input"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                            />
+                        </div>
                         <div className="list-group">
                             {searchResults.map((cafe, index) => (
                                 <div key={index} className="list-group-item" onClick={() => handleSelect(cafe)} style={{ cursor: "pointer" }}>
