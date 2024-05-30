@@ -65,8 +65,8 @@ const SearchEngine = () => {
         <div className="position-relative">
             <div className="button-container">
                 <SearchButton onClick={handleSearchToggle}/>
-                <PositionButton onClick={() => alert("Position button clicked!")}/>
-                <SettingsButton onClick={() => alert("Settings button clicked!")}/>
+                <PositionButton/>
+                <SettingsButton/>
             </div>
             <div className={`search-container ${showSearch ? 'expanded' : ''}`}>
                 {showSearch && (
