@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import mapView, { useMap } from "../../views/MapView";
+import { useMap } from "../../views/MapView";
 import { handleZoomToUser } from "../position/PositionEngine";
 
 const SearchEngine = () => {

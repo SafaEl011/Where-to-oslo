@@ -2,7 +2,7 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 
 import { GeoJSON } from "ol/format";
-import { Fill, Icon, RegularShape, Stroke, Style } from "ol/style";
+import { Icon, Style } from "ol/style";
 
 export const CafeLayer = new VectorLayer({
   className: "name",

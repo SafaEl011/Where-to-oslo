@@ -1,5 +1,4 @@
 import React from "react";
-import SearchEngine from "../components/search/SearchEngine";
 
 const SearchView = () => {
   return (
