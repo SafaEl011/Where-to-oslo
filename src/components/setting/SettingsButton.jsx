@@ -1,5 +1,5 @@
 import React from "react";
-import settingsIcon from "/images/icons/settings.png";
+import settingsIcon from "/images/icons/settings.svg";
 import "../../css/IconStyles.css"
 import IconButton from "../IconButtons/IconButton";
 
