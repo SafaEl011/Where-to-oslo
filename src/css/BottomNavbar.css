@@ -19,9 +19,10 @@
 
 .CategoryBtnIcon {
     width: 100%;
+    padding-top: 15px;
     height: 100%;
     border: none;
-    border-radius: 50%;
+    border-radius: 10%;
     display: flex;
     justify-self: end;
 
