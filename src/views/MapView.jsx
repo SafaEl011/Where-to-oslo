@@ -1,7 +1,6 @@
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
-import { useGeographic } from "ol/proj";
 import React, {createContext, useContext, useEffect, useMemo, useRef} from "react";
 import SearchEngine from "../components/search/SearchEngine";
 
@@ -45,8 +44,6 @@ export const MapProvider = ({ map, children }) => {
 <MapProvider map = {map}>
         <SearchEngine/>
         <div className={"map"} ref={mapRef}>
-            <h4>Map</h4>
-
 
         </div>
 </MapProvider>

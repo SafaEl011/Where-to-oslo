@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import settingsIcon from "/public/images/icons/settings.svg";
 import "../../css/IconStyles.css"
 import IconButton from "../IconButtons/IconButton";
+import {toggleExpansion} from "../shared/ToggleExpansion";
 
 
 const SettingsButton = () => {
@@ -11,6 +12,7 @@ const SettingsButton = () => {
         console.log("Toggling settings");
 
         setSettingsVisible(!isSettingsVisible);
+        toggleExpansion('settings-container');
     };
     console.log("Rendering SettingsButton");
     return (
