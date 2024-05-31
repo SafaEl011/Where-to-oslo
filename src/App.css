@@ -25,13 +25,25 @@ html,
   height: 100dvh;
 }
 
-div.ol-control.ol-unselectable.ol-control button.ol-zoom-in,
-div.ol-control.ol-unselectable.ol-control button.ol-zoom-out {
-  background-color: rgba(0, 0, 0, 0.37);
-  color: rgba(75, 72, 75, 0.73);
-  border-style: solid;
-  border-radius: 40%;
-  border-width: thin;
+div.ol-control.ol-unselectable.ol-control button.ol-zoom-out,
+div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(68, 112, 80);
+  border-radius: 100%;
+
   transition: transform 0.3s; /* Add a transition for smoother scaling */
-  transform: translate(-20%, -20%) scale(1.5);
+  transform: translate(-20%, -20%) scale(1);
+  position: fixed;
+
+}
+.ol-zoom-out {
+  left: 97%;
+  top: 78%;
+  scale: 320%;
+
+}
+.ol-zoom-in {
+  left: 3%;
+  top: 78%;
+  scale: 320%;
 }

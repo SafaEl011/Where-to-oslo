@@ -14,6 +14,11 @@ import { defaults, ScaleLine } from "ol/control";
 import SearchEngine from "../components/search/SearchEngine";
 import { CafeCheckbox } from "../components/layers/cafes/CafeCheckbox";
 import { handleZoomToUser } from "../components/position/PositionEngine";
+import { ActivitiesLayer } from "../components/layers/activities/ActivitiesLayer";
+import { ActivitiesCheckbox } from "../components/layers/activities/ActivitiesCheckbox";
+import { BarsCheckbox } from "../components/layers/bars/BarsCheckbox";
+import { ShoppingCheckbox } from "../components/layers/shopping/ShoppingCheckbox";
+import { RestaurantsCheckbox } from "../components/layers/restaurants/RestaurantsCheckbox";
 
 useGeographic();
 
@@ -77,6 +82,10 @@ const MapView = () => {
         <div className="map" ref={mapRef}>
           <h4>Map</h4>
           <CafeCheckbox />
+          <ActivitiesCheckbox />
+          <BarsCheckbox />
+          <ShoppingCheckbox />
+          <RestaurantsCheckbox />
           <SearchEngine />
         </div>
       </MapProvider>
