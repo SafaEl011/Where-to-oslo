@@ -13,9 +13,9 @@ const Top5List = () => {
 
     return (
         <div className ="container mt-5">
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-around">
                 {top5Places.map((Top5List, index) => (
-                    <button key={index} className="btn btn-primary m-2">
+                    <button key={index} className="btn btn-success m-2 pl-4 col-4">
                         {Top5List}
                     </button>
                 ))}
