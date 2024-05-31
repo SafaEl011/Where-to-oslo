@@ -66,13 +66,7 @@ const MapView = () => {
     map.setTarget(mapRef.current);
   }, [map]);
 
-  useEffect(() => {
-    document.addEventListener("click", handleZoomToUser);
 
-    return () => {
-      document.removeEventListener("click", handleZoomToUser);
-    };
-  }, []);
 
   return (
     <BaseMapContext.Provider
