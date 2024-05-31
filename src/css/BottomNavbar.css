@@ -65,3 +65,7 @@
   background-color: transparent !important;
   border-color: transparent !important;
 }
+
+.categoryModal, .top5Modal {
+  margin-top: 60%;
+}
