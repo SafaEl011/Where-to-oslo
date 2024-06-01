@@ -19,6 +19,8 @@ import { ActivitiesCheckbox } from "../components/layers/activities/ActivitiesCh
 import { BarsCheckbox } from "../components/layers/bars/BarsCheckbox";
 import { ShoppingCheckbox } from "../components/layers/shopping/ShoppingCheckbox";
 import { RestaurantsCheckbox } from "../components/layers/restaurants/RestaurantsCheckbox";
+import {ButtonContainer} from "../components/IconButtons/ButtonContainer";
+
 
 useGeographic();
 
@@ -73,7 +75,7 @@ const MapView = () => {
       value={{ map, setBaseLayer, setFeatureLayers, featureLayers }}
     >
       <MapProvider map={map}>
-        <div className="map" ref={mapRef}>
+        <div className="map map-container position-relative" ref={mapRef}>
           <h4>Map</h4>
           <CafeCheckbox />
           <ActivitiesCheckbox />
@@ -81,6 +83,7 @@ const MapView = () => {
           <ShoppingCheckbox />
           <RestaurantsCheckbox />
           <SearchEngine />
+          <ButtonContainer/>
         </div>
       </MapProvider>
     </BaseMapContext.Provider>
