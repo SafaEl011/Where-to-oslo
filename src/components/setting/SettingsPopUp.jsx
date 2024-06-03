@@ -8,8 +8,8 @@ const SettingsPopUp = ({ show, handleClose, handleToggleChange, settings }) => {
             onHide={handleClose}
             style={{
                 position: "fixed",
-                top: "50%",
-                right: "10%"
+                top: "41%",
+                left: "20%"
             }}
         >
             <Modal.Header closeButton>

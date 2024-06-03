@@ -9,11 +9,10 @@ const SearchPopUp = ({ show, handleClose, searchQuery, handleSearchChange, searc
             style={{
                 position: "fixed",
                 top: "15%",
-                right: "35%"
+                left: "20%"
             }}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Search</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form.Group className="mb-3">
