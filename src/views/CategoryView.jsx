@@ -15,7 +15,7 @@ const CategoryView = ({ show, handleClose }) => {
             keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Categories</Modal.Title>
+                <Modal.Title></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <CategoryList />
