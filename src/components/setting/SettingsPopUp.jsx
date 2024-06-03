@@ -1,48 +1,30 @@
 import React from "react";
-import { Modal, Form } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
-const SettingsPopUp = ({ show, handleClose, handleToggleChange, settings }) => {
+const SettingsPopUp = ({ show, handleClose, popupClassName }) => {
     return (
         <Modal
             show={show}
             onHide={handleClose}
-            style={{
-                position: "fixed",
-                top: "41%",
-                left: "20%"
-            }}
+            className={`slide-in-modal ${popupClassName} custom-settings-popup`}
+            backdropClassName="custom-backdrop"
         >
             <Modal.Header closeButton>
-                <Modal.Title>Settings</Modal.Title>
+                <Modal.Title className="w-100">Settings</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form.Group className="mb-3">
-                    <Form.Check
-                        type="switch"
-                        id="light-dark-mode"
-                        label="Light/Dark Mode"
-                        checked={settings.lightDarkMode}
-                        onChange={() => handleToggleChange('lightDarkMode')}
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Check
-                        type="switch"
-                        id="high-contrast-mode"
-                        label="High Contrast Mode"
-                        checked={settings.highContrastMode}
-                        onChange={() => handleToggleChange('highContrastMode')}
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Check
-                        type="switch"
-                        id="language-selection"
-                        label="Language Selection"
-                        checked={settings.languageSelection}
-                        onChange={() => handleToggleChange('languageSelection')}
-                    />
-                </Form.Group>
+                <div className="about-section mb-3">
+                    <h3 className="fw-bold text-center m-4">About</h3>
+                    <h6 className="fw-light text-center p-4">
+                        Welcome to Where To Oslo, When you need to know where to go!
+                    </h6>
+                    <h6 className="fw-light mb-4 text-center p-4">
+                        This application helps you find the best cafes, restaurants,
+                        and activities that you might not find elsewhere.
+                        Our goal is to make your search for great places easy and enjoyable.
+                    </h6>
+                    <h6 className="mb-0 text-center mt-5"><strong>Version:</strong> 1.0.0</h6>
+                </div>
             </Modal.Body>
         </Modal>
     );
