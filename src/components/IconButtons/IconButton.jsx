@@ -1,5 +1,4 @@
 import React from "react";
-import "../../css/IconStyles.css"
 
 const IconButton = ({onClick, children, className}) => {
     return (

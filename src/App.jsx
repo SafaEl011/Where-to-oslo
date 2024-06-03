@@ -4,6 +4,7 @@ import { useGeographic } from "ol/proj";
 import RoutingMain from "./routing/RoutingMain";
 import "ol/ol.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { GlobalStateProvider } from "./context/GlobalState";
 
 useGeographic();
 export function Application() {
@@ -12,7 +13,10 @@ export function Application() {
 
   return (
     <>
+
+    <GlobalStateProvider>
       <RoutingMain />
+</GlobalStateProvider>
     </>
   );
 }

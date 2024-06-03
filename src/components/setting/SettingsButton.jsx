@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import settingsIcon from "/public/images/icons/settings.svg";
-import "../../css/IconStyles.css"
+// import settingsIcon from "../../assets/images/icons../";
+import "../../styles/IconStyles.css"
 import IconButton from "../IconButtons/IconButton";
-import {toggleExpansion} from "../shared/ToggleExpansion";
+import {toggleExpansion} from "../ToggleExpansion";
 import Toggle from 'react-bootstrap-toggle';
 
 
@@ -27,7 +27,7 @@ const SettingsButton = () => {
     return (
         <div className="settings-button-container">
             <IconButton className="settings-button" onClick={handleClick}>
-                <img src={settingsIcon} alt="Settings Icon" className="icon"/>
+                <img src={"../../assets/images/icons/settings.svg"} alt="Settings Icon" className="icon"/>
             </IconButton>
             <div className={`settings-container ${isSettingsVisible ? "expanded" : ""}`}>
                 {isSettingsVisible && (

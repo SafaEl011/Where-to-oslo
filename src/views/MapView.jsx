@@ -1,90 +1,48 @@
-import { Map, View } from "ol";
+import { Map, Overlay, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from "react";
 import { defaults, ScaleLine } from "ol/control";
+import { Layer } from "ol/layer";
 import SearchEngine from "../components/search/SearchEngine";
-import { CafeCheckbox } from "../components/layers/cafes/CafeCheckbox";
-import { handleZoomToUser } from "../components/position/PositionEngine";
-import { ActivitiesLayer } from "../components/layers/activities/ActivitiesLayer";
-import { ActivitiesCheckbox } from "../components/layers/activities/ActivitiesCheckbox";
-import { BarsCheckbox } from "../components/layers/bars/BarsCheckbox";
-import { ShoppingCheckbox } from "../components/layers/shopping/ShoppingCheckbox";
-import { RestaurantsCheckbox } from "../components/layers/restaurants/RestaurantsCheckbox";
-
-useGeographic();
-
-const MapContext = createContext(null);
-
-export const useMap = () => {
-  return useContext(MapContext);
-};
-
-export const MapProvider = ({ map, children }) => {
-  return <MapContext.Provider value={map}>{children}</MapContext.Provider>;
-};
-
-export const BaseMapContext = createContext({
-  map: null,
-  setBaseLayer: () => {},
-  setFeatureLayers: () => {},
-  featureLayers: [],
-});
-
-const MapView = () => {
-  const [baseLayer, setBaseLayer] = useState(null);
-  const [featureLayers, setFeatureLayers] = useState([]);
-  const view = useMemo(
-    () =>
-      new View({
-        center: [10.75, 59.915],
-        zoom: 15,
-      }),
-    [],
-  );
-  const map = useMemo(
-    () =>
-      new Map({
-        layers: [new TileLayer({ source: new OSM() })],
-        view: view,
-        controls: defaults().extend([new ScaleLine()]),
-      }),
-    [view],
-  );
-
-  const mapRef = useRef(null);
-
-  useEffect(() => {
-    map.setTarget(mapRef.current);
-  }, [map]);
+import {BarsCheckbox} from "../components/layers/bars/BarsCheckbox";
+import {ActivitiesCheckbox} from "../components/layers/activities/ActivitiesCheckbox";
+import {GlobalStateContext}  from "../context/GlobalState";
+import MapViewBottomNavbar from "../components/navigation/MapViewBottomNavbar";
+import ViewNavbar from "../components/shared/ViewNavbar";
 
 
+// Set the rules for what is displayed in the return part of the application.
+// Base for most of the other inputs.
 
-  return (
-    <BaseMapContext.Provider
-      value={{ map, setBaseLayer, setFeatureLayers, featureLayers }}
-    >
-      <MapProvider map={map}>
-        <div className="map" ref={mapRef}>
-          <h4>Map</h4>
-          <CafeCheckbox />
-          <ActivitiesCheckbox />
-          <BarsCheckbox />
-          <ShoppingCheckbox />
-          <RestaurantsCheckbox />
-          <SearchEngine />
-        </div>
-      </MapProvider>
-    </BaseMapContext.Provider>
-  );
+
+const MapView = ({children}) => {
+    const {globalState} = useContext(GlobalStateContext)
+    const {mapRef} = globalState
+    useEffect(()=>{
+        if(!mapRef.current){
+            window.location.reload()
+        }
+    },[])
+
+
+    return (
+<>
+            <ViewNavbar/>
+            <div ref={mapRef} className="map" >
+            <SearchEngine/>
+            <MapViewBottomNavbar/>
+</div>
+</>
+    );
 };
 
 export default MapView;

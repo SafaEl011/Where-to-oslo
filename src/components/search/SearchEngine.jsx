@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import { useMap } from "../../views/MapView";
+
 import { handleZoomToUser } from "../position/PositionEngine";
+// import {BaseMap} from "../../views/MapView";
+import {GlobalStateContext}  from "../../context/GlobalState";
 
 const SearchEngine = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -13,7 +15,9 @@ const SearchEngine = () => {
   // State to hold data from all JSON files
   const [allData, setAllData] = useState([]);
 
-  const map = useMap();
+  // const {map} = useContext(BaseMap)
+  const {globalState} = useContext(GlobalStateContext)
+  const {map} = globalState
 
   // Function to handle fetching data from multiple JSON files
   const fetchData = async (filePaths) => {

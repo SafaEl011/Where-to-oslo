@@ -1,32 +1,11 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import CategoryList from "../components/shared/CategoryList";
-import "../css/BottomNavbar.css"
 
-const CategoryView = ({ show, handleClose }) => {
-    return (
-        <Modal
-            className="categoryModal" // Add the custom class here
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>Categories</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <CategoryList />
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="success" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
-        </Modal>
-    );
+const CategoryView = () => {
+  return (
+    <main className="h-full bg-slate-300 flex items-center justify-center ">
+      <h4 className="text-xxl">Hello from Categoryview</h4>
+    </main>
+  );
 };
 
 export default CategoryView;

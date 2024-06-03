@@ -1,7 +1,7 @@
 import React from "react";
 import searchIcon from "/images/icons/search.svg";
 import IconButton from "../IconButtons/IconButton";
-import {toggleExpansion} from "../shared/ToggleExpansion";
+import {toggleExpansion} from "../ToggleExpansion";
 
 
 const SearchButton = ({ onClick}) => {

@@ -12,7 +12,7 @@ export const BarsLayer = new VectorLayer({
   }),
   style: new Style({
     image: new Icon({
-      src: "public/images/drinkPin_4.svg",
+      src: "/images/drinkPin_4.svg",
       scale: 1,
     }),
   }),

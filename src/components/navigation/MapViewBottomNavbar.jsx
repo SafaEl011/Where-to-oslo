@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import CategoryView from "../../views/CategoryView";
-import Top5View from "../../views/Top5View";
+import CategoryModal from "../modals/CategoryModal";
 import Button from "react-bootstrap/Button";
-import "../../css/BottomNavbar.css";
+import Top5Modal from "../modals/Top5Modal";
+import "../../styles/BottomNavbar.css"
+// import defaultCategoryImage from "/assets/images/icons/categories.svg"
+// import activeCategoryImage from "/assets/images/icons/categoriesClick.svg"
 
-const BottomNavbar = () => {
+const MapViewBottomNavbar = () => {
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [showTop5Modal, setShowTop5Modal] = useState(false);
 
@@ -44,7 +45,7 @@ const BottomNavbar = () => {
 
   return (
       <>
-        <nav className="navbar fixed-bottom navbar-light bg-light">
+        <nav className="navbar fixed-bottom navbar-light bg-light  ">
           <div className="container-fluid d-flex justify-content-around">
             <div className="text-center">
               <Button
@@ -55,7 +56,7 @@ const BottomNavbar = () => {
                 <img
                     src={categoryImage}
                     alt="Categories Icon"
-                    className="CategoryBtnIcon"
+                    // className="CategoryBtnIcon"
                 />
               </Button>
               <div>Categories</div>
@@ -67,20 +68,23 @@ const BottomNavbar = () => {
                   onClick={handleShowTop5}
               >
                 <img
+
                     src={top5Image}
                     alt="Top 5 Icon"
                     className="Top5BtnIcon"
+                    // className="w-full h-full"
+                    
                 />
               </Button>
               <div>Top 5</div>
             </div>
           </div>
         </nav>
-        <CategoryView show={showCategoryModal} handleClose={handleCloseCategory} />
-        <Top5View show={showTop5Modal} handleClose={handleCloseTop5} />
+        <CategoryModal show={showCategoryModal} handleClose={handleCloseCategory} />
+        <Top5Modal show={showTop5Modal} handleClose={handleCloseTop5} />
       </>
   );
 };
 
 
-export default BottomNavbar;
+export default MapViewBottomNavbar;

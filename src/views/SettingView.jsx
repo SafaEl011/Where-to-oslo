@@ -2,9 +2,9 @@ import React from "react";
 
 const SettingView = () => {
   return (
-    <section>
+    <main>
       <h4>Settings</h4>
-    </section>
+    </main>
   );
 };
 

@@ -4,6 +4,8 @@ import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { Icon, Style } from "ol/style";
 
+
+
 export const ActivitiesLayer = new VectorLayer({
   className: "name",
   source: new VectorSource({
@@ -17,3 +19,12 @@ export const ActivitiesLayer = new VectorLayer({
     }),
   }),
 });
+
+export const TextBoxTest = (coordinates) => {
+  const Test = new VectorLayer({
+  source: new VectorSource({
+    url: "./json/activity.json",
+    format: new GeoJSON(),
+  }),
+  })  
+}
