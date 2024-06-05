@@ -40,8 +40,8 @@ const SearchEngine: React.FC = () => {
   useEffect(() => {
     // Provide an array of file paths to the fetchData function
     fetchData([
-      "/WhereToOslo/json/cafe.geojson",
-      "restaurants.geojson",
+      "json/activity.geojson",
+      "json/activity.geojson",
       "json/drinks.geojson",
       "json/store.geojson",
       "json/activity.geojson",

@@ -10,6 +10,12 @@ import CategoryModal from "../navbar/categoryModal";
 import Top5Modal from "../navbar/top5Modal";
 import SearchEngine from "../buttons/search";
 import SettingsButton from "../buttons/settingsButton";
+import {SearchLocations} from "../buttons/search2";
+import {Cafecheckbox} from "../cafe/cafeCheckBox";
+import {Storecheckbox} from "../store/storeCheckbox";
+import {Activitycheckbox} from "../activity/activityCheckbox";
+import {Drinkcheckbox} from "../drink/drinkCheck";
+import {Restaurantcheckbox} from "../restaurant/restaurantCheck";
 
 export function Application() {
   const [layers, setLayers] = useState<Layer[]>([
@@ -29,6 +35,12 @@ export function Application() {
       <CenterOnUser view={map.getView()} map={map} />
       <SearchEngine />
       <SettingsButton />
+        <SearchLocations/>
+        <Cafecheckbox />
+        <Storecheckbox />
+        <Activitycheckbox />
+        <Drinkcheckbox />
+        <Restaurantcheckbox />
       <nav>
         <CategoryModal />
         <Top5Modal />
