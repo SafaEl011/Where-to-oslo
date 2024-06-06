@@ -3,28 +3,28 @@ import { Point } from "ol/geom";
 import { FeatureLike } from "ol/Feature";
 import { Icon, Style } from "ol/style";
 
-export interface cafeProperties {
+export interface storeProperties {
   name: string;
 }
-export type cafeFeature = {
-  getproperties(): cafeProperties;
+export type storeStyle = {
+  getproperties(): storeProperties;
 } & Feature<Point>;
-export const cafeStyle = (feature: FeatureLike) => {
-  const cafe = feature.getProperties() as cafeProperties;
+export const storeStyle = (feature: FeatureLike) => {
+  const store = feature.getProperties() as storeProperties;
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/kafePin.png",
+      src: "/WhereToOslo/storePin.png",
       anchor: [0.5, 1],
       scale: 0.05,
     }),
   });
 };
-export const activeCafeStyle = (feature: FeatureLike) => {
-  const cafe = feature.getProperties() as cafeProperties;
+export const activeStoreStyle = (feature: FeatureLike) => {
+  const store = feature.getProperties() as storeProperties;
   //const resolution = map.getView().getResolutions();
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/kafePin.png",
+      src: "/WhereToOslo/storePin.png",
       anchor: [0.5, 1],
       scale: 0.06,
     }),

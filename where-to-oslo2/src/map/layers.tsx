@@ -1,15 +1,16 @@
-import { useContext, useEffect } from "react";
-import { MapContext } from "./mapContext";
+/*import { useContext, useEffect } from "react";
+import { MainContext } from "./MainContext";
 import { Layer } from "ol/layer";
 
-export function CheckedLayers(layer: Layer, checked: boolean) {
-  const { setLayers } = useContext(MapContext);
+export function CheckedLayers(layer: Layer, clicked: boolean) {
+  const { setRestaurantFeatureLayers } = useContext(MainContext);
   useEffect(() => {
-    if (checked) {
-      setLayers((old) => [...old, layer]);
+    if (clicked) {
+      setCafeFeatureLayers((old) => [...old, layer]);
     }
     return () => {
-      setLayers((old) => old.filter((l) => l !== layer));
+      setCafeFeatureLayers((old) => old.filter((l) => l !== layer));
     };
-  }, [checked]);
+  }, [clicked]);
 }
+*/

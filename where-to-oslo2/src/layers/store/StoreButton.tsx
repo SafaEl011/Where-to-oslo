@@ -1,18 +1,19 @@
 import React, {
-  MutableRefObject,
+  MutableRefObject, useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
-import { CheckedLayers } from "../map/layers";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
-import { map } from "../map/mapContext";
-import { activeStoreStyle, storeFeature, storeStyle } from "./storeFeature";
+import { MainContext } from "../../map/MainContext";
+
+import {activeStoreStyle, storeStyle} from "./StoreStyle";
+
 
 const storeLayer = new VectorLayer({
   className: "Store",
@@ -23,21 +24,21 @@ const storeLayer = new VectorLayer({
   style: storeStyle,
 });
 
-export function Storecheckbox() {
-  const [checked, setChecked] = useState(false);
+export function StoreButton() {
+  const [clicked, setClicked] = useState(false);
+  const [activeFeature, setActiveFeature] = useState<storeStyle | undefined>();
+  const { setStoreFeatureLayers , map } = useContext(MainContext);
 
-  CheckedLayers(storeLayer, checked);
-  const [activeFeature, setActiveFeature] = useState<storeFeature>();
   const overlay = useMemo(() => new Overlay({}), []);
-  const overlayref = useRef() as MutableRefObject<HTMLDivElement>;
+  const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
+
   useEffect(() => {
-    overlay.setElement(overlayref.current);
+    overlay.setElement(overlayRef.current);
     map.addOverlay(overlay);
-    console.log("overlay clicked");
     return () => {
       map.removeOverlay(overlay);
     };
-  }, [overlay]);
+  }, [overlay, map]);
 
   function handlePointerMove(e: MapBrowserEvent<MouseEvent>) {
     const features: FeatureLike[] = [];
@@ -46,7 +47,7 @@ export function Storecheckbox() {
       layerFilter: (l) => l === storeLayer,
     });
     if (features.length === 1) {
-      setActiveFeature(features[0] as storeFeature);
+      setActiveFeature(features[0] as storeStyle);
       overlay.setPosition(e.coordinate);
     } else {
       setActiveFeature(undefined);
@@ -58,29 +59,34 @@ export function Storecheckbox() {
     activeFeature?.setStyle(activeStoreStyle);
     return () => activeFeature?.setStyle(undefined);
   }, [activeFeature]);
+
   useEffect(() => {
-    if (checked) {
+    if (clicked) {
+      setStoreFeatureLayers((old: any) => [...old, storeLayer]);
       map?.on("click", handlePointerMove);
+    } else {
+      setStoreFeatureLayers((old: any) => old.filter((l: any) => l !== storeLayer));
+      map?.un("click", handlePointerMove);
     }
-    return () => map?.un("click", handlePointerMove);
-  }, [checked]);
+  }, [clicked, setStoreFeatureLayers, map]);
+
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(e.target.checked)}
-        />
-        {checked ? "Hide" : "Show"} Stores
-      </label>
-      <div ref={overlayref} className={"overlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+      <div>
+        <label>
+          <input
+              type="button"
+              value="Store"
+              onClick={() => setClicked((prevClicked) => !prevClicked)}
+          />
+          {clicked ? "Hide" : "Show"} Store
+        </label>
+        <div ref={overlayRef} className={"overlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }

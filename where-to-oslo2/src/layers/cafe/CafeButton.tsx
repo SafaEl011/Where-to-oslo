@@ -1,18 +1,17 @@
 import React, {
-  MutableRefObject,
+  MutableRefObject, useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
-import { CheckedLayers } from "../map/layers";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
-import { map } from "../map/mapContext";
-import { activeCafeStyle, cafeFeature, cafeStyle } from "./cafeFeature";
+import { MainContext } from "../../map/MainContext";
+import {activeCafeStyle, cafeStyle} from "./CafeStyle";
 
 const cafeLayer = new VectorLayer({
   className: "Cafe",
@@ -23,21 +22,21 @@ const cafeLayer = new VectorLayer({
   style: cafeStyle,
 });
 
-export function Cafecheckbox() {
-  const [checked, setChecked] = useState(false);
+export function CafeButton() {
+  const [clicked, setClicked] = useState(false);
+  const [activeFeature, setActiveFeature] = useState<cafeStyle | undefined>();
+  const { setCafeFeatureLayers, map } = useContext(MainContext);
 
-  CheckedLayers(cafeLayer, checked);
-  const [activeFeature, setActiveFeature] = useState<cafeFeature>();
   const overlay = useMemo(() => new Overlay({}), []);
-  const overlayref = useRef() as MutableRefObject<HTMLDivElement>;
+  const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
+
   useEffect(() => {
-    overlay.setElement(overlayref.current);
+    overlay.setElement(overlayRef.current);
     map.addOverlay(overlay);
-    console.log("overlay clicked");
     return () => {
       map.removeOverlay(overlay);
     };
-  }, [overlay]);
+  }, [overlay, map]);
 
   function handlePointerMove(e: MapBrowserEvent<MouseEvent>) {
     const features: FeatureLike[] = [];
@@ -46,7 +45,7 @@ export function Cafecheckbox() {
       layerFilter: (l) => l === cafeLayer,
     });
     if (features.length === 1) {
-      setActiveFeature(features[0] as cafeFeature);
+      setActiveFeature(features[0] as cafeStyle);
       overlay.setPosition(e.coordinate);
     } else {
       setActiveFeature(undefined);
@@ -58,29 +57,34 @@ export function Cafecheckbox() {
     activeFeature?.setStyle(activeCafeStyle);
     return () => activeFeature?.setStyle(undefined);
   }, [activeFeature]);
+
   useEffect(() => {
-    if (checked) {
+    if (clicked) {
+      setCafeFeatureLayers((old: any) => [...old, cafeLayer]);
       map?.on("click", handlePointerMove);
+    } else {
+      setCafeFeatureLayers((old: any) => old.filter((l: any) => l !== cafeLayer));
+      map?.un("click", handlePointerMove);
     }
-    return () => map?.un("click", handlePointerMove);
-  }, [checked]);
+  }, [clicked, setCafeFeatureLayers, map]);
+
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(e.target.checked)}
-        />
-        {checked ? "Hide" : "Show"} Café
-      </label>
-      <div ref={overlayref} className={"overlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+      <div>
+        <label>
+          <input
+              type="button"
+              value="Cafe"
+              onClick={() => setClicked((prevClicked) => !prevClicked)}
+          />
+          {clicked ? "Hide" : "Show"} Café
+        </label>
+        <div ref={overlayRef} className={"overlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }

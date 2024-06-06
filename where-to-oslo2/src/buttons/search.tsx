@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, ChangeEvent } from "react";
-import { MapContext } from "../map/mapContext";
+import { MainContext } from "../map/MainContext";
 import SearchButton from "./SearchButton";
 import "../css/iconStyles.css";
 
@@ -23,7 +23,7 @@ const SearchEngine: React.FC = () => {
   // State to hold data from all JSON files
   const [allData, setAllData] = useState<Feature[]>([]);
 
-  const { map } = useContext(MapContext);
+  const { map } = useContext(MainContext);
 
   // Function to handle fetching data from multiple JSON files
   const fetchData = async (filePaths: string[]) => {

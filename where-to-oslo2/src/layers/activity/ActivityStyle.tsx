@@ -6,7 +6,7 @@ import { Icon, Style } from "ol/style";
 export interface activityProperties {
   name: string;
 }
-export type activityFeature = {
+export type activityStyle = {
   getproperties(): activityProperties;
 } & Feature<Point>;
 export const activityStyle = (feature: FeatureLike) => {
