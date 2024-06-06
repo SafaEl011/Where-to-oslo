@@ -1,5 +1,6 @@
 import React, {
-  MutableRefObject, useContext,
+  MutableRefObject,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -12,7 +13,7 @@ import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
 
-import {activeActivityStyle, activityStyle} from "./ActivityStyle";
+import { activeActivityStyle, activityStyle } from "./ActivityStyle";
 
 const activityLayer = new VectorLayer({
   className: "Activity",
@@ -25,7 +26,9 @@ const activityLayer = new VectorLayer({
 
 export function ActivityButton() {
   const [clicked, setClicked] = useState(false);
-  const [activeFeature, setActiveFeature] = useState<activityStyle | undefined>();
+  const [activeFeature, setActiveFeature] = useState<
+    activityStyle | undefined
+  >();
   const { setActivityFeatureLayers, map } = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
@@ -64,28 +67,30 @@ export function ActivityButton() {
       setActivityFeatureLayers((old: any) => [...old, activityLayer]);
       map?.on("click", handlePointerMove);
     } else {
-      setActivityFeatureLayers((old: any) => old.filter((l: any) => l !== activityLayer));
+      setActivityFeatureLayers((old: any) =>
+        old.filter((l: any) => l !== activityLayer),
+      );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setActivityFeatureLayers, map]);
 
   return (
-      <div>
-        <label>
-          <input
-              type="button"
-              value="Activity"
-              onClick={() => setClicked((prevClicked) => !prevClicked)}
-          />
-          {clicked ? "Hide" : "Show"} Activity
-        </label>
-        <div ref={overlayRef} className={"overlay"}>
-          {activeFeature && (
-              <>
-                <p>Navn: {activeFeature.get("name")}</p>
-              </>
-          )}
-        </div>
+    <div>
+      <label>
+        <input
+          type="button"
+          value="Activity"
+          onClick={() => setClicked((prevClicked) => !prevClicked)}
+        />
+        {clicked ? "Hide" : "Show"} Activity
+      </label>
+      <div ref={overlayRef} className={"overlay"}>
+        {activeFeature && (
+          <>
+            <p>Navn: {activeFeature.get("name")}</p>
+          </>
+        )}
       </div>
+    </div>
   );
 }

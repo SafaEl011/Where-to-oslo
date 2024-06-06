@@ -1,5 +1,6 @@
 import React, {
-  MutableRefObject, useContext,
+  MutableRefObject,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -11,8 +12,7 @@ import { GeoJSON } from "ol/format";
 import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
-import {activeDrinkStyle, drinkStyle} from "./DrinkStyle";
-
+import { activeDrinkStyle, drinkStyle } from "./DrinkStyle";
 
 const drinkLayer = new VectorLayer({
   className: "Drink",
@@ -64,28 +64,30 @@ export function DrinksButton() {
       setDrinkFeatureLayers((old: any) => [...old, drinkLayer]);
       map?.on("click", handlePointerMove);
     } else {
-      setDrinkFeatureLayers((old: any) => old.filter((l: any) => l !== drinkLayer));
+      setDrinkFeatureLayers((old: any) =>
+        old.filter((l: any) => l !== drinkLayer),
+      );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setDrinkFeatureLayers, map]);
 
   return (
-      <div>
-        <label>
-          <input
-              type="button"
-              value="Drinks"
-              onClick={() => setClicked((prevClicked) => !prevClicked)}
-          />
-          {clicked ? "Hide" : "Show"} Drinks
-        </label>
-        <div ref={overlayRef} className={"overlay"}>
-          {activeFeature && (
-              <>
-                <p>Navn: {activeFeature.get("name")}</p>
-              </>
-          )}
-        </div>
+    <div>
+      <label>
+        <input
+          type="button"
+          value="Drinks"
+          onClick={() => setClicked((prevClicked) => !prevClicked)}
+        />
+        {clicked ? "Hide" : "Show"} Drinks
+      </label>
+      <div ref={overlayRef} className={"overlay"}>
+        {activeFeature && (
+          <>
+            <p>Navn: {activeFeature.get("name")}</p>
+          </>
+        )}
       </div>
+    </div>
   );
 }

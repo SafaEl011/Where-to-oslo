@@ -9,7 +9,7 @@ import "../css/iconStyles.css";
 export function CenterOnUser({ view, map }: { view: View; map: Map }) {
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
         view.animate({ center: [longitude, latitude], zoom: 17 });

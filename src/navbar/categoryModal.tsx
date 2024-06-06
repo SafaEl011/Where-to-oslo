@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -8,9 +8,8 @@ function CategoryModal() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   return (
-      <>
+    <>
       <Button variant="primary" onClick={handleShow}>
         Categories
       </Button>
@@ -24,16 +23,14 @@ function CategoryModal() {
         <Modal.Header>
           <Modal.Title>Pick a category</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-
-        </Modal.Body>
+        <Modal.Body></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
-  </>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, {
-  MutableRefObject, useContext,
+  MutableRefObject,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -11,8 +12,7 @@ import { GeoJSON } from "ol/format";
 import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
-import {activeRestaurantStyle, restaurantStyle} from "./RestaurantStyle";
-
+import { activeRestaurantStyle, restaurantStyle } from "./RestaurantStyle";
 
 const restaurantLayer = new VectorLayer({
   className: "Restaurant",
@@ -25,8 +25,10 @@ const restaurantLayer = new VectorLayer({
 
 export function RestaurantButton() {
   const [clicked, setClicked] = useState(false);
-  const [activeFeature, setActiveFeature] = useState<restaurantStyle | undefined>();
-  const { setRestaurantFeatureLayers , map } = useContext(MainContext);
+  const [activeFeature, setActiveFeature] = useState<
+    restaurantStyle | undefined
+  >();
+  const { setRestaurantFeatureLayers, map } = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
   const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -64,28 +66,30 @@ export function RestaurantButton() {
       setRestaurantFeatureLayers((old: any) => [...old, restaurantLayer]);
       map?.on("click", handlePointerMove);
     } else {
-      setRestaurantFeatureLayers((old: any) => old.filter((l: any) => l !== restaurantLayer));
+      setRestaurantFeatureLayers((old: any) =>
+        old.filter((l: any) => l !== restaurantLayer),
+      );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setRestaurantFeatureLayers, map]);
 
   return (
-      <div>
-        <label>
-          <input
-              type="button"
-              value="Restaurant"
-              onClick={() => setClicked((prevClicked) => !prevClicked)}
-          />
-          {clicked ? "Hide" : "Show"} Restaurant
-        </label>
-        <div ref={overlayRef} className={"overlay"}>
-          {activeFeature && (
-              <>
-                <p>Navn: {activeFeature.get("name")}</p>
-              </>
-          )}
-        </div>
+    <div>
+      <label>
+        <input
+          type="button"
+          value="Restaurant"
+          onClick={() => setClicked((prevClicked) => !prevClicked)}
+        />
+        {clicked ? "Hide" : "Show"} Restaurant
+      </label>
+      <div ref={overlayRef} className={"overlay"}>
+        {activeFeature && (
+          <>
+            <p>Navn: {activeFeature.get("name")}</p>
+          </>
+        )}
       </div>
+    </div>
   );
 }
