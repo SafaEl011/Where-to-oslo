@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { SearchEngine } from "./search";
+
 import {CenterOnUser} from "./centerOnUser";
 import {FavoriteButton} from "./favoriteButton";
 import {SettingsButton} from "./settingsButton";
 import "../css/iconStyles.css"
+import {SearchLocations2} from "./SearchLocations2";
+
 
 export const ButtonsColumn: React.FC = () => {
     const [showOverlay, setShowOverlay] = useState(false);
@@ -15,7 +17,7 @@ export const ButtonsColumn: React.FC = () => {
     return (
         <>
             <div className="buttons-column">
-                <SearchEngine showOverlay={showOverlay} toggleOverlay={toggleOverlay}/>
+                <SearchLocations2  showOverlay={showOverlay} toggleOverlay={toggleOverlay}/>
                 <CenterOnUser/>
                 <FavoriteButton/>
                 <SettingsButton/>

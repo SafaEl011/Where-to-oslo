@@ -1,8 +1,9 @@
+/*
 import React, { useContext, useEffect, useState, ChangeEvent } from "react";
 import { MainContext } from "../map/MainContext";
 import SearchButton from "./SearchButton";
 import "../css/iconStyles.css";
-import {SearchLocations} from "./search2";
+import {SearchLocations} from "./SearchLocations";
 
 type Feature = {
   type: string;
@@ -98,4 +99,4 @@ export const SearchEngine: React.FC<{ showOverlay: boolean; toggleOverlay: () =>
       </div>
   );
 };
-
+*/

@@ -62,3 +62,12 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
   padding: 0.5em;
   translate: -50% calc(-100% - 5px);
 }
+.dropdown-row {
+  cursor: pointer;
+  text-align:center;
+  margin: 1px 0;
+
+  background-color: white;
+}
+
+

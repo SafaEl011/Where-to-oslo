@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, ChangeEvent } from "react";
+/*import React, { useState, useEffect, useContext, ChangeEvent } from "react";
 import { MainContext } from "../map/MainContext";
 import "../css/iconStyles.css"
 
@@ -90,4 +90,4 @@ export function SearchLocations({ showOverlay, toggleOverlay}: {showOverlay: boo
             ))}
       </div>
   );
-}
+}*/

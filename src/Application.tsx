@@ -14,6 +14,8 @@ import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { CategoryList } from "./navbar/CategoryList";
 import {ButtonsColumn} from "./buttons/ButtonsColumn";
+import {SearchLocations2} from "./buttons/SearchLocations2";
+
 
 export function Application() {
   const { map } = useContext(MainContext);
@@ -84,6 +86,7 @@ export function Application() {
           ></div>
           <ButtonsColumn/>
           <CategoryList />
+
         </main>
       </div>
     </MainContext.Provider>
