@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, ChangeEvent } from "react";
 import { MainContext } from "../map/MainContext";
 import SearchButton from "./SearchButton";
 import "../css/iconStyles.css";
-import {SearchLocations} from "./search2";
+import { SearchLocations } from "./search2";
 
 type Feature = {
   type: string;
@@ -16,8 +16,10 @@ type Feature = {
   };
 };
 
-export const SearchEngine: React.FC<{ showOverlay: boolean; toggleOverlay: () => void
-}> = ({showOverlay, toggleOverlay}) => {
+export const SearchEngine: React.FC<{
+  showOverlay: boolean;
+  toggleOverlay: () => void;
+}> = ({ showOverlay, toggleOverlay }) => {
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Feature[]>([]);
@@ -60,11 +62,11 @@ export const SearchEngine: React.FC<{ showOverlay: boolean; toggleOverlay: () =>
 
     if (e.target.value) {
       setSearchResults(
-          allData.filter((feature) =>
-              feature.properties.name
-                  .toLowerCase()
-                  .includes(e.target.value.toLowerCase()),
-          ),
+        allData.filter((feature) =>
+          feature.properties.name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()),
+        ),
       );
     } else {
       setSearchResults([]);
@@ -82,20 +84,22 @@ export const SearchEngine: React.FC<{ showOverlay: boolean; toggleOverlay: () =>
     setSearchResults([]);
   };
   return (
-      <div className={`position-relative ${showOverlay ? "show" : ""}`}>
-        <div className="button-container">
-          <SearchButton onClick={() => toggleOverlay()}/>
-          {showOverlay && (
-              <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  placeholder="Search..."
-              />
-          )}
-          <SearchLocations showOverlay={showOverlay} toggleOverlay={toggleOverlay}/>
-        </div>
+    <div className={`position-relative ${showOverlay ? "show" : ""}`}>
+      <div className="button-container">
+        <SearchButton onClick={() => toggleOverlay()} />
+        {showOverlay && (
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Search..."
+          />
+        )}
+        <SearchLocations
+          showOverlay={showOverlay}
+          toggleOverlay={toggleOverlay}
+        />
       </div>
+    </div>
   );
 };
-

@@ -6,6 +6,8 @@ import { Vector as VectorLayer } from "ol/layer";
 import { Vector as VectorSource } from "ol/source";
 import IconButton from "./iconsButton";
 import "../css/iconStyles.css";
+import { Icon, Style } from "ol/style";
+import { scale } from "ol/size";
 
 export const CenterOnUser: React.FC = () => {
   const { map } = useContext(MainContext);
@@ -18,6 +20,14 @@ export const CenterOnUser: React.FC = () => {
         const { latitude, longitude } = pos.coords;
         map.getView().animate({ center: [longitude, latitude], zoom: 17 });
         const marker = new Feature(new Point([longitude, latitude]));
+        const iconStyle = new Style({
+          image: new Icon({
+            src: "/WhereToOslo/images/LocationBtn.svg",
+            anchor: [0.5, 1],
+            scale: 1,
+          }),
+        });
+        marker.setStyle(iconStyle);
         const vectorLayer = new VectorLayer({
           source: new VectorSource({
             features: [marker],

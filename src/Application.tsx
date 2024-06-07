@@ -13,7 +13,7 @@ import { Layer } from "ol/layer";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { CategoryList } from "./navbar/CategoryList";
-import {ButtonsColumn} from "./buttons/ButtonsColumn";
+import { ButtonsColumn } from "./buttons/ButtonsColumn";
 
 export function Application() {
   const { map } = useContext(MainContext);
@@ -40,6 +40,7 @@ export function Application() {
       ...drinkFeatureLayers,
       ...activityFeatureLayers,
       ...restaurantFeatureLayers,
+      ...storeFeatureLayers,
     ],
     [
       baseLayer,
@@ -48,6 +49,7 @@ export function Application() {
       drinkFeatureLayers,
       activityFeatureLayers,
       restaurantFeatureLayers,
+      storeFeatureLayers,
     ],
   );
 
@@ -56,7 +58,6 @@ export function Application() {
   const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
   useEffect(() => map.setTarget(mapRef.current), []);
   useEffect(() => map.setLayers(layers), [layers]);
-
   return (
     <MainContext.Provider
       value={{
@@ -82,7 +83,7 @@ export function Application() {
             ref={mapRef}
             className="map map-container position-relative"
           ></div>
-          <ButtonsColumn/>
+          <ButtonsColumn />
           <CategoryList />
         </main>
       </div>

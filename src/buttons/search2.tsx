@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, ChangeEvent } from "react";
 import { MainContext } from "../map/MainContext";
-import "../css/iconStyles.css"
+import "../css/iconStyles.css";
 
 export interface SearchJson {
   properties: SearchProperties;
@@ -14,7 +14,13 @@ export interface SearchProperties {
   name: string;
 }
 
-export function SearchLocations({ showOverlay, toggleOverlay}: {showOverlay: boolean; toggleOverlay: () => void }) {
+export function SearchLocations({
+  showOverlay,
+  toggleOverlay,
+}: {
+  showOverlay: boolean;
+  toggleOverlay: () => void;
+}) {
   const [value, setValue] = useState("");
   const [searchQuery, setSearchQuery] = useState<string[]>([]);
   const [searchResults, setSearchResults] = useState<SearchJson[]>([]);
@@ -31,14 +37,14 @@ export function SearchLocations({ showOverlay, toggleOverlay}: {showOverlay: boo
         "json/activity.geojson",
       ];
       const data = await Promise.all(
-          files.map((file) => fetch(file).then((response) => response.json())),
+        files.map((file) => fetch(file).then((response) => response.json())),
       );
 
       const mergedFeatures = data.flatMap(
-          (datum: { features: SearchJson[] }) => datum.features,
+        (datum: { features: SearchJson[] }) => datum.features,
       );
       const names = mergedFeatures.map(
-          (feature: SearchJson) => feature.properties.name,
+        (feature: SearchJson) => feature.properties.name,
       );
 
       setSearchResults(mergedFeatures);
@@ -54,7 +60,7 @@ export function SearchLocations({ showOverlay, toggleOverlay}: {showOverlay: boo
 
   const onSelect = (f: SearchProperties) => {
     const selectedLocation = searchResults.find(
-        (s) => s.properties.name === f.name,
+      (s) => s.properties.name === f.name,
     );
     if (selectedLocation) {
       setValue(selectedLocation.properties.name);
@@ -67,27 +73,27 @@ export function SearchLocations({ showOverlay, toggleOverlay}: {showOverlay: boo
   };
 
   return (
-      <div className={`stationdropdown ${showOverlay ? "show" : ""}`}>
-        {searchResults
-            .filter((s) => {
-              const searchTerm = value.toLowerCase();
-              const locationAddress = s.properties.name.toLowerCase();
-              return searchTerm && locationAddress.startsWith(searchTerm);
-            })
-            .map((s, index) => (
-                <div
-                    onClick={() => onSelect(s.properties)}
-                    className="dropdown-row"
-                    key={index}
-                    style={{
-                      cursor: "pointer",
-                      margin: "2px 0",
-                      color: "#bf00ff",
-                    }}
-                >
-                  {s.properties.name}
-                </div>
-            ))}
-      </div>
+    <div className={`stationdropdown ${showOverlay ? "show" : ""}`}>
+      {searchResults
+        .filter((s) => {
+          const searchTerm = value.toLowerCase();
+          const locationAddress = s.properties.name.toLowerCase();
+          return searchTerm && locationAddress.startsWith(searchTerm);
+        })
+        .map((s, index) => (
+          <div
+            onClick={() => onSelect(s.properties)}
+            className="dropdown-row"
+            key={index}
+            style={{
+              cursor: "pointer",
+              margin: "2px 0",
+              color: "#bf00ff",
+            }}
+          >
+            {s.properties.name}
+          </div>
+        ))}
+    </div>
   );
 }
