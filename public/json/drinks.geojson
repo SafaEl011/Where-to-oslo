@@ -25,16 +25,13 @@
         "type": "Point"
       }
     },
- {
+    {
       "type": "Feature",
       "properties": {
         "name": "Herr Nilsen"
       },
       "geometry": {
-        "coordinates": [
-          10.740904850382549,
-          59.91544772676275
-        ],
+        "coordinates": [10.740904850382549, 59.91544772676275],
         "type": "Point"
       }
     },
@@ -44,10 +41,7 @@
         "name": "Schouskjelleren"
       },
       "geometry": {
-        "coordinates": [
-          10.760463728836356,
-          59.91838888824651
-        ],
+        "coordinates": [10.760463728836356, 59.91838888824651],
         "type": "Point"
       }
     },
@@ -57,10 +51,7 @@
         "name": "Blå"
       },
       "geometry": {
-        "coordinates": [
-          10.752909728835505,
-          59.92012136790498
-        ],
+        "coordinates": [10.752909728835505, 59.92012136790498],
         "type": "Point"
       }
     },
@@ -70,10 +61,7 @@
         "name": "Crow Bar and Brewery"
       },
       "geometry": {
-        "coordinates": [
-          10.753522999998893,
-          59.917220133513666
-        ],
+        "coordinates": [10.753522999998893, 59.917220133513666],
         "type": "Point"
       }
     },
@@ -83,10 +71,7 @@
         "name": "Røør"
       },
       "geometry": {
-        "coordinates": [
-          10.740411271162628,
-          59.91519362183564
-        ],
+        "coordinates": [10.740411271162628, 59.91519362183564],
         "type": "Point"
       }
     }

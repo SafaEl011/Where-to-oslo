@@ -25,70 +25,55 @@
         "type": "Point"
       }
     },
-     {
-          "type": "Feature",
-          "properties": {
-            "name": "Fuglen"
-          },
-          "geometry": {
-            "coordinates": [
-              10.739790728836766,
-              59.91712253429057
-            ],
-            "type": "Point"
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "name": "Oslo Raw"
-          },
-          "geometry": {
-            "coordinates": [
-              10.73423154232782,
-              59.93285562469819
-            ],
-            "type": "Point"
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "name": "Liebling"
-          },
-          "geometry": {
-            "coordinates": [
-              10.756807728836463,
-              59.92726562379201
-            ],
-            "type": "Point"
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "name": "Kiosk Kaffebar"
-          },
-          "geometry": {
-            "coordinates": [
-              10.746916728835487,
-              59.907588414609336
-            ],
-            "type": "Point"
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "name": "Tim Wendelboe"
-          },
-          "geometry": {
-            "coordinates": [
-              10.75549399999818,
-              59.92340913050492
-            ],
-            "type": "Point"
-          }
-        }
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fuglen"
+      },
+      "geometry": {
+        "coordinates": [10.739790728836766, 59.91712253429057],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oslo Raw"
+      },
+      "geometry": {
+        "coordinates": [10.73423154232782, 59.93285562469819],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Liebling"
+      },
+      "geometry": {
+        "coordinates": [10.756807728836463, 59.92726562379201],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kiosk Kaffebar"
+      },
+      "geometry": {
+        "coordinates": [10.746916728835487, 59.907588414609336],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tim Wendelboe"
+      },
+      "geometry": {
+        "coordinates": [10.75549399999818, 59.92340913050492],
+        "type": "Point"
+      }
+    }
   ]
 }

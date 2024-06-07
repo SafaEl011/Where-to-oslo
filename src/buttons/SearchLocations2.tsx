@@ -16,9 +16,9 @@ export interface SearchProperties {
 }
 
 export function SearchLocations2({
-                                   showOverlay,
-                                   toggleOverlay,
-                                 }: {
+  showOverlay,
+  toggleOverlay,
+}: {
   showOverlay: boolean;
   toggleOverlay: () => void;
 }) {
@@ -38,21 +38,21 @@ export function SearchLocations2({
         { file: "json/cafe.geojson", source: "cafe" },
       ];
       const data = await Promise.all(
-          files.map((fileObj) =>
-              fetch(fileObj.file)
-                  .then((response) => response.json())
-                  .then((json) =>
-                      json.features.map((feature: SearchJson) => ({
-                        ...feature,
-                        source: fileObj.source,
-                      }))
-                  )
-          )
+        files.map((fileObj) =>
+          fetch(fileObj.file)
+            .then((response) => response.json())
+            .then((json) =>
+              json.features.map((feature: SearchJson) => ({
+                ...feature,
+                source: fileObj.source,
+              })),
+            ),
+        ),
       );
 
       const mergedFeatures = data.flat();
       const names = mergedFeatures.map(
-          (feature: SearchJson) => feature.properties.name,
+        (feature: SearchJson) => feature.properties.name,
       );
 
       setSearchResults(mergedFeatures);
@@ -74,7 +74,7 @@ export function SearchLocations2({
 
   const onSelect = (f: SearchProperties) => {
     const selectedLocation = searchResults.find(
-        (s) => s.properties.name === f.name,
+      (s) => s.properties.name === f.name,
     );
     if (selectedLocation) {
       setValue(selectedLocation.properties.name);
@@ -85,44 +85,43 @@ export function SearchLocations2({
     }
   };
 
-
   const colorMapping: { [key: string]: string } = {
     activity: `#FDD430FF`,
     restaurants: `#0096B1FF`,
     drinks: `#E76E23FF`,
     store: `#975294FF`,
     cafe: `#985B3FFF`,
-    trip: `#00BE62FF`
+    trip: `#00BE62FF`,
   };
 
   return (
-      <div className={` position-relative ${showOverlay ? "show" : ""}`}>
-        <div className="button-container">
-          <SearchButton onClick={() => toggleOverlay()} />
-          <input className={""} type="text" value={value} onChange={onChange} />
+    <div className={` position-relative ${showOverlay ? "show" : ""}`}>
+      <div className="button-container">
+        <SearchButton onClick={() => toggleOverlay()} />
+        <input className={""} type="text" value={value} onChange={onChange} />
 
-          {searchResults
-              .filter((s) => {
-                const searchTerm = value.toLowerCase();
-                const locationAddress = s.properties.name.toLowerCase();
-                return searchTerm && locationAddress.startsWith(searchTerm);
-              })
-              .map((s, index) => (
-                  <div
-                      onClick={() => onSelect(s.properties)}
-                      className="dropdown-row"
-                      key={index}
-                      style={{
-                        cursor: "pointer",
-                        margin: "2px 0",
-                        color: colorMapping[s.source],
-                        fontWeight: "bold",
-                      }}
-                  >
-                    {s.properties.name}
-                  </div>
-              ))}
-        </div>
+        {searchResults
+          .filter((s) => {
+            const searchTerm = value.toLowerCase();
+            const locationAddress = s.properties.name.toLowerCase();
+            return searchTerm && locationAddress.startsWith(searchTerm);
+          })
+          .map((s, index) => (
+            <div
+              onClick={() => onSelect(s.properties)}
+              className="dropdown-row"
+              key={index}
+              style={{
+                cursor: "pointer",
+                margin: "2px 0",
+                color: colorMapping[s.source],
+                fontWeight: "bold",
+              }}
+            >
+              {s.properties.name}
+            </div>
+          ))}
       </div>
+    </div>
   );
 }
