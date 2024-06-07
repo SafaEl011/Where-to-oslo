@@ -1,31 +1,68 @@
-import React from "react";
+// src/views/Top5View.js
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import Top5List from "../components/shared/Top5List";
+import Top5InfoBox from "../components/shared/Top5InfoBox";
 import "../css/BottomNavbar.css"
 
 const Top5View = ({ show, handleClose }) => {
+    const [showTop5Overlay, setShowTop5Overlay] = useState(show);
+    const [showInfoBox, setShowInfoBox] = useState(false);
+    const [places, setPlaces] = useState([]);
+
+    useEffect(() => {
+        setShowTop5Overlay(show);
+    }, [show]);
+
+    const handleShowPlaces = (placesList) => {
+        setPlaces(placesList);
+        setShowTop5Overlay(false);
+        setShowInfoBox(true);
+    };
+
+    const handleCloseInfoBox = () => {
+        setShowInfoBox(false);
+        setShowTop5Overlay(true);
+    };
+
+    const handleTop5ButtonClick = (placeType) => {
+        switch (placeType) {
+            case "Topp 5 spisesteder":
+                handleShowPlaces(["Mamma pizza"]);
+                break;
+            case "Topp 5 skjulte perler":
+                handleShowPlaces(["Svingen Cafe", "Smia galleri", "Stien ned fra Frognerparken"]);
+                break;
+            case "Topp 5 billigste øl":
+                handleShowPlaces(["Mastermind", "Cuba Parken"]);
+                break;
+            case "Topp 5 bakst/kaker":
+                handleShowPlaces(["Baker nordby Tøyen", "Åpent Bakeri", "Grains", "Svingen Kolonial og Kafe"]);
+                break;
+            case "Topp 5 sommersteder":
+                handleShowPlaces(["Kafe Celsius", "Bygdøy", "Svingen- Kolonial og Kafe"]);
+                break;
+            default:
+                handleShowPlaces([]);
+                break;
+        }
+    };
+
     return (
-        <Modal
-            className="top5Modal" // Add the custom class here
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>Top 5</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Top5List />
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="success" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
-        </Modal>
+        <>
+            <div className={`fullscreen-overlay ${showTop5Overlay ? 'show' : 'hide'}`}>
+                <button className="close-btn" onClick={handleClose}>&times;</button>
+                <div className="content">
+                    <h2>Top 5</h2>
+                    <Top5List onButtonClick={handleTop5ButtonClick} />
+                </div>
+            </div>
+            <Top5InfoBox
+                show={showInfoBox}
+                handleClose={handleCloseInfoBox}
+                places={places}
+            />
+        </>
     );
 };
 

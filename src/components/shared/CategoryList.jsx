@@ -32,9 +32,9 @@ const CategoryList = () => {
 
     return (
         <div className="categoryContainer mt-5">
-            <div className="d-flex flex-wrap justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center col-4">
                 {categories.map((category, index) => (
-                    <div key={index} className="btn btn-success m-2 d-flex align-items-center justify-content-between">
+                    <div key={index} className="btn btn-success m-2 ">
                         <img src={category.icon} alt={`${category.name} Icon`} className="categoryIcon" />
                         <span>{category.name}</span>
                         <Form.Check

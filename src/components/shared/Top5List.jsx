@@ -1,23 +1,25 @@
+// src/components/shared/Top5List.js
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Top5List = () => {
-
+const Top5List = ({ onButtonClick }) => {
     const top5Places = [
-        "Top 5 spisesteder",
-        "Top 5 skjulte perler",
-        "Top 5 billigste øl",
-        "Top 5 bakst/kaker",
-        "Top 5 Topp 5 sommersteder"
+        "Topp 5 spisesteder",
+        "Topp 5 skjulte perler",
+        "Topp 5 billigste øl",
+        "Topp 5 bakst/kaker",
+        "Topp 5 sommersteder"
     ];
 
     return (
-        <div className ="container">
-            <div className="d-flex flex-column justify-content-between">
-                {top5Places.map((Top5List, index) => (
-                    <button key={index} className="btn btn-success m-2 pl-4 col-4">
-                        {Top5List}
-                    </button>
+        <div className="container">
+            <div className="row">
+                {top5Places.map((place, index) => (
+                    <div key={index} className="col-12 mb-3">
+                        <button className="btn btn-success w-100" onClick={() => onButtonClick(place)}>
+                            {place}
+                        </button>
+                    </div>
                 ))}
             </div>
         </div>
