@@ -27,6 +27,8 @@ export const MainContext = React.createContext<{
   storeFeatureLayers: Layer[];
   setRestaurantFeatureLayers: Dispatch<SetStateAction<Layer[]>>;
   restaurantFeatureLayers: Layer[];
+  setHikeFeatureLayers: Dispatch<SetStateAction<Layer[]>>;
+  hikeFeatureLayers: Layer[];
 }>({
   map,
   setBaseLayer: () => {},
@@ -42,4 +44,6 @@ export const MainContext = React.createContext<{
   storeFeatureLayers: [],
   setRestaurantFeatureLayers: () => {},
   restaurantFeatureLayers: [],
+  setHikeFeatureLayers: () => {},
+  hikeFeatureLayers: [],
 });

@@ -64,10 +64,8 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
 }
 .dropdown-row {
   cursor: pointer;
-  text-align:center;
+  text-align: center;
   margin: 1px 0;
 
   background-color: white;
 }
-
-

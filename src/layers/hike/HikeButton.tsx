@@ -12,24 +12,21 @@ import { GeoJSON } from "ol/format";
 import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
+import { activeHikeStyle, hikeStyle } from "./HikeStyle";
 
-import { activeActivityStyle, activityStyle } from "./ActivityStyle";
-
-const activityLayer = new VectorLayer({
-  className: "Activity",
+const hikeLayer = new VectorLayer({
+  className: "Hike",
   source: new VectorSource({
-    url: "/WhereToOslo/json/activity.geojson",
+    url: "/WhereToOslo/json/hike.geojson",
     format: new GeoJSON(),
   }),
-  style: activityStyle,
+  style: hikeStyle,
 });
 
-export function ActivityButton() {
+export function HikeButton() {
   const [clicked, setClicked] = useState(false);
-  const [activeFeature, setActiveFeature] = useState<
-    activityStyle | undefined
-  >();
-  const { setActivityFeatureLayers, map } = useContext(MainContext);
+  const [activeFeature, setActiveFeature] = useState<hikeStyle | undefined>();
+  const { setHikeFeatureLayers, map } = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
   const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -46,10 +43,10 @@ export function ActivityButton() {
     const features: FeatureLike[] = [];
     map.forEachFeatureAtPixel(e.pixel, (f) => features.push(f), {
       hitTolerance: 5,
-      layerFilter: (l) => l === activityLayer,
+      layerFilter: (l) => l === hikeLayer,
     });
     if (features.length === 1) {
-      setActiveFeature(features[0] as activityStyle);
+      setActiveFeature(features[0] as hikeStyle);
       overlay.setPosition(e.coordinate);
     } else {
       setActiveFeature(undefined);
@@ -58,31 +55,31 @@ export function ActivityButton() {
   }
 
   useEffect(() => {
-    activeFeature?.setStyle(activeActivityStyle);
+    activeFeature?.setStyle(activeHikeStyle);
     return () => activeFeature?.setStyle(undefined);
   }, [activeFeature]);
 
   useEffect(() => {
     if (clicked) {
-      setActivityFeatureLayers((old: any) => [...old, activityLayer]);
+      setHikeFeatureLayers((old: any) => [...old, hikeLayer]);
       map?.on("click", handlePointerMove);
     } else {
-      setActivityFeatureLayers((old: any) =>
-        old.filter((l: any) => l !== activityLayer),
+      setHikeFeatureLayers((old: any) =>
+        old.filter((l: any) => l !== hikeLayer),
       );
       map?.un("click", handlePointerMove);
     }
-  }, [clicked, setActivityFeatureLayers, map]);
+  }, [clicked, setHikeFeatureLayers, map]);
 
   return (
     <div>
       <label>
         <input
           type="button"
-          value="Activity"
+          value="Hike"
           onClick={() => setClicked((prevClicked) => !prevClicked)}
         />
-        {clicked ? "Hide" : "Show"} Activity
+        {clicked ? "Hide" : "Show"} Hike
       </label>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (

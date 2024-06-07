@@ -81,7 +81,7 @@ export function DrinksButton() {
         />
         {clicked ? "Hide" : "Show"} Drinks
       </label>
-      <div ref={overlayRef} className={"overlay"}>
+      <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
           <>
             <p>Navn: {activeFeature.get("name")}</p>

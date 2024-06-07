@@ -6,6 +6,7 @@ import { ActivityButton } from "../layers/activity/ActivityButton";
 import { DrinksButton } from "../layers/drink/DrinksButton";
 import { RestaurantButton } from "../layers/restaurant/RestaurantButton";
 import React from "react";
+import { HikeButton } from "../layers/hike/HikeButton";
 
 export const CategoryList = () => {
   const categories = [
@@ -14,6 +15,7 @@ export const CategoryList = () => {
     <ActivityButton />,
     <DrinksButton />,
     <RestaurantButton />,
+    <HikeButton />,
   ];
 
   return (

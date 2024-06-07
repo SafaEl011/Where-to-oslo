@@ -13,9 +13,8 @@ import { Layer } from "ol/layer";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { CategoryList } from "./navbar/CategoryList";
-import {ButtonsColumn} from "./buttons/ButtonsColumn";
-import {SearchLocations2} from "./buttons/SearchLocations2";
-
+import { ButtonsColumn } from "./buttons/ButtonsColumn";
+import { SearchLocations2 } from "./buttons/SearchLocations2";
 
 export function Application() {
   const { map } = useContext(MainContext);
@@ -29,6 +28,7 @@ export function Application() {
   const [restaurantFeatureLayers, setRestaurantFeatureLayers] = useState<
     Layer[]
   >([]);
+  const [hikeFeatureLayers, setHikeFeatureLayers] = useState<Layer[]>([]);
 
   const [baseLayer, setBaseLayer] = useState<Layer>(
     new TileLayer({ source: new OSM() }),
@@ -42,6 +42,8 @@ export function Application() {
       ...drinkFeatureLayers,
       ...activityFeatureLayers,
       ...restaurantFeatureLayers,
+      ...storeFeatureLayers,
+      ...hikeFeatureLayers,
     ],
     [
       baseLayer,
@@ -50,6 +52,8 @@ export function Application() {
       drinkFeatureLayers,
       activityFeatureLayers,
       restaurantFeatureLayers,
+      storeFeatureLayers,
+      hikeFeatureLayers,
     ],
   );
 
@@ -76,6 +80,8 @@ export function Application() {
         setActivityFeatureLayers,
         restaurantFeatureLayers,
         setRestaurantFeatureLayers,
+        hikeFeatureLayers,
+        setHikeFeatureLayers,
       }}
     >
       <div>
@@ -84,9 +90,8 @@ export function Application() {
             ref={mapRef}
             className="map map-container position-relative"
           ></div>
-          <ButtonsColumn/>
+          <ButtonsColumn />
           <CategoryList />
-
         </main>
       </div>
     </MainContext.Provider>
