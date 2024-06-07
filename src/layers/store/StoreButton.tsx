@@ -80,7 +80,7 @@ export function StoreButton() {
           value="Store"
           onClick={() => setClicked((prevClicked) => !prevClicked)}
         />
-        {clicked ? "Hide" : "Show"} Store
+        {clicked ? "Hide" : "Show"}
       </label>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (

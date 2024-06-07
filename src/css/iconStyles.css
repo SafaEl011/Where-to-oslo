@@ -49,3 +49,7 @@
 .overlay-content p {
   margin-bottom: 15px;
 }
+.pinOverlay {
+  background: rgba(159, 154, 154, 0.7);
+  z-index: 1;
+}

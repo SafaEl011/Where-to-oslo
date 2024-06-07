@@ -81,7 +81,7 @@ export function RestaurantButton() {
           value="Restaurant"
           onClick={() => setClicked((prevClicked) => !prevClicked)}
         />
-        {clicked ? "Hide" : "Show"} Restaurant
+        {clicked ? "Hide" : "Show"}
       </label>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (

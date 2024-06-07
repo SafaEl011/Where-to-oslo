@@ -39,7 +39,7 @@ export const categories = [
     icon: "/WhereToOslo/images/beerPin.svg",
     component: <DrinksButton />,
   },
-  { name: "Tours", icon: "/WhereToOslo/images/tripPin.svg" },
+  { name: "Hikes", icon: "/WhereToOslo/images/tripPin.svg" },
 ];
 
 export const CategoryList: React.FC<CategoryListProps> = ({
@@ -100,14 +100,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({
                     alt={`${category.name} Icon`}
                     className="categoryIcon"
                   />
-                  <span>{category.name}</span>
-                  <input
-                    type="checkbox"
-                    id={`switch-${index}`}
-                    className=""
-                    checked={switchStates[index]}
-                    onChange={() => handleSwitchChange(index)}
-                  />
+
                   {category.component}
                 </div>
               </div>

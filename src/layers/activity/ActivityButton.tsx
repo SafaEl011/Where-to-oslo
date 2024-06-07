@@ -82,7 +82,7 @@ export function ActivityButton() {
           value="Activity"
           onClick={() => setClicked((prevClicked) => !prevClicked)}
         />
-        {clicked ? "Hide" : "Show"} Activity
+        {clicked ? "Hide" : "Show"}
       </label>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (

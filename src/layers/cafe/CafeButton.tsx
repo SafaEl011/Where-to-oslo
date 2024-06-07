@@ -79,7 +79,7 @@ export function CafeButton() {
           value="Cafe"
           onClick={() => setClicked((prevClicked) => !prevClicked)}
         />
-        {clicked ? "Hide" : "Show"} Café
+        {clicked ? "Hide" : "Show"}
       </label>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
