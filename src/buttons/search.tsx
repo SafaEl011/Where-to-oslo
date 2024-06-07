@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, ChangeEvent } from "react";
 import { MainContext } from "../map/MainContext";
 import SearchButton from "./SearchButton";
 import "../css/iconStyles.css";
+import {SearchLocations} from "./search2";
 
 type Feature = {
   type: string;
@@ -15,7 +16,8 @@ type Feature = {
   };
 };
 
-const SearchEngine: React.FC = () => {
+export const SearchEngine: React.FC<{ showOverlay: boolean; toggleOverlay: () => void
+}> = ({showOverlay, toggleOverlay}) => {
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Feature[]>([]);
@@ -50,6 +52,7 @@ const SearchEngine: React.FC = () => {
 
   const handleSearchToggle = () => {
     setShowSearch(!showSearch);
+    toggleOverlay();
   };
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -57,11 +60,11 @@ const SearchEngine: React.FC = () => {
 
     if (e.target.value) {
       setSearchResults(
-        allData.filter((feature) =>
-          feature.properties.name
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase()),
-        ),
+          allData.filter((feature) =>
+              feature.properties.name
+                  .toLowerCase()
+                  .includes(e.target.value.toLowerCase()),
+          ),
       );
     } else {
       setSearchResults([]);
@@ -79,38 +82,20 @@ const SearchEngine: React.FC = () => {
     setSearchResults([]);
   };
   return (
-    <div className="position-relative">
-      <div className="button-container">
-        <SearchButton onClick={() => handleSearchToggle()} />
-      </div>
-      <div className={`search-container ${showSearch ? "expanded" : ""}`}>
-        {showSearch && (
-          <>
-            <div className="search-input-container">
+      <div className={`position-relative ${showOverlay ? "show" : ""}`}>
+        <div className="button-container">
+          <SearchButton onClick={() => toggleOverlay()}/>
+          {showOverlay && (
               <input
-                type="text"
-                className="search-input"
-                value={searchQuery}
-                onChange={handleSearchChange}
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  placeholder="Search..."
               />
-            </div>
-            <div className="list-group">
-              {searchResults.map((feature, index) => (
-                <div
-                  key={index}
-                  className="list-group-item"
-                  onClick={() => handleSelect(feature)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {feature.properties.name}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+          )}
+          <SearchLocations showOverlay={showOverlay} toggleOverlay={toggleOverlay}/>
+        </div>
       </div>
-    </div>
   );
 };
 
-export default SearchEngine;

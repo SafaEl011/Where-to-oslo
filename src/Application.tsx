@@ -10,13 +10,10 @@ import "./Application.css";
 import "ol/ol.css";
 import { MainContext, map } from "./map/MainContext";
 import { Layer } from "ol/layer";
-import { CenterOnUser } from "./buttons/centerOnUser";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
-import SearchEngine from "./buttons/search";
-import SettingsButton from "./buttons/settingsButton";
-
 import { CategoryList } from "./navbar/CategoryList";
+import {ButtonsColumn} from "./buttons/ButtonsColumn";
 
 export function Application() {
   const { map } = useContext(MainContext);
@@ -34,17 +31,7 @@ export function Application() {
   const [baseLayer, setBaseLayer] = useState<Layer>(
     new TileLayer({ source: new OSM() }),
   );
-  /*
-    const [baseLayer, setBaseLayer] = useState<Layer[]>([
-        new TileLayer({
-            source: new OSM(),
-        }),
-    ]);*/
-  /*
-    const layers = useMemo(
-        () => [baseLayer, ...featureLayers, ...cafeFeatureLayers, ...barsFeatureLayers, ...activityFeatureLayers, storeFeatureLayers],
-        [baseLayer, featureLayers, cafeFeatureLayers, barsFeatureLayers, activityFeatureLayers, storeFeatureLayers ]
-    );*/
+
   const layers = useMemo(
     () => [
       baseLayer,
@@ -89,16 +76,16 @@ export function Application() {
         setRestaurantFeatureLayers,
       }}
     >
-      <CenterOnUser view={map.getView()} map={map} />
       <div>
         <main>
-          <SearchEngine />
-          <SettingsButton />
+          <div
+            ref={mapRef}
+            className="map map-container position-relative"
+          ></div>
+          <ButtonsColumn/>
           <CategoryList />
         </main>
       </div>
-      <div ref={mapRef} className="map"></div>
-      <nav></nav>
     </MainContext.Provider>
   );
 }

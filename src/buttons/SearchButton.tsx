@@ -1,22 +1,22 @@
 import React from "react";
-
+import "../css/iconStyles.css"
 import IconButton from "./iconsButton";
 
 // Define the prop types for the component
 interface SearchButtonProps {
-  onClick: () => void;
+    onClick: () => void;
 }
 
 const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
-  const handleClick = () => {
-    onClick();
-  };
+    const handleClick = () => {
+        onClick();
+    };
 
-  return (
-    <IconButton className="search-button" onClick={handleClick}>
-      <img src="images/searchButton.svg" alt="Search Icon" className="icon" />
-    </IconButton>
-  );
+    return (
+        <IconButton className="search-button" onClick={handleClick}>
+    <img src="images/SearchBtn.svg" alt="Search Icon" className="icon" />
+        </IconButton>
+);
 };
 
 export default SearchButton;
