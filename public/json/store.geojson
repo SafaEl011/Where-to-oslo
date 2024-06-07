@@ -24,6 +24,45 @@
         "coordinates": [10.73745188620748, 59.914371276520484],
         "type": "Point"
       }
+    },
+  {
+      "type": "Feature",
+      "properties": {
+        "name": "Outland"
+      },
+      "geometry": {
+        "coordinates": [
+          10.744759728835248,
+          59.91165237873929
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Helly Hansen Flagship Store"
+      },
+      "geometry": {
+        "coordinates": [
+          10.749089999998859,
+          59.911605787506005
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Byporten Shopping"
+      },
+      "geometry": {
+        "coordinates": [
+          10.752020728837891,
+          59.91206700000035
+        ],
+        "type": "Point"
+      }
     }
   ]
 }
