@@ -7,6 +7,7 @@ import { StoreButton } from "../layers/store/StoreButton";
 import { ActivityButton } from "../layers/activity/ActivityButton";
 import { DrinksButton } from "../layers/drink/DrinksButton";
 import { RestaurantButton } from "../layers/restaurant/RestaurantButton";
+import { HikeButton } from "../layers/hike/HikeButton";
 
 interface CategoryListProps {
   show: boolean;
@@ -39,7 +40,11 @@ export const categories = [
     icon: "/WhereToOslo/images/beerPin.svg",
     component: <DrinksButton />,
   },
-  { name: "Hikes", icon: "/WhereToOslo/images/tripPin.svg" },
+  {
+    name: "Hikes",
+    icon: "/WhereToOslo/images/tripPin.svg",
+    component: <HikeButton />,
+  },
 ];
 
 export const CategoryList: React.FC<CategoryListProps> = ({

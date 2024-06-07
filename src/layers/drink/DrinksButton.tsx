@@ -85,7 +85,14 @@ export function DrinksButton() {
         {activeFeature && (
           <>
             <p>Navn: {activeFeature.get("name")}</p>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet porttitor eget dolor morbi non arcu risus quis varius. Semper viverra nam libero justo laoreet sit. Quam viverra orci sagittis eu volutpat odio facilisis mauris.</p>
+            <p>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet
+              porttitor eget dolor morbi non arcu risus quis varius. Semper
+              viverra nam libero justo laoreet sit. Quam viverra orci sagittis
+              eu volutpat odio facilisis mauris.
+            </p>
           </>
         )}
       </div>

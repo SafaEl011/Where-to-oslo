@@ -27,6 +27,7 @@ export function Application() {
   const [restaurantFeatureLayers, setRestaurantFeatureLayers] = useState<
     Layer[]
   >([]);
+  const [hikeFeatureLayers, setHikeFeatureLayers] = useState<Layer[]>([]);
 
   const [baseLayer, setBaseLayer] = useState<Layer>(
     new TileLayer({ source: new OSM() }),
@@ -40,6 +41,7 @@ export function Application() {
       ...drinkFeatureLayers,
       ...activityFeatureLayers,
       ...restaurantFeatureLayers,
+      ...hikeFeatureLayers,
     ],
     [
       baseLayer,
@@ -48,6 +50,7 @@ export function Application() {
       drinkFeatureLayers,
       activityFeatureLayers,
       restaurantFeatureLayers,
+      hikeFeatureLayers,
     ],
   );
 
@@ -74,6 +77,7 @@ export function Application() {
         setActivityFeatureLayers,
         restaurantFeatureLayers,
         setRestaurantFeatureLayers,
+        setHikeFeatureLayers,
       }}
     >
       <div>
