@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PositionButton from "../position/PositionButton";
 import SettingsButton from "../setting/SettingsButton";
 import SearchButton from "./SearchButton";
-import {ButtonContainer} from "../IconButtons/ButtonContainer";
+import { ButtonContainer } from "../IconButtons/ButtonContainer";
 import { useMap } from "../../views/MapView";
 import { handleZoomToUser } from "../position/PositionEngine";
 import SearchPopUp from "../search/SearchPopUp";
@@ -79,58 +79,64 @@ const SearchEngine = () => {
   };
 
   return (
-      <div className="position-relative">
-        <ButtonContainer>
-          <SearchButton onClick={handleSearchToggle} />
-          <PositionButton onClick={() => handleZoomToUser(map)} />
-          <SettingsButton onClick={handleSettingsToggle} />
-        </ButtonContainer>
+    <div className="position-relative">
+      <ButtonContainer>
+        <SearchButton onClick={handleSearchToggle} />
+        <PositionButton onClick={() => handleZoomToUser(map)} />
+        <SettingsButton onClick={handleSettingsToggle} />
+      </ButtonContainer>
 
-        {showSearch && (
-            <SearchPopUp
-                show={showSearch}
-                handleClose={() => setShowSearch(false)}
-                searchQuery={searchQuery}
-                handleSearchChange={handleSearchChange}
-                searchResults={searchResults}
-                handleSelect={handleSelect}
+      {showSearch && (
+        <SearchPopUp
+          show={showSearch}
+          handleClose={() => setShowSearch(false)}
+          searchQuery={searchQuery}
+          handleSearchChange={handleSearchChange}
+          searchResults={searchResults}
+          handleSelect={handleSelect}
+        />
+      )}
+
+      {showSettings && (
+        <SettingsPopUp
+          show={showSettings}
+          handleClose={() => setShowSettings(false)}
+          settings={{
+            lightDarkMode: false,
+            highContrastMode: false,
+            languageSelection: false,
+          }}
+          handleToggleChange={(setting) =>
+            console.log("Toggle change:", setting)
+          }
+        />
+      )}
+
+      <div className={`search-container ${showSearch ? "expanded" : ""}`}>
+        <>
+          <div className="search-input-container">
+            <input
+              type="text"
+              className="search-input"
+              value={searchQuery}
+              onChange={handleSearchChange}
             />
-        )}
-
-        {showSettings && (
-            <SettingsPopUp
-                show={showSettings}
-                handleClose={() => setShowSettings(false)}
-                settings={{ lightDarkMode: false, highContrastMode: false, languageSelection: false }}
-                handleToggleChange={(setting) => console.log("Toggle change:", setting)}
-            />
-        )}
-
-        <div className={`search-container ${showSearch ? "expanded" : ""}`}>
-          <>
-            <div className="search-input-container">
-              <input
-                  type="text"
-                  className="search-input"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-              />
-            </div>
-            <div className="list-group">
-              {searchResults.map((cafe, index) => (
-                  <div
-                      key={index}
-                      className="list-group-item"
-                      onClick={() => handleSelect(cafe)}
-                      style={{ cursor: "pointer" }}
-                  >
-                    {cafe.properties.name}
-                  </div>
-              ))}
-            </div>
-          </>
-        </div>
+          </div>
+          <div className="list-group">
+            {searchResults.map((cafe, index) => (
+              <div
+                key={index}
+                className="list-group-item"
+                onClick={() => handleSelect(cafe)}
+                style={{ cursor: "pointer" }}
+              >
+                {cafe.properties.name}
+              </div>
+            ))}
+          </div>
+        </>
       </div>
+    </div>
   );
 };
 

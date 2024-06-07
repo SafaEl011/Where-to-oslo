@@ -6,9 +6,6 @@ import "ol/ol.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-
-
-
 useGeographic();
 export function Application() {
   // Legger til for å illustrere

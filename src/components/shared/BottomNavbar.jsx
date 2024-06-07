@@ -43,44 +43,42 @@ const BottomNavbar = () => {
   };
 
   return (
-      <>
-        <nav className="navbar fixed-bottom navbar-light bg-light">
-          <div className="container-fluid d-flex justify-content-around">
-            <div className="text-center">
-              <Button
-                  variant="primary"
-                  className="categoryBtn"
-                  onClick={handleShowCategory}
-              >
-                <img
-                    src={categoryImage}
-                    alt="Categories Icon"
-                    className="CategoryBtnIcon"
-                />
-              </Button>
-              <div>Categories</div>
-            </div>
-            <div className="text-center">
-              <Button
-                  variant="primary"
-                  className="top5Btn"
-                  onClick={handleShowTop5}
-              >
-                <img
-                    src={top5Image}
-                    alt="Top 5 Icon"
-                    className="Top5BtnIcon"
-                />
-              </Button>
-              <div>Top 5</div>
-            </div>
+    <>
+      <nav className="navbar fixed-bottom navbar-light bg-light">
+        <div className="container-fluid d-flex justify-content-around">
+          <div className="text-center">
+            <Button
+              variant="primary"
+              className="categoryBtn"
+              onClick={handleShowCategory}
+            >
+              <img
+                src={categoryImage}
+                alt="Categories Icon"
+                className="CategoryBtnIcon"
+              />
+            </Button>
+            <div>Categories</div>
           </div>
-        </nav>
-        <CategoryView show={showCategoryModal} handleClose={handleCloseCategory} />
-        <Top5View show={showTop5Modal} handleClose={handleCloseTop5} />
-      </>
+          <div className="text-center">
+            <Button
+              variant="primary"
+              className="top5Btn"
+              onClick={handleShowTop5}
+            >
+              <img src={top5Image} alt="Top 5 Icon" className="Top5BtnIcon" />
+            </Button>
+            <div>Top 5</div>
+          </div>
+        </div>
+      </nav>
+      <CategoryView
+        show={showCategoryModal}
+        handleClose={handleCloseCategory}
+      />
+      <Top5View show={showTop5Modal} handleClose={handleCloseTop5} />
+    </>
   );
 };
-
 
 export default BottomNavbar;

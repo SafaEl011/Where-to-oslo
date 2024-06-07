@@ -34,13 +34,11 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
   transition: transform 0.3s; /* Add a transition for smoother scaling */
   transform: translate(-20%, -20%) scale(1);
   position: fixed;
-
 }
 .ol-zoom-out {
   left: 97%;
   top: 78%;
   scale: 320%;
-
 }
 .ol-zoom-in {
   left: 3%;

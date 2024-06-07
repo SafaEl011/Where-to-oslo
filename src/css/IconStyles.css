@@ -1,59 +1,47 @@
-
 .icon-button {
-    background: none;
-    border: none;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 4rem;
-    width: 4rem;
-    z-index: 1;
-    margin-bottom: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 4rem;
+  width: 4rem;
+  z-index: 1;
+  margin-bottom: 1rem;
 }
 
 .icon {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
 }
 
 .position-fixed {
-    position: fixed;
+  position: fixed;
 }
 
 .top-5 {
-    top: 5%;
+  top: 5%;
 }
 
 .end-5 {
-    right: 5%;
+  right: 5%;
 }
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .align-items-end {
-    align-items: flex-end;
+  align-items: flex-end;
 }
 
 .z-index-1 {
-    z-index: 1;
+  z-index: 1;
 }
-
-
-
-
-
-
-
-
-
-
-
