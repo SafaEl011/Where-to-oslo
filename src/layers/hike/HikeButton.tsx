@@ -72,22 +72,20 @@ export function HikeButton() {
   }, [clicked, setHikeFeatureLayers, map]);
 
   return (
-    <div>
-      <label>
-        <input
-          type="button"
-          value="Hike"
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-        />
-        {clicked ? "Hide" : "Show"}
-      </label>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+      <div>
+        <button
+            className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
+            onClick={() => setClicked((prevClicked) => !prevClicked)}
+        >
+          Hike
+        </button>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }

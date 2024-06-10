@@ -72,30 +72,20 @@ export function DrinksButton() {
   }, [clicked, setDrinkFeatureLayers, map]);
 
   return (
-    <div>
-      <label>
-        <input
-          type="button"
-          value="Drinks"
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-        />
-        {clicked ? "Hide" : "Show"}
-      </label>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-            <p>
-              {" "}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet
-              porttitor eget dolor morbi non arcu risus quis varius. Semper
-              viverra nam libero justo laoreet sit. Quam viverra orci sagittis
-              eu volutpat odio facilisis mauris.
-            </p>
-          </>
-        )}
+      <div>
+        <button
+            className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
+            onClick={() => setClicked((prevClicked) => !prevClicked)}
+        >
+          Drinks
+        </button>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }

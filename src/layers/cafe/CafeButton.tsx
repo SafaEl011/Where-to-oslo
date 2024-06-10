@@ -65,29 +65,27 @@ export function CafeButton() {
       map?.on("click", handlePointerMove);
     } else {
       setCafeFeatureLayers((old: any) =>
-        old.filter((l: any) => l !== cafeLayer),
+          old.filter((l: any) => l !== cafeLayer),
       );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setCafeFeatureLayers, map]);
 
   return (
-    <div>
-      <label>
-        <input
-          type="button"
-          value="Cafe"
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-        />
-        {clicked ? "Hide" : "Show"}
-      </label>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+      <div>
+        <button
+            className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
+            onClick={() => setClicked((prevClicked) => !prevClicked)}
+        >
+          Cafe
+        </button>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
