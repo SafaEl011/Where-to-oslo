@@ -99,8 +99,9 @@ export function SearchLocations2({
                 type="text"
                 value={value}
                 onChange={onChange}
-                placeholder="Search locations..."
+                placeholder="Search..."
                 onClick={handleInputClick}
+                className="search-input"
             />
             <button className="overlay-close-button" onClick={(e) => handleCloseOverlay(e as React.MouseEvent<HTMLButtonElement>)}>
               &times;
@@ -113,7 +114,7 @@ export function SearchLocations2({
                   .map((s, index) => (
                       <div
                           key={index}
-                          className="dropdown-row"
+                          className="search-result-item"
                           onClick={() => onSelect(s.properties)}
                           style={{cursor: "pointer", margin: "2px 0"}}
                       >
