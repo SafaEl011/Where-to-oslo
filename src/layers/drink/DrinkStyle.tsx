@@ -29,11 +29,11 @@ export const drinkStyle = (feature: FeatureLike, description: string) => {
     }),
   });
 };
-export const activeDrinkStyle = (description: string) => {
+export const activeDrinkStyle = (description: string): Style => {
   let imageSrc = "/WhereToOslo/drinkPin.png"; // Default image source
 
   if (description === "Bar") {
-    imageSrc = "/WhereToOslo/images/beerPin.svg"; // Set image source for Bar"; // Set image source for Bar description
+    imageSrc = "/WhereToOslo/images/beerPin.svg"; // Set image source for Bar description
   } else if (description === "Drink") {
     imageSrc = "/WhereToOslo/drinkPin.png";
   }
@@ -43,7 +43,7 @@ export const activeDrinkStyle = (description: string) => {
     image: new Icon({
       src: imageSrc,
       anchor: [0.5, 1],
-      scale: 0.06,
+      scale: 0.03, // Adjust scale value here
     }),
   });
 };

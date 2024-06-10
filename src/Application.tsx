@@ -1,10 +1,10 @@
 import React, {
-  MutableRefObject,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
+    MutableRefObject,
+    useContext,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from "react";
 import "./Application.css";
 import "ol/ol.css";
@@ -12,84 +12,105 @@ import { MainContext, map } from "./map/MainContext";
 import { Layer } from "ol/layer";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
-import { CategoryList } from "./navbar/CategoryList";
 import { ButtonsColumn } from "./buttons/ButtonsColumn";
+import {BottomNavbar} from "./navbar/bottomNavbar";
 
 export function Application() {
-  const { map } = useContext(MainContext);
-  const [featureLayers, setFeatureLayers] = useState<Layer[]>([]);
-  const [cafeFeatureLayers, setCafeFeatureLayers] = useState<Layer[]>([]);
-  const [drinkFeatureLayers, setDrinkFeatureLayers] = useState<Layer[]>([]);
-  const [activityFeatureLayers, setActivityFeatureLayers] = useState<Layer[]>(
-    [],
-  );
-  const [storeFeatureLayers, setStoreFeatureLayers] = useState<Layer[]>([]);
-  const [restaurantFeatureLayers, setRestaurantFeatureLayers] = useState<
-    Layer[]
-  >([]);
-  const [hikeFeatureLayers, setHikeFeatureLayers] = useState<Layer[]>([]);
+    const { map } = useContext(MainContext);
+    const [featureLayers, setFeatureLayers] = useState<Layer[]>([]);
+    const [cafeFeatureLayers, setCafeFeatureLayers] = useState<Layer[]>([]);
+    const [drinkFeatureLayers, setDrinkFeatureLayers] = useState<Layer[]>([]);
+    const [activityFeatureLayers, setActivityFeatureLayers] = useState<Layer[]>(
+        [],
+    );
+    const [storeFeatureLayers, setStoreFeatureLayers] = useState<Layer[]>([]);
+    const [restaurantFeatureLayers, setRestaurantFeatureLayers] = useState<
+        Layer[]
+    >([]);
+    const [hikeFeatureLayers, setHikeFeatureLayers] = useState<Layer[]>([]);
 
-  const [baseLayer, setBaseLayer] = useState<Layer>(
-    new TileLayer({ source: new OSM() }),
-  );
+    const [baseLayer, setBaseLayer] = useState<Layer>(
+        new TileLayer({ source: new OSM() }),
+    );
 
-  const layers = useMemo(
-    () => [
-      baseLayer,
-      ...featureLayers,
-      ...cafeFeatureLayers,
-      ...drinkFeatureLayers,
-      ...activityFeatureLayers,
-      ...restaurantFeatureLayers,
-      ...hikeFeatureLayers,
-    ],
-    [
-      baseLayer,
-      featureLayers,
-      cafeFeatureLayers,
-      drinkFeatureLayers,
-      activityFeatureLayers,
-      restaurantFeatureLayers,
-      hikeFeatureLayers,
-    ],
-  );
+    const layers = useMemo(
+        () => [
+            baseLayer,
+            ...featureLayers,
+            ...cafeFeatureLayers,
+            ...drinkFeatureLayers,
+            ...activityFeatureLayers,
+            ...restaurantFeatureLayers,
+            ...hikeFeatureLayers,
+        ],
+        [
+            baseLayer,
+            featureLayers,
+            cafeFeatureLayers,
+            drinkFeatureLayers,
+            activityFeatureLayers,
+            restaurantFeatureLayers,
+            hikeFeatureLayers,
+        ],
+    );
 
-  useEffect(() => map.setLayers(layers), [layers]);
+    useEffect(() => map.setLayers(layers), [layers]);
 
-  const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
-  useEffect(() => map.setTarget(mapRef.current), []);
-  useEffect(() => map.setLayers(layers), [layers]);
+    const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
+    useEffect(() => map.setTarget(mapRef.current), []);
+    useEffect(() => map.setLayers(layers), [layers]);
 
-  return (
-    <MainContext.Provider
-      value={{
-        map,
-        setBaseLayer,
-        featureLayers,
-        setFeatureLayers,
-        setCafeFeatureLayers,
-        cafeFeatureLayers,
-        setDrinkFeatureLayers,
-        drinkFeatureLayers,
-        storeFeatureLayers,
-        setStoreFeatureLayers,
-        activityFeatureLayers,
-        setActivityFeatureLayers,
-        restaurantFeatureLayers,
-        setRestaurantFeatureLayers,
-        setHikeFeatureLayers,
-      }}
-    >
-      <div>
-        <main>
-          <div
-            ref={mapRef}
-            className="map map-container position-relative"
-          ></div>
-          <ButtonsColumn />
-          <CategoryList />
-        </main>
-      </div>
-    </MainContext.Provider>
-  );
+    const [showCategoryOverlay, setShowCategoryOverlay] = useState(false);
+    const [showTop5Overlay, setShowTop5Overlay] = useState(false);
+
+    const handleCategoryToggle = () => {
+        setShowCategoryOverlay(!showCategoryOverlay);
+    };
+
+    const handleTop5Toggle = () => {
+        setShowTop5Overlay(!showTop5Overlay);
+    };
+
+    const closeCategoryOverlay = () => {
+        setShowCategoryOverlay(false);
+    };
+
+    const closeTop5Overlay = () => {
+        setShowTop5Overlay(false);
+    };
+
+    return (
+        <MainContext.Provider
+            value={{
+                map,
+                setBaseLayer,
+                featureLayers,
+                setFeatureLayers,
+                setCafeFeatureLayers,
+                cafeFeatureLayers,
+                setDrinkFeatureLayers,
+                drinkFeatureLayers,
+                storeFeatureLayers,
+                setStoreFeatureLayers,
+                activityFeatureLayers,
+                setActivityFeatureLayers,
+                restaurantFeatureLayers,
+                setRestaurantFeatureLayers,
+                setHikeFeatureLayers,
+            }}
+        >
+            <div>
+                <main>
+                    <div
+                        ref={mapRef}
+                        className="map map-container position-relative"
+                    ></div>
+                    <ButtonsColumn />
+                    <div className="navbarContainer">
+                       <BottomNavbar/>
+                    </div>
+                </main>
+            </div>
+        </MainContext.Provider>
+    );
 }

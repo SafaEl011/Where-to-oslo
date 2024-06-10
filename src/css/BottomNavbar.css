@@ -5,9 +5,11 @@
   width: 100%;
   background-color: #ffffff;
   z-index: 1000;
+}
+
+.bottomNavbar-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around; /* Adjust as needed */
 }
 
 .categoryIconContainer {
@@ -17,16 +19,27 @@
   cursor: pointer;
 }
 
-.categoryIcon {
-  width: 45px;
-  height: 45px;
+.bottomNavbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#bottomNavbarText {
+  color: black;
+  display: flex;
+  font-size: 17px;
+}
+
+.bottomNavbar-icon {
+  width: 75px;
+  height: 75px;
   cursor: pointer;
 }
 
-.categoryText {
-  font-size: 16px;
-  color: black;
-}
 
 .overlay {
   display: none;
@@ -98,4 +111,8 @@
 
 .category-item .btn {
   width: 100%;
+}
+
+.category-item .btn-success {
+  background-color: green; /* Change to green when active */
 }
