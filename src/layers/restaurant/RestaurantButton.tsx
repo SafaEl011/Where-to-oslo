@@ -74,22 +74,20 @@ export function RestaurantButton() {
   }, [clicked, setRestaurantFeatureLayers, map]);
 
   return (
-    <div>
-      <label>
-        <input
-          type="button"
-          value="Restaurant"
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-        />
-        {clicked ? "Hide" : "Show"}
-      </label>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+      <div>
+        <button
+            className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
+            onClick={() => setClicked((prevClicked) => !prevClicked)}
+        >
+          Restaurant
+        </button>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }

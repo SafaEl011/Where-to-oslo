@@ -18,13 +18,12 @@
 }
 
 .categoryIcon {
-  width: 70px;
-  height: 70px;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
 }
 
 .categoryText {
-  margin-top: 0px;
   font-size: 16px;
   color: black;
 }
@@ -32,15 +31,13 @@
 .overlay {
   display: none;
   position: fixed;
-  top: 0;
+  top: 0%;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1050;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
 }
 
 .overlay.show {
@@ -54,18 +51,18 @@
 }
 
 .overlay-content {
-  position: absolute;
-  top: 70rem;
-  left: 35rem;
-  transform: translate(-50%, -50%);
-  width: 30rem; /* Allow the content to determine the width */
-  background-color: #ffffff;
-  padding: 20px;
+  position: relative;
+  top: 100vh; /* Adjust this value to move it closer to the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px; /* Allow the content to determine the width */
+  background-color: rgba(255, 255, 255, 0.76);
+  padding: 30px;
   border-radius: 10px;
   text-align: center;
-  color: black;
+  color: rgb(0, 0, 0);
   animation: slideUp 0.5s ease-in-out forwards;
-  justify-items: center;
+  justify-content: center;
 }
 
 @keyframes fadeIn {
