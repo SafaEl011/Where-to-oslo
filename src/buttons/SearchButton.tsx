@@ -1,8 +1,8 @@
+// SearchButton.tsx
 import React from "react";
 import "../css/iconStyles.css";
 import IconButton from "./iconsButton";
 
-// Define the prop types for the component
 interface SearchButtonProps {
   onClick: () => void;
 }
@@ -13,9 +13,9 @@ const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
   };
 
   return (
-    <IconButton className="search-button" onClick={handleClick}>
-      <img src="images/SearchBtn.svg" alt="Search Icon" className="icon" />
-    </IconButton>
+      <IconButton className="search-button" onClick={handleClick}>
+        <img src="images/SearchBtn.svg" alt="Search Icon" className="icon" />
+      </IconButton>
   );
 };
 

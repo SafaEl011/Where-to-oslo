@@ -6,50 +6,188 @@
 .buttons-column {
   position: fixed;
   top: 15rem;
-  right: 2rem;
-  display: flex; /* Change display to flex */
-  flex-direction: column; /* Set flex direction to column */
+  right: 2rem; /* Adjusted positioning to stay on the right side */
+  display: flex;
+  flex-direction: column;
   border: none;
 }
 
 .buttons-column > * {
   display: block;
-  margin-bottom: 2rem; /* Add margin between buttons */
+  margin-bottom: 2rem;
 }
 
-.overlay {
+.search-overlay {
+  display: none;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  visibility: hidden;
+  animation: slideInRight 0.5s ease-in-out;
 }
 
-.overlay.show {
+.search-overlay.show {
   display: flex;
+  visibility: visible;
 }
 
-.overlay-content {
-  background: white;
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.search-overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* Change right: 0; to left: 50%; */
+  transform: translate(-50%, -50%); /* Adjust to center horizontally and vertically */
+  width: 50%;
+  max-width: 400px; /* Add max-width for responsiveness */
+  background-color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
-  max-width: 80%;
-  text-align: left;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.overlay-content h3 {
-  margin-top: 0;
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-.overlay-content p {
-  margin-bottom: 15px;
+.search-results {
+  display: none; /* Hide the search results by default */
 }
-.pinOverlay {
-  background: rgba(159, 154, 154, 0.7);
-  z-index: 1;
+
+.search-results.show {
+  display: block; /* Show the search results when needed */
+}
+
+
+.favorite-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+.favorite-overlay.show {
+  display: flex;
+  visibility: visible;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.favorite-overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+.settings-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.settings-overlay.show {
+  display: flex;
+  visibility: visible;
+}
+
+.settings-overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-agreement-dropdown {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: #f9f9f9;
+  max-height: 200px; /* Adjust max height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.user-agreement-scroll-container {
+  max-height: 400px; /* Adjust max height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
