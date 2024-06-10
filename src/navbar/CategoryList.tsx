@@ -48,11 +48,11 @@ export const categories = [
 ];
 
 export const CategoryList: React.FC<CategoryListProps> = ({
-                                                            show,
-                                                            handleClose,
-                                                          }) => {
+  show,
+  handleClose,
+}) => {
   const [switchStates, setSwitchStates] = useState(
-      Array(categories.length).fill(false)
+    Array(categories.length).fill(false),
   );
   const [isOverlayVisible, setOverlayVisible] = useState(show);
 
@@ -76,42 +76,42 @@ export const CategoryList: React.FC<CategoryListProps> = ({
   };
 
   return (
-      <div>
-        <div className="bottomNavbar">
-          <div className="categoryIconContainer" onClick={toggleOverlay}>
-            <img
-                src="/WhereToOslo/images/categoryPin.svg"
-                alt="Category Icon"
-                className="categoryIcon"
-            />
-            <div className="categoryText">Category</div>
-          </div>
+    <div>
+      <div className="bottomNavbar">
+        <div className="categoryIconContainer" onClick={toggleOverlay}>
+          <img
+            src="/WhereToOslo/images/categoryPin.svg"
+            alt="Category Icon"
+            className="categoryIcon"
+          />
+          <div className="categoryText">Category</div>
         </div>
-        <div
-            className={isOverlayVisible ? "overlay show" : "overlay hide"}
-            onClick={handleCloseOverlay}
-        >
-          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-            <button className="btn btn-success" onClick={handleCloseOverlay}>
-              Close
-            </button>
-            <h2>Categories</h2>
-            <div className="category-list">
-              {categories.map((category, index) => (
-                  <div key={index} className="category-item">
-                    <div className="btn btn-success">
-                      <img
-                          src={category.icon}
-                          alt={`${category.name} Icon`}
-                          className="categoryIcon"
-                      />
-                      {category.component}
-                    </div>
-                  </div>
-              ))}
-            </div>
+      </div>
+      <div
+        className={isOverlayVisible ? "overlay show" : "overlay hide"}
+        onClick={handleCloseOverlay}
+      >
+        <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
+          <button className="btn btn-success" onClick={handleCloseOverlay}>
+            Close
+          </button>
+          <h2>Categories</h2>
+          <div className="category-list">
+            {categories.map((category, index) => (
+              <div key={index} className="category-item">
+                <div className="btn btn-success">
+                  <img
+                    src={category.icon}
+                    alt={`${category.name} Icon`}
+                    className="categoryIcon"
+                  />
+                  {category.component}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+    </div>
   );
 };

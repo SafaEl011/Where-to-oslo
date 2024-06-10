@@ -73,20 +73,20 @@ export function StoreButton() {
   }, [clicked, setStoreFeatureLayers, map]);
 
   return (
-      <div>
-        <button
-            className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
-            onClick={() => setClicked((prevClicked) => !prevClicked)}
-        >
-          Store
-        </button>
-        <div ref={overlayRef} className={"pinOverlay"}>
-          {activeFeature && (
-              <>
-                <p>Navn: {activeFeature.get("name")}</p>
-              </>
-          )}
-        </div>
+    <div>
+      <button
+        className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
+        onClick={() => setClicked((prevClicked) => !prevClicked)}
+      >
+        Store
+      </button>
+      <div ref={overlayRef} className={"pinOverlay"}>
+        {activeFeature && (
+          <>
+            <p>Navn: {activeFeature.get("name")}</p>
+          </>
+        )}
       </div>
+    </div>
   );
 }
