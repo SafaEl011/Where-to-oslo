@@ -28,7 +28,7 @@ export const BottomNavbar: React.FC = () => {
             <div className="bottomNavbar-buttons">
                 <div className="bottomNavbar-item" onClick={toggleCategoryOverlay}>
                     <img
-                        src={showCategoryOverlay ? "/WhereToOslo/images/categoryActive.svg" : "/WhereToOslo/images/categoryPin.svg"}
+                        src="/WhereToOslo/images/categoryPin.svg"
                         alt="Category Icon"
                         className="bottomNavbar-icon"
                         id="categoryIcon"
@@ -37,7 +37,7 @@ export const BottomNavbar: React.FC = () => {
                 </div>
                 <div className="bottomNavbar-item" onClick={toggleTop5Overlay}>
                     <img
-                        src={showTop5Overlay ? "/WhereToOslo/images/top5Active.svg" : "/WhereToOslo/images/top5Pin.svg"}
+                        src="/WhereToOslo/images/top5Pin.svg"
                         alt="Top 5 Icon"
                         className="bottomNavbar-icon"
                         id="top5Icon"

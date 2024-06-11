@@ -1,24 +1,64 @@
-body,
-html,
-#root {
-  height: 100%;
-  margin: 0;
+/*body,*/
+/*html,*/
+/*#root {*/
+/*  height: 100%;*/
+/*  margin: 0;*/
+/*}*/
+
+/*.main-content {*/
+/*  padding-bottom: 60px;*/
+/*}*/
+
+/*.navbar {*/
+/*  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.btn {*/
+/*  width: 20%;*/
+/*}*/
+/** {*/
+/*  margin: 0;*/
+/*}*/
+
+/*CSS RESET*/
+html {
+  box-sizing: border-box;
+  color-scheme: light;
 }
 
-.main-content {
-  padding-bottom: 60px;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-.navbar {
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.btn {
-  width: 20%;
-}
 * {
   margin: 0;
+  padding: 0;
 }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .map {
   position: fixed;
   width: 100dvw;
@@ -30,6 +70,7 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
   background-color: rgba(0, 0, 0, 0);
   color: rgb(68, 112, 80);
   border-radius: 100%;
+  outline: 0;
 
   transition: transform 0.3s; /* Add a transition for smoother scaling */
   transform: translate(-20%, -20%) scale(1);
@@ -37,11 +78,11 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
 }
 .ol-zoom-out {
   left: 97%;
-  top: 78%;
+  top: 88%;
   scale: 320%;
 }
 .ol-zoom-in {
-  left: 3%;
+  left: 97%;
   top: 78%;
   scale: 320%;
 }
@@ -62,10 +103,10 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
   padding: 0.5em;
   translate: -50% calc(-100% - 5px);
 }
-.dropdown-row {
-  cursor: pointer;
-  text-align: center;
-  margin: 1px 0;
+/*.dropdown-row {*/
+/*  cursor: pointer;*/
+/*  text-align: center;*/
+/*  margin: 1px 0;*/
 
-  background-color: white;
-}
+/*  background-color: white;*/
+/*}*/
