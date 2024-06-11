@@ -60,24 +60,6 @@ export function Application() {
     useEffect(() => map.setTarget(mapRef.current), []);
     useEffect(() => map.setLayers(layers), [layers]);
 
-    const [showCategoryOverlay, setShowCategoryOverlay] = useState(false);
-    const [showTop5Overlay, setShowTop5Overlay] = useState(false);
-
-    const handleCategoryToggle = () => {
-        setShowCategoryOverlay(!showCategoryOverlay);
-    };
-
-    const handleTop5Toggle = () => {
-        setShowTop5Overlay(!showTop5Overlay);
-    };
-
-    const closeCategoryOverlay = () => {
-        setShowCategoryOverlay(false);
-    };
-
-    const closeTop5Overlay = () => {
-        setShowTop5Overlay(false);
-    };
 
     return (
         <MainContext.Provider
@@ -107,7 +89,7 @@ export function Application() {
                     ></div>
                     <ButtonsColumn />
                     <div className="navbarContainer">
-                       <BottomNavbar/>
+                        <BottomNavbar />
                     </div>
                 </main>
             </div>

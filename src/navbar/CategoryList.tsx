@@ -36,15 +36,14 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
   return (
       <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
         <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-          <button className="btn btn-success" onClick={handleCloseOverlay}>
-            Close
+          <button className="overlay-close-button" onClick={handleCloseOverlay}>
+            &times;
           </button>
-          <h2>Categories</h2>
           <div className="category-list">
             {categories.map((category, index) => (
                 <div key={index} className="category-item">
-                  <div className="btn btn-success">
-                    <img src={category.icon} alt={`${category.name} Icon`} className="categoryIcon" />
+                  <div className="category-button">
+                    <img src={category.icon} alt={`${category.name} Icon`} className="category-icon"/>
                     {category.component}
                   </div>
                 </div>
@@ -54,3 +53,4 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
       </div>
   );
 };
+

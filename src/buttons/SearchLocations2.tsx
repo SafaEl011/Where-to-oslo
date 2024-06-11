@@ -22,7 +22,6 @@ interface SearchLocations2Props {
 
 export function SearchLocations2({
   showOverlay,
-  toggleOverlay,
 }: SearchLocations2Props) {
   const [value, setValue] = useState("");
   const [searchResults, setSearchResults] = useState<SearchJson[]>([]);

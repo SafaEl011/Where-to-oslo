@@ -38,8 +38,6 @@
     width: 100%;
     cursor: pointer;
     border: 0.1rem solid #447151;
-    border-radius: 0.8rem; /* Adjusted border-radius in rem */
+    border-radius: 0.8rem;
     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-
-

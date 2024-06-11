@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { CategoryList } from "./CategoryList";
-import { Top5List } from "./Top5List";
-import "../css/BottomNavbar.css";
+import {CategoryList} from "./CategoryList";
+import React, {useState} from "react";
+import {Top5List} from "./Top5List";
 
 export const BottomNavbar: React.FC = () => {
     const [showCategoryOverlay, setShowCategoryOverlay] = useState(false);
@@ -9,6 +8,7 @@ export const BottomNavbar: React.FC = () => {
 
     const toggleCategoryOverlay = () => {
         setShowCategoryOverlay(!showCategoryOverlay);
+
     };
 
     const toggleTop5Overlay = () => {
@@ -17,6 +17,7 @@ export const BottomNavbar: React.FC = () => {
 
     const handleCloseCategoryOverlay = () => {
         setShowCategoryOverlay(false);
+
     };
 
     const handleCloseTop5Overlay = () => {
@@ -28,7 +29,7 @@ export const BottomNavbar: React.FC = () => {
             <div className="bottomNavbar-buttons">
                 <div className="bottomNavbar-item" onClick={toggleCategoryOverlay}>
                     <img
-                        src={showCategoryOverlay ? "/WhereToOslo/images/categoryActive.svg" : "/WhereToOslo/images/categoryPin.svg"}
+                        src="/WhereToOslo/images/categoryPin.svg"
                         alt="Category Icon"
                         className="bottomNavbar-icon"
                         id="categoryIcon"
@@ -37,7 +38,7 @@ export const BottomNavbar: React.FC = () => {
                 </div>
                 <div className="bottomNavbar-item" onClick={toggleTop5Overlay}>
                     <img
-                        src={showTop5Overlay ? "/WhereToOslo/images/top5Active.svg" : "/WhereToOslo/images/top5Pin.svg"}
+                        src="/WhereToOslo/images/top5Pin.svg"
                         alt="Top 5 Icon"
                         className="bottomNavbar-icon"
                         id="top5Icon"
@@ -45,7 +46,7 @@ export const BottomNavbar: React.FC = () => {
                     <div className="bottomNavbar-text" id="bottomNavbarText">Top 5</div>
                 </div>
             </div>
-            <CategoryList show={showCategoryOverlay} handleClose={handleCloseCategoryOverlay} />
+            <CategoryList show={showCategoryOverlay} handleClose={handleCloseCategoryOverlay}/>
             <Top5List show={showTop5Overlay} handleClose={handleCloseTop5Overlay} />
         </div>
     );
