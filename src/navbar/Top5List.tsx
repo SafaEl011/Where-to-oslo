@@ -10,7 +10,7 @@ export const Top5List = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-  const handleSelectArticle = (article) => {
+  const handleSelectArticle = (article: any) => {
     setSelectedArticle(article);
     setIsOverlayVisible(false);
   };
@@ -35,12 +35,12 @@ export const Top5List = () => {
 
   return (
     <div>
-      <div className="top5IconContainer" onClick={handleShowOverlay}>
+      <div className="top5IconContainer"  onClick={handleShowOverlay}>
         <img
           src="/WhereToOslo/images/top5Pin.svg"
           alt="Top 5 Icon"
           className="Top5Icon"
-        />
+               />
         {isOverlayVisible && <ArticleOverlay />}
         {selectedArticle && (
           <div>Selected Article: {selectedArticle.title}</div>
