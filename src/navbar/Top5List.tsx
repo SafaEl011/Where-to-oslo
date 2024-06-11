@@ -8,11 +8,32 @@ interface Top5ListProps {
 }
 
 const top5Categories = [
-    { name: "Top 5 bakst/kaker", items: ["Baker Nordby Tøyen", "Åpent Bakeri", "Grains", "Svingen Kolonial og Kafe"] },
-    { name: "Top 5 sommersteder", items: ["Kafe Celsius", "Bygdøy", "Svingen- Kolonial og Kafe"] },
+    {
+        name: "Top 5 bakst/kaker",
+        items: [
+            "Baker Nordby Tøyen",
+            "Åpent Bakeri",
+            "Grains",
+            "Svingen Kolonial og Kafe",
+        ],
+    },
+    {
+        name: "Top 5 sommersteder",
+        items: ["Kafe Celsius", "Bygdøy", "Svingen- Kolonial og Kafe"],
+    },
     { name: "Top 5 spisesteder", items: ["Mamma pizza"] },
-    { name: "Top 5 skjulte perler", items: ["Svingen Cafe", "Smia Galleri", "Stien ned fra Frognerparken"] },
-    { name: "Top 5 koseligste øl", items: ["Schous Kjeller", "Frognerseteren", "Asylet", "Smia Galleri"] },
+    {
+        name: "Top 5 skjulte perler",
+        items: ["Svingen Cafe", "Smia Galleri", "Stien ned fra Frognerparken"],
+    },
+    {
+        name: "Top 5 koseligste øl",
+        items: ["Schous Kjeller", "Frognerseteren", "Asylet", "Smia Galleri"],
+    },
+    {
+        name: "Top 5 Søndagsturer",
+        items: ["Kampen-Vålerenga", "Kvernerbyen-Svartdalsparken"],
+    },
 ];
 
 export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
@@ -29,18 +50,28 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
     };
 
     return (
-        <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
-            <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
+        <div
+            className={isOverlayVisible ? "overlay show" : "overlay hide"}
+            onClick={handleCloseOverlay}
+        >
+            <div className="overlay-content" id="top5Overlay" onClick={(e) => e.stopPropagation()}>
                 {selectedCategory === null ? (
                     <>
-                        <button className="btn" onClick={handleCloseOverlay}>
-                            Close
+                        <button
+                            className="btn btn-success close-button"
+                            onClick={handleCloseOverlay}
+                        >
+                            x
                         </button>
-                        <h2>Top 5</h2>
+                        <h2 className="top5-header">Top 5</h2>
+                        <hr className="separator"></hr>
                         <div className="top5-list">
                             {top5Categories.map((category, index) => (
                                 <div key={index} className="top5-item">
-                                    <button className="btn btn-primary" onClick={() => setSelectedCategory(index)}>
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() => setSelectedCategory(index)}
+                                    >
                                         {category.name}
                                     </button>
                                 </div>
@@ -49,7 +80,10 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
                     </>
                 ) : (
                     <>
-                        <button className="btn btn-success" onClick={() => setSelectedCategory(null)}>
+                        <button
+                            className="btn btn-success"
+                            onClick={() => setSelectedCategory(null)}
+                        >
                             Back
                         </button>
                         <h2>{top5Categories[selectedCategory].name}</h2>

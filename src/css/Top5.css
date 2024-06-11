@@ -14,13 +14,32 @@
     font-size: 12px;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+            visibility 0s,
+            opacity 0.5s;
+}
+
 .overlay.show {
     visibility: visible;
     opacity: 1;
 }
 
-.overlay-content {
-    background: rgba(255, 255, 255, 0.8);
+#top5Overlay {
+    background: rgba(68, 113, 81, 0.83); /* Set the background color to green */
+    padding: 20px;
     border-radius: 5px;
     max-height: 80%;
     overflow-y: auto;
@@ -31,13 +50,45 @@
     flex-direction: column;
 }
 
-.top5-item .btn {
-    margin-bottom: 10px;
-    font-size: 15px;
-    padding: 10px;
+.top5-item {
+    margin-top: 1px; /* Reduced top margin */
+    margin-bottom: 5px; /* Reduced bottom margin */
+}
+
+.top5-item button {
+    background-color: white; /* Set the button color to white */
+    color: black; /* Set the text color to black */
+    padding: 10px 10px; /* Increase the size of the button by adding more padding */
+    border: none; /* Remove the border */
     width: 100%;
+    border-radius: 0.5rem; /* Add some roundness to the corners of the button */
+    text-align: center; /* Center the text inside the button */
+    font-size: 16px;
+    margin: 2px; /* Reduced margin */
+    cursor: pointer; /* Change the cursor when you hover over the button */
+    transition-duration: 0.4s; /* Add a transition effect when the button is hovered over */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white; /* Set the color of the "X" to black */
+    font-size: 1.5rem; /* Increase the size of the "X" */
     cursor: pointer;
-    border: 0.1rem solid #447151;
-    border-radius: 0.8rem;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.top5-header {
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.separator {
+    border: 0;
+    height: 1px;
+    background: #ffffff; /* Change the color of the separator as needed */
+    margin: 10px 0; /* Adjust the margin to control spacing */
 }
