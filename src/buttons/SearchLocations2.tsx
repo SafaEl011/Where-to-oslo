@@ -21,9 +21,9 @@ interface SearchLocations2Props {
 }
 
 export function SearchLocations2({
-                                   showOverlay,
-                                   toggleOverlay,
-                                 }: SearchLocations2Props) {
+  showOverlay,
+  toggleOverlay,
+}: SearchLocations2Props) {
   const [value, setValue] = useState("");
   const [searchResults, setSearchResults] = useState<SearchJson[]>([]);
   const { map } = useContext(MainContext);
@@ -39,11 +39,11 @@ export function SearchLocations2({
         "json/cafe.geojson",
       ];
       const data = await Promise.all(
-          files.map((file) => fetch(file).then((response) => response.json())),
+        files.map((file) => fetch(file).then((response) => response.json())),
       );
 
       const mergedFeatures = data.flatMap(
-          (datum: { features: SearchJson[] }) => datum.features,
+        (datum: { features: SearchJson[] }) => datum.features,
       );
       setSearchResults(mergedFeatures);
     };
@@ -57,7 +57,7 @@ export function SearchLocations2({
 
   const onSelect = (selectedLocation: SearchProperties) => {
     const location = searchResults.find(
-        (s) => s.properties.name === selectedLocation.name,
+      (s) => s.properties.name === selectedLocation.name,
     );
     if (location) {
       map.getView().animate({
@@ -73,7 +73,11 @@ export function SearchLocations2({
     setValue(event.target.value);
   };
 
-  const handleCloseOverlay = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>) => {
+  const handleCloseOverlay = (
+    event:
+      | React.MouseEvent<HTMLDivElement>
+      | React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.stopPropagation();
     setIsOverlayVisible(false);
   };
@@ -83,47 +87,49 @@ export function SearchLocations2({
   };
 
   return (
-      <div>
-        <SearchButton onClick={() => setIsOverlayVisible(!isOverlayVisible)} />
-        <div
-            className={`position-relative ${
-                isOverlayVisible ? "search-overlay show" : "search-overlay hide"
-            }`}
-            onClick={(e) => e.stopPropagation()}
-        >
-          <div
-              className="search-overlay-content"
-              onClick={handleInputClick}
+    <div>
+      <SearchButton onClick={() => setIsOverlayVisible(!isOverlayVisible)} />
+      <div
+        className={`position-relative ${
+          isOverlayVisible ? "search-overlay show" : "search-overlay hide"
+        }`}
+        onClick={(e) => handleCloseOverlay(e)}
+      >
+        <div className="search-overlay-content" onClick={handleInputClick}>
+          <input
+            type="text"
+            value={value}
+            onChange={onChange}
+            placeholder="Search..."
+            onClick={handleInputClick}
+            className="search-input"
+          />
+          <button
+            className="overlay-close-button"
+            onClick={(e) =>
+              handleCloseOverlay(e as React.MouseEvent<HTMLButtonElement>)
+            }
           >
-            <input
-                type="text"
-                value={value}
-                onChange={onChange}
-                placeholder="Search..."
-                onClick={handleInputClick}
-                className="search-input"
-            />
-            <button className="overlay-close-button" onClick={(e) => handleCloseOverlay(e as React.MouseEvent<HTMLButtonElement>)}>
-              &times;
-            </button>
-            <div className={`search-results ${value ? "show" : ""}`}>
-              {searchResults
-                  .filter((s) =>
-                      s.properties.name.toLowerCase().startsWith(value.toLowerCase()),
-                  )
-                  .map((s, index) => (
-                      <div
-                          key={index}
-                          className="search-result-item"
-                          onClick={() => onSelect(s.properties)}
-                          style={{cursor: "pointer", margin: "2px 0"}}
-                      >
-                        {s.properties.name}
-                      </div>
-                  ))}
-            </div>
+            &times;
+          </button>
+          <div className={`search-results ${value ? "show" : ""}`}>
+            {searchResults
+              .filter((s) =>
+                s.properties.name.toLowerCase().startsWith(value.toLowerCase()),
+              )
+              .map((s, index) => (
+                <div
+                  key={index}
+                  className="search-result-item"
+                  onClick={() => onSelect(s.properties)}
+                  style={{ cursor: "pointer", margin: "2px 0" }}
+                >
+                  {s.properties.name}
+                </div>
+              ))}
           </div>
         </div>
       </div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import { Feature } from "ol";
 import { Point } from "ol/geom";
-
 import { Style, Icon } from "ol/style";
 import { FeatureLike } from "ol/Feature";
 
