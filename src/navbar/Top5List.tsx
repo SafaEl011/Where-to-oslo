@@ -10,29 +10,56 @@ interface Top5ListProps {
 const top5Categories = [
     {
         name: "Top 5 bakst/kaker",
+        icon: "storePin_2.svg",
         items: [
-            "Baker Nordby Tøyen",
-            "Åpent Bakeri",
-            "Grains",
-            "Svingen Kolonial og Kafe",
+            { name: "Baker Nordby Tøyen", description: "Great selection of pastries." },
+            { name: "Åpent Bakeri", description: "Delicious bread and cakes." },
+            { name: "Grains", description: "Healthy and tasty options." },
+            { name: "Svingen Kolonial og Kafe", description: "Charming cafe with homemade treats." },
         ],
     },
     {
         name: "Top 5 sommersteder",
-        items: ["Kafe Celsius", "Bygdøy", "Svingen- Kolonial og Kafe"],
+        icon: "activityPin_4.svg",
+        items: [
+            { name: "Kafe Celsius", description: "This place is a 6/6!" },
+            { name: "Bygdøy", description: "Perfect for summer outings." },
+            { name: "Svingen- Kolonial og Kafe", description: "Lovely spot for a summer day." },
+        ],
     },
-    { name: "Top 5 spisesteder", items: ["Mamma pizza"] },
+    {
+        name: "Top 5 spisesteder",
+        icon: "restaurants_4.svg",
+        items: [
+            { name: "Mamma pizza", description: "Best pizza in town." },
+        ],
+    },
     {
         name: "Top 5 skjulte perler",
-        items: ["Svingen Cafe", "Smia Galleri", "Stien ned fra Frognerparken"],
+        icon: "kafePin_4.svg",
+        items: [
+            { name: "Svingen Cafe", description: "A hidden gem." },
+            { name: "Smia Galleri", description: "Great atmosphere and art." },
+            { name: "Stien ned fra Frognerparken", description: "Scenic walk with beautiful views." },
+        ],
     },
     {
         name: "Top 5 koseligste øl",
-        items: ["Schous Kjeller", "Frognerseteren", "Asylet", "Smia Galleri"],
+        icon: "beerPin.svg",
+        items: [
+            { name: "Schous Kjeller", description: "Cozy and friendly." },
+            { name: "Frognerseteren", description: "Amazing view with great beer." },
+            { name: "Asylet", description: "Historic and charming." },
+            { name: "Smia Galleri", description: "Art and beer together." },
+        ],
     },
     {
         name: "Top 5 Søndagsturer",
-        items: ["Kampen-Vålerenga", "Kvernerbyen-Svartdalsparken"],
+        icon: "tripPin.svg",
+        items: [
+            { name: "Kampen-Vålerenga", description: "Lovely Sunday walk." },
+            { name: "Kvernerbyen-Svartdalsparken", description: "Beautiful nature trail." },
+        ],
     },
 ];
 
@@ -72,6 +99,7 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
                                         className="btn btn-primary"
                                         onClick={() => setSelectedCategory(index)}
                                     >
+                                        <img src={(`../WhereToOslo/images/${category.icon}`)} alt={category.name} className="icon" />
                                         {category.name}
                                     </button>
                                 </div>
@@ -79,20 +107,28 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
                         </div>
                     </>
                 ) : (
-                    <>
+                    <div className="top5PlacesOverlay">
                         <button
-                            className="btn btn-success"
+                            className="back-Button"
                             onClick={() => setSelectedCategory(null)}
                         >
-                            Back
+                            ⬅
                         </button>
-                        <h2>{top5Categories[selectedCategory].name}</h2>
+                        <h2 className="top5-header">{top5Categories[selectedCategory].name}</h2>
                         <ul>
                             {top5Categories[selectedCategory].items.map((item, idx) => (
-                                <li key={idx}>{item}</li>
+                                <li className="top5Results" key={idx}>
+                                    <strong>{item.name}</strong>
+                                    <p>{item.description}</p>
+                                </li>
                             ))}
                         </ul>
-                    </>
+                        <button
+                            className="seeInMapBtn"
+                        >
+                            See in map
+                        </button>
+                    </div>
                 )}
             </div>
         </div>
