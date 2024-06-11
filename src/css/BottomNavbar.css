@@ -51,6 +51,7 @@
   z-index: 1050;
   justify-content: center;
   align-items: center;
+
 }
 
 .overlay.show {
@@ -76,6 +77,7 @@
   color: rgb(0, 0, 0);
   animation: slideUp 0.5s ease-in-out forwards;
   justify-content: center;
+  backdrop-filter: blur(3px);
 }
 
 @keyframes fadeIn {
