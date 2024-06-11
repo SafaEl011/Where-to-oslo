@@ -33,13 +33,13 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
             <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
                 {selectedCategory === null ? (
                     <>
-                        <button className="btn btn-success" onClick={handleCloseOverlay}>
+                        <button className="btn" onClick={handleCloseOverlay}>
                             Close
                         </button>
                         <h2>Top 5</h2>
-                        <div className="category-list">
+                        <div className="top5-list">
                             {top5Categories.map((category, index) => (
-                                <div key={index} className="category-item">
+                                <div key={index} className="top5-item">
                                     <button className="btn btn-primary" onClick={() => setSelectedCategory(index)}>
                                         {category.name}
                                     </button>

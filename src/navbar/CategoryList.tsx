@@ -23,7 +23,6 @@ export const categories = [
 
 export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(show);
-  const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
   useEffect(() => {
     setOverlayVisible(show);
@@ -32,20 +31,6 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
   const handleCloseOverlay = () => {
     setOverlayVisible(false);
     handleClose();
-  };
-
-  const handleCategoryClick = (categoryName: string) => {
-    setActiveCategories(prevActiveCategories => {
-      if (prevActiveCategories.includes(categoryName)) {
-        return prevActiveCategories.filter(category => category !== categoryName);
-      } else {
-        return [...prevActiveCategories, categoryName];
-      }
-    });
-  };
-
-  const isCategoryActive = (categoryName: string) => {
-    return activeCategories.includes(categoryName);
   };
 
   return (
@@ -58,7 +43,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
           <div className="category-list">
             {categories.map((category, index) => (
                 <div key={index} className="category-item">
-                  <div className={`btn ${isCategoryActive(category.name) ? 'btn-success' : ''}`} onClick={() => handleCategoryClick(category.name)}>
+                  <div className="btn btn-success">
                     <img src={category.icon} alt={`${category.name} Icon`} className="categoryIcon" />
                     {category.component}
                   </div>
