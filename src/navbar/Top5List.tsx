@@ -9,7 +9,7 @@ interface Top5ListProps {
 
 const top5Categories = [
     {
-        name: "Top 5 bakst/kaker",
+        name: "Top 5 pasteries/cakes",
         icon: "storePin_2.svg",
         items: [
             { name: "Baker Nordby Tøyen", description: "Great selection of pastries." },
@@ -19,7 +19,7 @@ const top5Categories = [
         ],
     },
     {
-        name: "Top 5 sommersteder",
+        name: "Top 5 places in summer",
         icon: "activityPin_4.svg",
         items: [
             { name: "Kafe Celsius", description: "This place is a 6/6!" },
@@ -28,14 +28,14 @@ const top5Categories = [
         ],
     },
     {
-        name: "Top 5 spisesteder",
+        name: "Top 5 places to eat",
         icon: "restaurants_4.svg",
         items: [
             { name: "Mamma pizza", description: "Best pizza in town." },
         ],
     },
     {
-        name: "Top 5 skjulte perler",
+        name: "Top 5 hidden gems",
         icon: "kafePin_4.svg",
         items: [
             { name: "Svingen Cafe", description: "A hidden gem." },
@@ -44,7 +44,7 @@ const top5Categories = [
         ],
     },
     {
-        name: "Top 5 koseligste øl",
+        name: "Top 5 cozy places with beer",
         icon: "beerPin.svg",
         items: [
             { name: "Schous Kjeller", description: "Cozy and friendly." },
@@ -54,7 +54,7 @@ const top5Categories = [
         ],
     },
     {
-        name: "Top 5 Søndagsturer",
+        name: "Top 5 walks on a sunday",
         icon: "tripPin.svg",
         items: [
             { name: "Kampen-Vålerenga", description: "Lovely Sunday walk." },
@@ -99,7 +99,7 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
                                         className="btn btn-primary"
                                         onClick={() => setSelectedCategory(index)}
                                     >
-                                        <img src={(`../WhereToOslo/images/${category.icon}`)} alt={category.name} className="icon" />
+                                        <img src={(`../WhereToOslo/images//${category.icon}`)} alt={category.name} className="icon" />
                                         {category.name}
                                     </button>
                                 </div>
@@ -123,11 +123,7 @@ export const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
                                 </li>
                             ))}
                         </ul>
-                        <button
-                            className="seeInMapBtn"
-                        >
-                            See in map
-                        </button>
+                        <button className="seeInMapBtn">Show in map</button>
                     </div>
                 )}
             </div>

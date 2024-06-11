@@ -1,6 +1,5 @@
 .top5IconContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
     cursor: pointer;
 }
@@ -8,16 +7,17 @@
 .top5Icon {
     width: 30px;
     height: 30px;
+    margin-right: 10px; /* Add space between icon and text */
 }
 
 .top5Text {
-    font-size: 12px;
+    font-size: 20px; /* Adjust text size as needed */
 }
 
 .overlay {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 2%;
     right: 0;
     bottom: 0;
     display: flex;
@@ -26,9 +26,7 @@
     z-index: 1000;
     visibility: hidden;
     opacity: 0;
-    transition:
-            visibility 0s,
-            opacity 0.5s;
+    transition: visibility 0s, opacity 0.5s;
 }
 
 .overlay.show {
@@ -39,7 +37,7 @@
 #top5Overlay {
     background: rgba(68, 113, 81, 0.83); /* Set the background color to green */
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 1rem;
     max-height: 80%;
     overflow-y: auto;
     width: 33rem;
@@ -60,14 +58,13 @@
 .top5-item button {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the start */
     background-color: white; /* Set the button color to white */
     color: black; /* Set the text color to black */
     padding: 10px 10px; /* Increase the size of the button by adding more padding */
     border: none; /* Remove the border */
     width: 100%;
     border-radius: 0.5rem; /* Add some roundness to the corners of the button */
-    text-align: left; /* Align text to the left */
     font-size: 20px;
     margin: 2px; /* Reduced margin */
     cursor: pointer; /* Change the cursor when you hover over the button */
@@ -98,7 +95,7 @@
     margin: 10px 0; /* Adjust the margin to control spacing */
 }
 
-.top5PlacesOverlay{
+.top5PlacesOverlay {
     background: transparent;
     padding: 50px;
     margin: -20px;
@@ -106,7 +103,7 @@
     height: 100%;
 }
 
-.top5Results{
+.top5Results {
     background: white;
     display: flex;
     justify-content: space-between;
@@ -120,8 +117,8 @@
 .back-Button {
     position: absolute;
     color: white;
-    top: 0px;
-    right: 10px;
+    top: -1%;
+    left: 3%;
     background: transparent;
     padding: 10px 10px;
     font-size: 3rem;
@@ -143,10 +140,8 @@
     cursor: pointer; /* Pointer cursor on hover */
 }
 
-
-
 .top5-item button img.icon {
-    margin-right: 2%; /* Space between icon and text */
+    margin-right: 10px; /* Space between icon and text */
     width: 40px; /* Adjust icon size */
     height: 40px; /* Adjust icon size */
 }
