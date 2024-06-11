@@ -93,7 +93,7 @@ export function SearchLocations2({
         className={`position-relative ${
           isOverlayVisible ? "search-overlay show" : "search-overlay hide"
         }`}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => handleCloseOverlay(e)}
       >
         <div className="search-overlay-content" onClick={handleInputClick}>
           <input

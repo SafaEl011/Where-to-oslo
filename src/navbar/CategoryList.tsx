@@ -37,7 +37,7 @@ export const categories = [
   },
   {
     name: "Bars",
-    icon: "/WhereToOslo/images/beerPin.svg",
+    icon: "/WhereToOslo/images/drinkPin_4.svg",
     component: <DrinksButton />,
   },
   {

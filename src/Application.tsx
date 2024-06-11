@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import "./Application.css";
 import "ol/ol.css";
-import { MainContext, map } from "./map/MainContext";
+import { MainContext } from "./map/MainContext";
 import { Layer } from "ol/layer";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
@@ -78,7 +78,9 @@ export function Application() {
         setActivityFeatureLayers,
         restaurantFeatureLayers,
         setRestaurantFeatureLayers,
+        hikeFeatureLayers,
         setHikeFeatureLayers,
+
       }}
     >
       <div>
@@ -88,7 +90,7 @@ export function Application() {
             className="map map-container position-relative"
           ></div>
           <ButtonsColumn />
-          <CategoryList />
+          <CategoryList/>
           <Top5List />
         </main>
       </div>
