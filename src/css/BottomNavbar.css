@@ -9,7 +9,7 @@
 
 .bottomNavbar-buttons {
   display: flex;
-  justify-content: space-around; /* Adjust as needed */
+  justify-content: space-evenly; /* Adjust as needed */
 }
 
 .categoryIconContainer {
@@ -29,7 +29,7 @@
 }
 
 #bottomNavbarText {
-  color: black;
+  color: #447151;
   display: flex;
   font-size: 1.4rem;
 }
@@ -42,52 +42,41 @@
 
 
 .overlay {
-  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1051;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+
+
+.overlay.show,
+.blur-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  backdrop-filter: blur(5px);
   z-index: 1050;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.5s ease-in-out;
-  visibility: hidden;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.overlay.show {
-  display: flex;
-  visibility: visible;
-}
-
-.overlay.hide {
-  display: none;
 }
 
 .overlay-content {
-  position: relative;
-  top: 100vh; /* Adjust this value to move it closer to the bottom */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 65%; /* Allow the content to determine the width */
-  background-color: rgba(255, 255, 255, 0);
-  padding: 2.5rem;
-  border-radius: 20rem;
+  top: 150%;
+  width: 100%; /* Adjusted width for the content */
+  max-height: 90vh; /* Adjusted max-height for the content */
+  padding: 1rem;
+  box-sizing: border-box;
   text-align: center;
   animation: slideUp 0.5s ease-in-out forwards;
-  justify-content: center;
-  backdrop-filter: blur(3px);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  position: absolute;
+  left: 50%; /* Move the content 50% from the left */
+  transform: translate(-50%, -50%);
+  z-index: 1052;
 }
 
 @keyframes slideUp {
@@ -105,37 +94,38 @@
   grid-gap: 1rem;
 }
 
-.category-item .category-button {
+.category-item {
+  display: flex;
+  justify-content: center;
+  align-content: space-evenly;
+}
+.category-button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  border: 2px solid #447151;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  background-color: white;
+  border: 0.2rem solid #447151;
 }
 
-.category-icon {
-  width: 3rem;
-  height: 3rem;
-  margin-right: 0.5rem;
+.category-button:not(.clicked) {
+  background-color: white;
+  color: #447151; /* Green text color */
 }
 
-.category-name {
-  font-size: 1.4rem;
+.category-button.clicked {
+  background-color: #447151; /* Green background color */
+  color: white; /* White text color */
 }
 
-.category-item.active .category-button {
-  background-color: #447151; /* Change to green when activated */
-}
 
-.overlay-close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
+
+
+
+
+

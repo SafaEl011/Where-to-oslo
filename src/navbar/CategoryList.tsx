@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
-import "../css/BottomNavbar.css";
 import { CafeButton } from "../layers/cafe/CafeButton";
 import { StoreButton } from "../layers/store/StoreButton";
 import { ActivityButton } from "../layers/activity/ActivityButton";
 import { DrinksButton } from "../layers/drink/DrinksButton";
 import { RestaurantButton } from "../layers/restaurant/RestaurantButton";
 import { HikeButton } from "../layers/hike/HikeButton";
+import "../css/BottomNavbar.css";
 
 interface CategoryListProps {
   show: boolean;
   handleClose: () => void;
 }
 
-export const categories = [
-  { name: "Restaurants", icon: "/WhereToOslo/images/restaurants_4.svg", component: <RestaurantButton /> },
-  { name: "Shopping", icon: "/WhereToOslo/images/storePin_2.svg", component: <StoreButton /> },
-  { name: "Cafes", icon: "/WhereToOslo/images/kafePin_4.svg", component: <CafeButton /> },
-  { name: "Activities", icon: "/WhereToOslo/images/activityPin_4.svg", component: <ActivityButton /> },
-  { name: "Bars", icon: "/WhereToOslo/images/beerPin.svg", component: <DrinksButton /> },
-  { name: "Hikes", icon: "/WhereToOslo/images/tripPin.svg", component: <HikeButton /> },
+interface Category {
+  name: string;
+  icon: string;
+  component: React.ElementType;
+}
+
+const categories: Category[] = [
+  { name: "Restaurants", icon: "/WhereToOslo/images/restaurants_4.svg", component: RestaurantButton },
+  { name: "Shopping", icon: "/WhereToOslo/images/storePin_2.svg", component: StoreButton },
+  { name: "Cafes", icon: "/WhereToOslo/images/kafePin_4.svg", component: CafeButton },
+  { name: "Activities", icon: "/WhereToOslo/images/activityPin_4.svg", component: ActivityButton },
+  { name: "Bars", icon: "/WhereToOslo/images/beerPin.svg", component: DrinksButton },
+  { name: "Hikes", icon: "/WhereToOslo/images/tripPin.svg", component: HikeButton },
 ];
 
 export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose }) => {
@@ -26,7 +32,25 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
 
   useEffect(() => {
     setOverlayVisible(show);
-  }, [show]);
+    document.body.classList.toggle("blur", show);
+
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.overlay')) {
+        handleClose();
+      }
+    };
+
+    if (show) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    } else {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [show, handleClose]);
 
   const handleCloseOverlay = () => {
     setOverlayVisible(false);
@@ -34,23 +58,19 @@ export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose })
   };
 
   return (
-      <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
-        <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-          <button className="overlay-close-button" onClick={handleCloseOverlay}>
-            &times;
-          </button>
-          <div className="category-list">
-            {categories.map((category, index) => (
-                <div key={index} className="category-item">
-                  <div className="category-button">
-                    <img src={category.icon} alt={`${category.name} Icon`} className="category-icon"/>
-                    {category.component}
+      <>
+        {isOverlayVisible && <div className="blur-background" />}
+        <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
+          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
+            <div className="category-list">
+              {categories.map((category, index) => (
+                  <div key={index} className="category-item">
+                    <category.component />
                   </div>
-                </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </>
   );
 };
-

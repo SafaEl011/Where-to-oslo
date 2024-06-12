@@ -13,6 +13,8 @@ import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
 import { activeCafeStyle, cafeStyle } from "./CafeStyle";
+import "../../css/BottomNavbar.css"
+
 
 const cafeLayer = new VectorLayer({
   className: "Cafe",
@@ -72,20 +74,19 @@ export function CafeButton() {
   }, [clicked, setCafeFeatureLayers, map]);
 
   return (
-    <div>
-      <button
-        className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
-        onClick={() => setClicked((prevClicked) => !prevClicked)}
+      <div
+          className={`category-button ${clicked ? "clicked" : ""}`}
+          onClick={() => setClicked((prevClicked) => !prevClicked)}
       >
-        Cafe
-      </button>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+        <img src="/WhereToOslo/images/kafePin_4.svg" alt="Cafe" className="pin-icon" style={{ width: '3rem', height: '3rem' }}/>
+        <span>Cafe</span>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <>
+                <p>Navn: {activeFeature.get("name")}</p>
+              </>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
