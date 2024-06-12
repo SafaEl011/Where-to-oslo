@@ -8,12 +8,14 @@ import React, {
 } from "react";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import { GeoJSON } from "ol/format";
-import { MapBrowserEvent, Overlay } from "ol";
-import { FeatureLike } from "ol/Feature";
-import { MainContext } from "../../map/MainContext";
+import {GeoJSON} from "ol/format";
+import {MapBrowserEvent, Overlay} from "ol";
+import {FeatureLike} from "ol/Feature";
+import {MainContext} from "../../map/MainContext";
+import "../../css/BottomNavbar.css"
 
-import { activeActivityStyle, activityStyle } from "./ActivityStyle";
+
+import {activeActivityStyle, activityStyle} from "./ActivityStyle";
 
 const activityLayer = new VectorLayer({
   className: "Activity",
@@ -27,9 +29,9 @@ const activityLayer = new VectorLayer({
 export function ActivityButton() {
   const [clicked, setClicked] = useState(false);
   const [activeFeature, setActiveFeature] = useState<
-    activityStyle | undefined
+      activityStyle | undefined
   >();
-  const { setActivityFeatureLayers, map } = useContext(MainContext);
+  const {setActivityFeatureLayers, map} = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
   const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -68,27 +70,31 @@ export function ActivityButton() {
       map?.on("click", handlePointerMove);
     } else {
       setActivityFeatureLayers((old: any) =>
-        old.filter((l: any) => l !== activityLayer),
+          old.filter((l: any) => l !== activityLayer),
       );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setActivityFeatureLayers, map]);
 
+
   return (
-    <div>
-      <button
-        className={`btn ${clicked ? "btn-success" : "btn-primary"}`}
-        onClick={() => setClicked((prevClicked) => !prevClicked)}
+      <div
+          className={`category-button ${clicked ? "clicked" : ""}`}
+          onClick={() => setClicked((prevClicked) => !prevClicked)}
       >
-        Activity
-      </button>
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {activeFeature && (
-          <>
-            <p>Navn: {activeFeature.get("name")}</p>
-          </>
-        )}
+        <img src="/WhereToOslo/images/activityPin_4.svg" alt="Activity" className="pin-icon" style={{ width: '3rem', height: '3rem' }}/>
+        <span>Activity</span>
+        <div ref={overlayRef} className={"pinOverlay"}>
+          {activeFeature && (
+              <div className="container-box">
+                <p> {activeFeature.get("name")}</p>
+              </div>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
+
+
+
+
