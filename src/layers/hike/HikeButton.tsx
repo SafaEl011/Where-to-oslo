@@ -82,9 +82,9 @@ export function HikeButton() {
         <span>Hike</span>
         <div ref={overlayRef} className={"pinOverlay"}>
           {activeFeature && (
-              <>
-                <p>Navn: {activeFeature.get("name")}</p>
-              </>
+              <div className="container-box">
+                <p> {activeFeature.get("name")}</p>
+              </div>
           )}
         </div>
       </div>
