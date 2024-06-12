@@ -20,9 +20,7 @@ interface SearchLocations2Props {
   toggleOverlay: () => void;
 }
 
-export function SearchLocations2({
-  showOverlay,
-}: SearchLocations2Props) {
+export function SearchLocations2({ showOverlay }: SearchLocations2Props) {
   const [value, setValue] = useState("");
   const [searchResults, setSearchResults] = useState<SearchJson[]>([]);
   const { map } = useContext(MainContext);

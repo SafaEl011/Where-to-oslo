@@ -13,8 +13,7 @@ import { MapBrowserEvent, Overlay } from "ol";
 import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
 import { activeCafeStyle, cafeStyle } from "./CafeStyle";
-import "../../css/BottomNavbar.css"
-
+import "../../css/BottomNavbar.css";
 
 const cafeLayer = new VectorLayer({
   className: "Cafe",
@@ -74,19 +73,24 @@ export function CafeButton() {
   }, [clicked, setCafeFeatureLayers, map]);
 
   return (
-      <div
-          className={`category-button ${clicked ? "clicked" : ""}`}
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-      >
-        <img src="/WhereToOslo/images/kafePin_4.svg" alt="Cafe" className="pin-icon" style={{ width: '3rem', height: '3rem' }}/>
-        <span>Cafe</span>
-        <div ref={overlayRef} className={"pinOverlay"}>
-          {activeFeature && (
-              <div className="container-box">
-                <p> {activeFeature.get("name")}</p>
-              </div>
-          )}
-        </div>
+    <div
+      className={`category-button ${clicked ? "clicked" : ""}`}
+      onClick={() => setClicked((prevClicked) => !prevClicked)}
+    >
+      <img
+        src="/Where-to-oslo/images/kafePin_4.svg"
+        alt="Cafe"
+        className="pin-icon"
+        style={{ width: "3rem", height: "3rem" }}
+      />
+      <span>Cafe</span>
+      <div ref={overlayRef} className={"pinOverlay"}>
+        {activeFeature && (
+          <div className="container-box">
+            <p> {activeFeature.get("name")}</p>
+          </div>
+        )}
       </div>
+    </div>
   );
 }

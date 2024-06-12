@@ -15,7 +15,7 @@ export const hikeStyle = () => {
     image: new Icon({
       src: "/Where-to-oslo/images/tripPin.svg",
       anchor: [0.5, 1],
-      scale: 0.05,
+      scale: 0.4,
     }),
   });
 };
@@ -25,7 +25,7 @@ export const activeHikeStyle = () => {
     image: new Icon({
       src: "/Where-to-oslo/images/tripPin.svg",
       anchor: [0.5, 1],
-      scale: 0.06,
+      scale: 0.5,
     }),
   });
 };

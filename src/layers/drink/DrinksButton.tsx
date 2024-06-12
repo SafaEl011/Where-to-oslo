@@ -8,12 +8,12 @@ import React, {
 } from "react";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import {GeoJSON} from "ol/format";
-import {MapBrowserEvent, Overlay} from "ol";
-import {FeatureLike} from "ol/Feature";
-import {MainContext} from "../../map/MainContext";
-import {activeDrinkStyle, drinkStyle} from "./DrinkStyle";
-import "../../css/BottomNavbar.css"
+import { GeoJSON } from "ol/format";
+import { MapBrowserEvent, Overlay } from "ol";
+import { FeatureLike } from "ol/Feature";
+import { MainContext } from "../../map/MainContext";
+import { activeDrinkStyle, drinkStyle } from "./DrinkStyle";
+import "../../css/BottomNavbar.css";
 
 const drinkLayer = new VectorLayer({
   className: "Drink",
@@ -27,7 +27,7 @@ const drinkLayer = new VectorLayer({
 export function DrinksButton() {
   const [clicked, setClicked] = useState(false);
   const [activeFeature, setActiveFeature] = useState<drinkStyle | undefined>();
-  const {setDrinkFeatureLayers, map} = useContext(MainContext);
+  const { setDrinkFeatureLayers, map } = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
   const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -66,26 +66,31 @@ export function DrinksButton() {
       map?.on("click", handlePointerMove);
     } else {
       setDrinkFeatureLayers((old: any) =>
-          old.filter((l: any) => l !== drinkLayer),
+        old.filter((l: any) => l !== drinkLayer),
       );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setDrinkFeatureLayers, map]);
 
   return (
-      <div
-          className={`category-button ${clicked ? "clicked" : ""}`}
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-      >
-        <img src="/WhereToOslo/images/drinkPin_4.svg" alt="Drink" className="pin-icon" style={{ width: '3rem', height: '3rem' }}/>
-        <span>Drink</span>
-        <div ref={overlayRef} className={"pinOverlay"}>
-          {activeFeature && (
-              <div className="container-box">
-                <p> {activeFeature.get("name")}</p>
-              </div>
-          )}
-        </div>
+    <div
+      className={`category-button ${clicked ? "clicked" : ""}`}
+      onClick={() => setClicked((prevClicked) => !prevClicked)}
+    >
+      <img
+        src="/Where-to-oslo/images/drinkPin_4.svg"
+        alt="Drink"
+        className="pin-icon"
+        style={{ width: "3rem", height: "3rem" }}
+      />
+      <span>Drink</span>
+      <div ref={overlayRef} className={"pinOverlay"}>
+        {activeFeature && (
+          <div className="container-box">
+            <p> {activeFeature.get("name")}</p>
+          </div>
+        )}
       </div>
+    </div>
   );
 }

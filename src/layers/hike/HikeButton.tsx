@@ -8,13 +8,12 @@ import React, {
 } from "react";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import {GeoJSON} from "ol/format";
-import {MapBrowserEvent, Overlay} from "ol";
-import {FeatureLike} from "ol/Feature";
-import {MainContext} from "../../map/MainContext";
-import {activeHikeStyle, hikeStyle} from "./HikeStyle";
-import "../../css/BottomNavbar.css"
-
+import { GeoJSON } from "ol/format";
+import { MapBrowserEvent, Overlay } from "ol";
+import { FeatureLike } from "ol/Feature";
+import { MainContext } from "../../map/MainContext";
+import { activeHikeStyle, hikeStyle } from "./HikeStyle";
+import "../../css/BottomNavbar.css";
 
 const hikeLayer = new VectorLayer({
   className: "Hike",
@@ -28,7 +27,7 @@ const hikeLayer = new VectorLayer({
 export function HikeButton() {
   const [clicked, setClicked] = useState(false);
   const [activeFeature, setActiveFeature] = useState<hikeStyle | undefined>();
-  const {setHikeFeatureLayers, map} = useContext(MainContext);
+  const { setHikeFeatureLayers, map } = useContext(MainContext);
 
   const overlay = useMemo(() => new Overlay({}), []);
   const overlayRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -67,28 +66,31 @@ export function HikeButton() {
       map?.on("click", handlePointerMove);
     } else {
       setHikeFeatureLayers((old: any) =>
-          old.filter((l: any) => l !== hikeLayer),
+        old.filter((l: any) => l !== hikeLayer),
       );
       map?.un("click", handlePointerMove);
     }
   }, [clicked, setHikeFeatureLayers, map]);
 
   return (
-      <div
-          className={`category-button ${clicked ? "clicked" : ""}`}
-          onClick={() => setClicked((prevClicked) => !prevClicked)}
-      >
-        <img src="/WhereToOslo/images/tripPin.svg" alt="Hike" className="pin-icon" style={{ width: '3rem', height: '3rem' }}/>
-        <span>Hike</span>
-        <div ref={overlayRef} className={"pinOverlay"}>
-          {activeFeature && (
-              <div className="container-box">
-                <p> {activeFeature.get("name")}</p>
-              </div>
-          )}
-        </div>
+    <div
+      className={`category-button ${clicked ? "clicked" : ""}`}
+      onClick={() => setClicked((prevClicked) => !prevClicked)}
+    >
+      <img
+        src="/Where-to-oslo/images/tripPin.svg"
+        alt="Hike"
+        className="pin-icon"
+        style={{ width: "3rem", height: "3rem" }}
+      />
+      <span>Hike</span>
+      <div ref={overlayRef} className={"pinOverlay"}>
+        {activeFeature && (
+          <div className="container-box">
+            <p> {activeFeature.get("name")}</p>
+          </div>
+        )}
       </div>
+    </div>
   );
 }
-
-

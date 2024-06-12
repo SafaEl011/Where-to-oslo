@@ -24,13 +24,13 @@ export const drinkStyle = (feature: FeatureLike) => {
     image: new Icon({
       src: imageSrc,
       anchor: [0.5, 1],
-      scale: 0.05,
+      scale: 0.06,
     }),
   });
 };
 export const activeDrinkStyle = (feature: FeatureLike): Style => {
   const drinks = feature.getProperties() as drinkProperties;
-  let imageSrc = "/Where-to-oslo/drinkPin.png"; // Default image source
+  let imageSrc = "/Where-to-oslo/images/drinkPin_4.svg"; // Default image source
 
   if (drinks.description === "Bar") {
     imageSrc = "/Where-to-oslo/images/beerPin.svg"; // Set image source for Bar description
@@ -43,7 +43,7 @@ export const activeDrinkStyle = (feature: FeatureLike): Style => {
     image: new Icon({
       src: imageSrc,
       anchor: [0.5, 1],
-      scale: 0.03, // Adjust scale value here
+      scale: 0.07, // Adjust scale value here
     }),
   });
 };

@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 2ander
+      - main
 jobs:
   publish:
     runs-on: ubuntu-latest

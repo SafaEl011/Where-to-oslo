@@ -51,8 +51,6 @@
   animation: slideUp 0.5s ease-in-out;
 }
 
-
-
 .overlay.show,
 .blur-background {
   position: fixed;
@@ -107,7 +105,10 @@
   height: 4.5rem;
   border-radius: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
   background-color: white;
   border: 0.2rem solid #447151;
 }
@@ -128,10 +129,3 @@
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
-
-
-
