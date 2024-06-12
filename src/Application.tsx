@@ -42,6 +42,7 @@ export function Application() {
       ...activityFeatureLayers,
       ...restaurantFeatureLayers,
       ...hikeFeatureLayers,
+      ...storeFeatureLayers,
     ],
     [
       baseLayer,
@@ -51,6 +52,7 @@ export function Application() {
       activityFeatureLayers,
       restaurantFeatureLayers,
       hikeFeatureLayers,
+      storeFeatureLayers,
     ],
   );
 
