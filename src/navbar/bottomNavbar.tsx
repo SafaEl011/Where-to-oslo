@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CategoryList } from "./CategoryList";
-import { Top5List } from "./Top5List";
+import Top5List from "./Top5List";
 import "../css/BottomNavbar.css";
 
 export const BottomNavbar: React.FC = () => {
