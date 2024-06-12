@@ -17,7 +17,7 @@ import { activeHikeStyle, hikeStyle } from "./HikeStyle";
 const hikeLayer = new VectorLayer({
   className: "Hike",
   source: new VectorSource({
-    url: "/WhereToOslo/json/hike.geojson",
+    url: "/Where-to-oslo/json/hike.geojson",
     format: new GeoJSON(),
   }),
   style: hikeStyle,

@@ -13,7 +13,7 @@ export type hikeStyle = {
 export const hikeStyle = () => {
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/images/tripPin.svg",
+      src: "/Where-to-oslo/images/tripPin.svg",
       anchor: [0.5, 1],
       scale: 0.05,
     }),
@@ -23,7 +23,7 @@ export const activeHikeStyle = () => {
   //const resolution = map.getView().getResolutions();
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/images/tripPin.svg",
+      src: "/Where-to-oslo/images/tripPin.svg",
       anchor: [0.5, 1],
       scale: 0.06,
     }),

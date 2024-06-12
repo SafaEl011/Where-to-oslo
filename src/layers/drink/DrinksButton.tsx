@@ -17,7 +17,7 @@ import { activeDrinkStyle, drinkStyle } from "./DrinkStyle";
 const drinkLayer = new VectorLayer({
   className: "Drink",
   source: new VectorSource({
-    url: "/WhereToOslo/json/drinks.geojson",
+    url: "/Where-to-oslo/json/drinks.geojson",
     format: new GeoJSON(),
   }),
   style: drinkStyle,

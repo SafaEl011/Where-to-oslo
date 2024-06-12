@@ -83,32 +83,31 @@
       "id": 8
     },
     {
-          "type": "Feature",
-          "properties": { "name": "Asylet", "description": "Bar" },
-          "geometry": {
-            "coordinates": [10.761010590485542, 59.91445938035087 ],
-            "type": "Point"
-          },
-          "id": 9
+      "type": "Feature",
+      "properties": { "name": "Asylet", "description": "Bar" },
+      "geometry": {
+        "coordinates": [10.761010590485542, 59.91445938035087],
+        "type": "Point"
+      },
+      "id": 9
     },
     {
-              "type": "Feature",
-              "properties": { "name": "Frognerseteren", "description": "Bar" },
-              "geometry": {
-                "coordinates": [10.67858636534918, 59.980599683237706],
-                "type": "Point"
-              },
-              "id": 10
+      "type": "Feature",
+      "properties": { "name": "Frognerseteren", "description": "Bar" },
+      "geometry": {
+        "coordinates": [10.67858636534918, 59.980599683237706],
+        "type": "Point"
+      },
+      "id": 10
     },
     {
-                  "type": "Feature",
-                  "properties": { "name": "Smia galleri", "description": "Bar" },
-                  "geometry": {
-                    "coordinates": [10.78569481857125, 59.91005868258227],
-                    "type": "Point"
-                  },
-                  "id": 10
+      "type": "Feature",
+      "properties": { "name": "Smia galleri", "description": "Bar" },
+      "geometry": {
+        "coordinates": [10.78569481857125, 59.91005868258227],
+        "type": "Point"
+      },
+      "id": 10
     }
-
   ]
 }

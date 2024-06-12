@@ -28,7 +28,7 @@
       },
       "id": 2
     },
-{
+    {
       "type": "Feature",
       "properties": { "name": "Kampen, Vålerenga" },
       "geometry": {
@@ -37,7 +37,7 @@
       },
       "id": 3
     },
-{
+    {
       "type": "Feature",
       "properties": { "name": "Svartdalsparken" },
       "geometry": {

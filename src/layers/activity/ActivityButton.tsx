@@ -18,7 +18,7 @@ import { activeActivityStyle, activityStyle } from "./ActivityStyle";
 const activityLayer = new VectorLayer({
   className: "Activity",
   source: new VectorSource({
-    url: "/WhereToOslo/json/activity.geojson",
+    url: "/Where-to-oslo/json/activity.geojson",
     format: new GeoJSON(),
   }),
   style: activityStyle,

@@ -17,7 +17,7 @@ import { activeRestaurantStyle, restaurantStyle } from "./RestaurantStyle";
 const restaurantLayer = new VectorLayer({
   className: "Restaurant",
   source: new VectorSource({
-    url: "/WhereToOslo/json/restaurants.geojson",
+    url: "/Where-to-oslo/json/restaurants.geojson",
     format: new GeoJSON(),
   }),
   style: restaurantStyle,

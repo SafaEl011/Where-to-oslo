@@ -13,7 +13,7 @@ export const storeStyle = (feature: FeatureLike) => {
   const store = feature.getProperties() as storeProperties;
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/storePin.png",
+      src: "/Where-to-oslo/storePin.png",
       anchor: [0.5, 1],
       scale: 0.05,
     }),
@@ -24,7 +24,7 @@ export const activeStoreStyle = (feature: FeatureLike) => {
   //const resolution = map.getView().getResolutions();
   return new Style({
     image: new Icon({
-      src: "/WhereToOslo/storePin.png",
+      src: "/Where-to-oslo/storePin.png",
       anchor: [0.5, 1],
       scale: 0.06,
     }),
