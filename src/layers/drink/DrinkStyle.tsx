@@ -11,7 +11,7 @@ export interface drinkProperties {
 export type drinkStyle = {
   getproperties(): drinkProperties;
 } & Feature<Point>;
-export const drinkStyle = (feature: FeatureLike, description: string) => {
+export const drinkStyle = (feature: FeatureLike) => {
   const drinks = feature.getProperties() as drinkProperties;
   let imageSrc = "/Where-to-oslo/images/drinkPin_4.svg"; // Default image source
 
@@ -24,16 +24,17 @@ export const drinkStyle = (feature: FeatureLike, description: string) => {
     image: new Icon({
       src: imageSrc,
       anchor: [0.5, 1],
-      scale: 0.5,
+      scale: 0.05,
     }),
   });
 };
-export const activeDrinkStyle = (description: string): Style => {
+export const activeDrinkStyle = (feature: FeatureLike): Style => {
+  const drinks = feature.getProperties() as drinkProperties;
   let imageSrc = "/Where-to-oslo/drinkPin.png"; // Default image source
 
-  if (description === "Bar") {
+  if (drinks.description === "Bar") {
     imageSrc = "/Where-to-oslo/images/beerPin.svg"; // Set image source for Bar description
-  } else if (description === "Drink") {
+  } else if (drinks.description === "Drink") {
     imageSrc = "/Where-to-oslo/drinkPin.png";
   }
 

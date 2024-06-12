@@ -96,6 +96,7 @@ export function Application() {
         setActivityFeatureLayers,
         restaurantFeatureLayers,
         setRestaurantFeatureLayers,
+        hikeFeatureLayers,
         setHikeFeatureLayers,
       }}
     >
