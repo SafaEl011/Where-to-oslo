@@ -47,7 +47,7 @@ const top5Categories = [
         name: "Top 5 cozy places with beer",
         icon: "beerPin.svg",
         items: [
-            { name: "Schous Kjeller", description: "Cozy and friendly." },
+            { name: "Schous Kjelleren", description: "Cozy and friendly." },
             { name: "Frognerseteren", description: "Amazing view with great beer." },
             { name: "Asylet", description: "Historic and charming." },
             { name: "Smia Galleri", description: "Art and beer together." },

@@ -74,6 +74,26 @@
         "coordinates": [10.748915541000713, 59.90781838374659],
         "type": "Point"
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bygdøy"
+      },
+      "geometry": {
+        "coordinates": [10.679318305340871, 59.912086619429836],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Frognerparken"
+      },
+      "geometry": {
+        "coordinates": [10.703559227464755, 59.92670289745729],
+        "type": "Point"
+      }
     }
   ]
 }

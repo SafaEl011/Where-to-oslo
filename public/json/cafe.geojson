@@ -74,6 +74,56 @@
         "coordinates": [10.75549399999818, 59.92340913050492],
         "type": "Point"
       }
-    }
+    },
+    {
+          "type": "Feature",
+          "properties": {
+            "name": "Baker Nordby, Tøyen"
+          },
+          "geometry": {
+            "coordinates": [10.775941726871055, 59.91512299311516],
+            "type": "Point"
+          }
+        },
+       {
+              "type": "Feature",
+              "properties": {
+                "name": "Åpent bakeri, paleet"
+              },
+              "geometry": {
+                "coordinates": [10.737271184657118, 59.914487411502705],
+                "type": "Point"
+              }
+            },
+              {
+                     "type": "Feature",
+                     "properties": {
+                       "name": "Grains Bakeri"
+                     },
+                     "geometry": {
+                       "coordinates": [10.715832654450786, 59.93024275618359],
+                       "type": "Point"
+                     }
+                   },
+            {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Svingen Kolonial og Kafe"
+                    },
+                    "geometry": {
+                        "coordinates": [10.77666349677681, 59.90130046600219],
+                        "type": "Point"
+                        }
+                    },
+                    {
+                    "type": "Feature",
+                        "properties": {
+                            "name": "Kafe Celcius"
+                        },
+                        "geometry": {
+                            "coordinates": [10.740322354449022, 59.910406159638676],
+                            "type": "Point"
+                            }
+                        }
   ]
 }

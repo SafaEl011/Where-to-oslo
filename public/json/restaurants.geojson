@@ -24,6 +24,14 @@
         "coordinates": [10.760382953705488, 59.910317851279416],
         "type": "Point"
       }
+    },
+{
+      "type": "Feature",
+      "properties": { "name": "Mamma Pizza", "image": "restaurPin.png" },
+      "geometry": {
+        "coordinates": [10.74652173182837, 59.911194234363165],
+        "type": "Point"
+      }
     }
   ]
 }
