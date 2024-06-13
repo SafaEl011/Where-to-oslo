@@ -35,13 +35,15 @@ export function ModeSelector() {
     <div className="mapSelector">
       <button
         onClick={() => handleButtonClick("osm")}
-        className={selected === "osm" ? "selected" : ""}
+        className={`light-dark-buttons ${selected === "osm" ? "selected" : ""}`}
       >
         Light Map
       </button>
       <button
         onClick={() => handleButtonClick("dark")}
-        className={selected === "dark" ? "selected" : ""}
+        className={`light-dark-buttons ${
+          selected === "dark" ? "selected" : ""
+        }`}
       >
         Dark Map
       </button>

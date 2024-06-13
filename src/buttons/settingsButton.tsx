@@ -34,7 +34,9 @@ export const SettingsButton: React.FC = () => {
       </IconButton>
       {isSettingsVisible && (
         <div
-          className={`position-fixed settings-overlay ${isSettingsVisible ? "show" : ""}`}
+          className={`position-fixed settings-overlay ${
+            isSettingsVisible ? "show" : ""
+          }`}
           onClick={handleCloseOverlay}
         >
           <div
@@ -47,7 +49,7 @@ export const SettingsButton: React.FC = () => {
             >
               &times;
             </button>
-            <ModeSelector />
+
             <h3 className="fw-bold text-center m-4">About</h3>
             <p className="fw-light text-center p-4">
               Welcome to Where To Oslo, When you need to know where to go!
@@ -170,6 +172,8 @@ export const SettingsButton: React.FC = () => {
             <p className="mb-0 text-center mt-5">
               <strong>Version:</strong> 1.0.0
             </p>
+            <br />
+            <ModeSelector />
           </div>
         </div>
       )}

@@ -14,7 +14,7 @@
   font-size: 20px; /* Adjust text size as needed */
 }
 
-.overlay {
+..overlay {
   position: fixed;
   top: 0;
   left: 2%;
@@ -37,40 +37,52 @@
 }
 
 #top5Overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  width: 100%; /* Ensure the container is full width */
   background: rgba(68, 113, 81, 0.83); /* Set the background color to green */
   padding: 20px;
+  margin: 0 auto;
   border-radius: 1rem;
-  max-height: 68%;
+  max-height: 80%;
   overflow-y: auto;
   width: 33rem;
   height: 35rem;
   left: 50%;
+  box-sizing: border-box;
 }
 
 .top5-list {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 100%; /* Ensure the container is full width */
 }
 
 .top5-item {
   margin-top: 1px; /* Reduced top margin */
   margin-bottom: 5px; /* Reduced bottom margin */
+  width: 100%; /* Ensure the container for the button is 100% wide */
 }
 
 .top5-item button {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align items to the start */
+  /*justify-content: center; !* Align items to the center *!*/
   background-color: white; /* Set the button color to white */
   color: black; /* Set the text color to black */
   padding: 10px 10px; /* Increase the size of the button by adding more padding */
   border: none; /* Remove the border */
-  width: 100%;
+  width: 100%; /* Make the button fill the container width */
   border-radius: 0.5rem; /* Add some roundness to the corners of the button */
   font-size: 20px;
-  margin: 2px; /* Reduced margin */
+  margin: 2px 0; /* Adjust margin to ensure buttons are evenly spaced */
   cursor: pointer; /* Change the cursor when you hover over the button */
   transition-duration: 0.4s; /* Add a transition effect when the button is hovered over */
+  text-align: center; /* Center text inside the button */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .close-button {
@@ -103,17 +115,20 @@
   margin: -20px;
   width: 100%;
   height: 100%;
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .top5Results {
   background: white;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
   padding: 10px;
   margin-top: 10px;
-  width: 107%;
+  width: 100%; /* Ensure the container is full width */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .back-Button {
@@ -129,9 +144,9 @@
 }
 
 .seeInMapBtn {
-  display: block;
-  margin: 10px auto 0 auto; /* Center horizontally and add margin at the top */
-  width: 8rem;
+  display: flex;
+  margin: 10px auto; /* Center horizontally and add margin at the top */
+  width: 100%; /* Make the button fill the container width */
   height: 2rem;
   text-align: center;
   line-height: 2rem; /* Vertically center text */
@@ -140,10 +155,21 @@
   border: none; /* Remove border */
   border-radius: 0.5rem; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .top5-item button img.icon {
   margin-right: 10px; /* Space between icon and text */
   width: 40px; /* Adjust icon size */
   height: 40px; /* Adjust icon size */
+}
+
+.top5-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  width: 100%; /* Ensure the container is full width */
 }

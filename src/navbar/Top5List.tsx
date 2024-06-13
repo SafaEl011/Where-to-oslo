@@ -56,6 +56,12 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.77666349677681, 59.90130046600219],
         type: "cafe",
       },
+      {
+        name: "Encore Oslo",
+        description: "French pastry at its best.",
+        coordinates: [10.72883201606511, 59.92691699896708],
+        type: "cafe",
+      },
     ],
   },
   {
@@ -79,6 +85,18 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.77666349677681, 59.90130046600219],
         type: "cafe",
       },
+      {
+        name: "Eight Rooftop Bar",
+        description: "Great city view and drinks.",
+        coordinates: [10.73994545733909, 59.9137713552065],
+        type: "cafe",
+      },
+      {
+        name: "KOK Oslo Sauna",
+        description: "Relaxing and cozy sauna experience on the ocean.",
+        coordinates: [10.726925081838461, 59.909362966503224],
+        type: "activity",
+      },
     ],
   },
   {
@@ -88,6 +106,30 @@ const top5Categories: Top5Category[] = [
         name: "Mamma pizza",
         description: "Best pizza in town.",
         coordinates: [10.74652173182837, 59.911194234363165],
+        type: "restaurant",
+      },
+      {
+        name: "Alex Sushi",
+        description: "Best sushi in town.",
+        coordinates: [10.720706907059435, 59.914778058301984],
+        type: "restaurant",
+      },
+      {
+        name: "Yum Cha",
+        description: "Best Dim Sum in town.",
+        coordinates: [10.731660750746515, 59.92256953053508],
+        type: "restaurant",
+      },
+      {
+        name: "Kanspai Izakaya",
+        description: "Best izakaya in town.",
+        coordinates: [10.74652173182837, 59.911194234363165],
+        type: "restaurant",
+      },
+      {
+        name: "J2 Restaurant BBQ",
+        description: "Best Korean BBQ in town.",
+        coordinates: [10.731196112676916, 59.92397504427017],
         type: "restaurant",
       },
     ],
@@ -112,6 +154,18 @@ const top5Categories: Top5Category[] = [
         description: "Scenic walk with beautiful views.",
         coordinates: [10.703559227464755, 59.92670289745729],
         type: "activity",
+      },
+      {
+        name: "Telthusbakken",
+        description: "Scenic walk with amazing views over Grünerløkka.",
+        coordinates: [10.748014707324646, 59.92343139573817],
+        type: "activity",
+      },
+      {
+        name: "Blå",
+        description: "Colorful and vibrant bar and cafe by the river.",
+        coordinates: [10.75285365012026, 59.92017029777881],
+        type: "bar",
       },
     ],
   },
@@ -142,21 +196,45 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.78569481857125, 59.91005868258227],
         type: "bar",
       },
+      {
+        name: "Hytta Bar",
+        description: "Cozy and dog friendly bar with great beer.",
+        coordinates: [10.759299032896394, 59.92047328491133],
+        type: "bar",
+      },
     ],
   },
   {
     name: "Top 5 walks on a Sunday",
     items: [
       {
-        name: "Kampen-Vålerenga",
+        name: "Kampen to Vålerenga",
         description: "Lovely Sunday walk.",
         coordinates: [10.77922453744859, 59.9140995579135],
         type: "hike",
       },
       {
-        name: "Kvernerbyen-Svartdalsparken",
+        name: "Kvernerbyen toSvartdalsparken",
         description: "Beautiful nature trail.",
         coordinates: [10.798584496777053, 59.904053814495484],
+        type: "hike",
+      },
+      {
+        name: "Ekebergparken",
+        description: "A cultural experience with beautiful sculptures.",
+        coordinates: [10.7664, 59.8995],
+        type: "hike",
+      },
+      {
+        name: "Sognsvann rundt",
+        description: "A popular round trip around Sognsvann.",
+        coordinates: [10.731, 59.9757],
+        type: "hike",
+      },
+      {
+        name: "Frognerseteren to Ullevålseter",
+        description: "A classic forest path through Nordmarka.",
+        coordinates: [10.6674, 59.9974],
         type: "hike",
       },
     ],
@@ -198,7 +276,7 @@ const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
               className="btn btn-success close-button"
               onClick={handleCloseOverlay}
             >
-              x
+              ×
             </button>
             <h2 className="top5-header">Top 5</h2>
             <hr className="separator"></hr>
