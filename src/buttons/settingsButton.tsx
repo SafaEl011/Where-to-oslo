@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/iconStyles.css";
 import IconButton from "./iconsButton";
+import { ModeSelector } from "../map/darkModeMapSelect";
 
 export const SettingsButton: React.FC = () => {
   const [isSettingsVisible, setSettingsVisible] = useState<boolean>(false);
@@ -46,6 +47,7 @@ export const SettingsButton: React.FC = () => {
             >
               &times;
             </button>
+            <ModeSelector />
             <h3 className="fw-bold text-center m-4">About</h3>
             <p className="fw-light text-center p-4">
               Welcome to Where To Oslo, When you need to know where to go!

@@ -77,8 +77,8 @@ div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
   position: fixed;
 }
 .ol-zoom-out {
-  left: 97%;
-  top: 88%;
+  right: 97%;
+  top: 78%;
   scale: 320%;
 }
 .ol-zoom-in {
