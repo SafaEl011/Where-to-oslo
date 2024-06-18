@@ -27,10 +27,9 @@ export const FavoriteButton: React.FC = () => {
             <button className="overlay-close-button" onClick={handleClose}>
               &times;
             </button>
-            <h2>Your Favorite Places</h2>
+            <h2>Favorite Places</h2>
             <p>
-              Here lies your favorite pin places. Set places as favorites and
-              they will show up here.
+              This feature will be available in the near soon future..
             </p>
           </div>
         </div>
