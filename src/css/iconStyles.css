@@ -28,7 +28,7 @@
   right: 0;
   width: 100%;
   height: 100%;
-  z-index: 1051;
+  z-index: 1055;
   justify-content: center;
   align-items: center;
   visibility: hidden;
@@ -75,6 +75,8 @@
   align-items: center;
   z-index: 1052;
   gap: 1rem;
+  max-height: 87%;
+  overflow-y: auto;
 }
 
 .overlay-close-button {
@@ -123,7 +125,7 @@
 
 .user-agreement-scroll-container {
   width: 100%; /* Ensure the scroll container takes up the full width */
-  max-height: 16rem; /* Adjusted max-height in rem */
+  max-height: 9rem; /* Adjusted max-height in rem */
   overflow-y: auto;
 }
 

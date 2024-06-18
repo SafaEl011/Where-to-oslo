@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CafeButton } from "../layers/cafe/CafeButton";
 import { StoreButton } from "../layers/store/StoreButton";
 import { ActivityButton } from "../layers/activity/ActivityButton";
@@ -19,88 +19,43 @@ interface Category {
 }
 
 const categories: Category[] = [
-  {
-    name: "Restaurants",
-    icon: "/Where-to-oslo/images/restaurants_4.svg",
-    component: RestaurantButton,
-  },
-  {
-    name: "Shopping",
-    icon: "/Where-to-oslo/images/storePin_2.svg",
-    component: StoreButton,
-  },
-  {
-    name: "Cafes",
-    icon: "/Where-to-oslo/images/kafePin_4.svg",
-    component: CafeButton,
-  },
-  {
-    name: "Activities",
-    icon: "/Where-to-oslo/images/activityPin_4.svg",
-    component: ActivityButton,
-  },
-  {
-    name: "Bars",
-    icon: "/Where-to-oslo/images/beerPin.svg",
-    component: DrinksButton,
-  },
-  {
-    name: "Hikes",
-    icon: "/Where-to-oslo/images/tripPin.svg",
-    component: HikeButton,
-  },
+  { name: "Restaurants", icon: "/WhereToOslo/images/restaurants_4.svg", component: RestaurantButton },
+  { name: "Shopping", icon: "/WhereToOslo/images/storePin_2.svg", component: StoreButton },
+  { name: "Cafes", icon: "/WhereToOslo/images/kafePin_4.svg", component: CafeButton },
+  { name: "Activities", icon: "/WhereToOslo/images/activityPin_4.svg", component: ActivityButton },
+  { name: "Bars", icon: "/WhereToOslo/images/beerPin.svg", component: DrinksButton },
+  { name: "Hikes", icon: "/WhereToOslo/images/tripPin.svg", component: HikeButton },
 ];
 
-export const CategoryList: React.FC<CategoryListProps> = ({
-  show,
-  handleClose,
-}) => {
+export const CategoryList: React.FC<CategoryListProps> = ({ show, handleClose }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(show);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setOverlayVisible(show);
-    document.body.classList.toggle("blur", show);
+  }, [show]);
 
-    const handleOutsideClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".overlay")) {
-        handleClose();
-      }
-    };
-
-    if (show) {
-      document.addEventListener("mousedown", handleOutsideClick);
-    } else {
-      document.removeEventListener("mousedown", handleOutsideClick);
+  const handleCloseOverlay = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
+      setOverlayVisible(false);
+      handleClose();
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [show, handleClose]);
-
-  const handleCloseOverlay = () => {
-    setOverlayVisible(false);
-    handleClose();
   };
 
   return (
-    <>
-      {isOverlayVisible && <div className="blur-background" />}
-      <div
-        className={isOverlayVisible ? "overlay show" : "overlay hide"}
-        onClick={handleCloseOverlay}
-      >
-        <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-          <div className="category-list">
-            {categories.map((category, index) => (
-              <div key={index} className="category-item">
-                <category.component />
-              </div>
-            ))}
+      <>
+        {isOverlayVisible && <div className="blur-background" onClick={handleCloseOverlay} />}
+        <div ref={overlayRef} className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
+          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
+            <div className="category-list">
+              {categories.map((category, index) => (
+                  <div key={index} className="category-item">
+                    <category.component />
+                  </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
   );
 };
