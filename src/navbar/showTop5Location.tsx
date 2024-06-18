@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { Overlay } from "ol";
@@ -36,10 +36,8 @@ const getScaleForPlace = (type: Top5CategoryType) => {
       return uniformScale * 0.3;
     default:
       return uniformScale;
-
   }
 };
-
 
 const getIconForPlace = (type: Top5CategoryType) => {
   switch (type) {
@@ -62,8 +60,9 @@ const getIconForPlace = (type: Top5CategoryType) => {
 
 export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
   const { map } = useContext(MainContext);
-  const overlay = useMemo(() => new Overlay({}), []);
+  const overlay = useMemo(() => new Overlay({ className: 'top5-overlay' }), []);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [selectedPlace, setSelectedPlace] = useState<Top5Item | null>(null);
 
   useEffect(() => {
     overlay.setElement(overlayRef.current as HTMLElement);
@@ -95,8 +94,6 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
         const iconPath = getIconForPlace(type);
         const scale = getScaleForPlace(type);
 
-        console.log(`Type: ${type}, Icon Path: ${iconPath}, Scale: ${scale}`);
-
         return new Style({
           image: new Icon({
             anchor: [0.5, 1],
@@ -109,17 +106,32 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
 
     map.addLayer(vectorLayer);
 
+    const handleMapClick = (event: any) => {
+      const feature = map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
+      if (feature && feature.get('type') && feature.get('type') !== 'category') { // Ensure it's not a category pin
+        const place = feature.getProperties() as Top5Item;
+        setSelectedPlace(place);
+        overlay.setPosition((feature.getGeometry() as Point).getCoordinates());
+      } else {
+        setSelectedPlace(null);
+        overlay.setPosition(undefined);
+      }
+    };
+
+    map.on("click", handleMapClick);
+
     return () => {
       map.removeLayer(vectorLayer);
+      map.un("click", handleMapClick);
     };
-  }, [places, map]);
+  }, [places, map, overlay]);
 
   return (
-      <div ref={overlayRef} className={"pinOverlay"}>
-        {places.length > 0 && (
-            <>
-              <p>{places[0].name}</p>
-            </>
+      <div ref={overlayRef} className="top5-pinOverlay">
+        {selectedPlace && (
+            <div className="top5-infoBox">
+              <p>{selectedPlace.name}</p>
+            </div>
         )}
       </div>
   );
