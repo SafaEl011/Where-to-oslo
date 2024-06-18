@@ -10,25 +10,19 @@
   margin-right: 10px; /* Add space between icon and text */
 }
 
-.top5Text {
-  font-size: 20px; /* Adjust text size as needed */
-}
-
-..overlay {
+.blur-background {
   position: fixed;
   top: 0;
-  left: 2%;
+  left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    visibility 0s,
-    opacity 0.5s;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.top5Text {
+  font-size: 20px; /* Adjust text size as needed */
 }
 
 .overlay.show {
@@ -41,7 +35,6 @@
   flex-direction: column;
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
-  width: 100%; /* Ensure the container is full width */
   background: rgba(68, 113, 81, 0.83); /* Set the background color to green */
   padding: 20px;
   margin: 0 auto;
@@ -49,7 +42,7 @@
   max-height: 80%;
   overflow-y: auto;
   width: 33rem;
-  height: 35rem;
+  height: 32rem;
   left: 50%;
   box-sizing: border-box;
 }
@@ -65,12 +58,12 @@
   margin-top: 1px; /* Reduced top margin */
   margin-bottom: 5px; /* Reduced bottom margin */
   width: 100%; /* Ensure the container for the button is 100% wide */
+  padding: 5px
 }
 
 .top5-item button {
   display: flex;
   align-items: center;
-  /*justify-content: center; !* Align items to the center *!*/
   background-color: white; /* Set the button color to white */
   color: black; /* Set the text color to black */
   padding: 10px 10px; /* Increase the size of the button by adding more padding */

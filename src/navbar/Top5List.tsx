@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Top5.css";
 import "../css/BottomNavbar.css";
 import { ShowPinsButton } from "./showTop5Location";
@@ -89,15 +89,18 @@ const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
     const [showPins, setShowPins] = useState(false);
     const [selectedPlaces, setSelectedPlaces] = useState<Top5Item[]>([]);
+    const overlayRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setSelectedPlaces(top5Categories.flatMap(category => category.items));
         setOverlayVisible(show);
     }, [show]);
 
-    const handleCloseOverlay = () => {
-        setOverlayVisible(false);
-        handleClose();
+    const handleCloseOverlay = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
+            setOverlayVisible(false);
+            handleClose();
+        }
     };
 
     const handleShowInMap = () => {
@@ -105,51 +108,48 @@ const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
     };
 
     return (
-        <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
-            <div className="overlay-content" id="top5Overlay" onClick={(e) => e.stopPropagation()}>
-                {selectedCategory === null ? (
-                    <>
-                        <button className="btn btn-success close-button" onClick={handleCloseOverlay}>
-                            x
-                        </button>
-                        <h2 className="top5-header">Top 5</h2>
-                        <hr className="separator"></hr>
-                        <div className="top5-list">
-                            {top5Categories.map((category, index) => (
-                                <div key={index} className="top5-item">
-                                    <button className="btn btn-primary" onClick={() => setSelectedCategory(index)}>
-                                        <img
-                                            src={`../WhereToOslo/images/${getIconForType(category.items[0].type)}`}
-                                            alt={category.name}
-                                            className="icon"
-
-                                        />
-                                        {category.name}
-                                    </button>
-                                </div>
-                            ))}
+        <>
+            {isOverlayVisible && <div className="blur-background" onClick={handleCloseOverlay} />}
+            <div className={isOverlayVisible ? "overlay show" : "overlay hide"} onClick={handleCloseOverlay}>
+                <div className="overlay-content" id="top5Overlay" ref={overlayRef} onClick={(e) => e.stopPropagation()}>
+                    {selectedCategory === null ? (
+                        <>
+                            <button className="btn btn-success close-button" onClick={handleCloseOverlay}>
+                                x
+                            </button>
+                            <h2 className="top5-header">Top 5</h2>
+                            <hr className="separator"></hr>
+                            <div className="top5-list">
+                                {top5Categories.map((category, index) => (
+                                    <div key={index} className="top5-item">
+                                        <button className="btn btn-primary" onClick={() => setSelectedCategory(index)}>
+                                            {category.name}
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <div className="top5PlacesOverlay">
+                            <button className="back-Button" onClick={() => setSelectedCategory(null)}>
+                                ⬅
+                            </button>
+                            <h2 className="top5-header">{top5Categories[selectedCategory].name}</h2>
+                            <ul>
+                                {top5Categories[selectedCategory].items.map((item, idx) => (
+                                    <li className="top5Results" key={idx}>
+                                        <strong>{item.name}</strong>
+                                        <p>{item.description}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                            <button className="seeInMapBtn" onClick={handleShowInMap}>Show in map</button>
+                            {showPins && <ShowPinsButton places={top5Categories[selectedCategory].items} />}
                         </div>
-                    </>
-                ) : (
-                    <div className="top5PlacesOverlay">
-                        <button className="back-Button" onClick={() => setSelectedCategory(null)}>
-                            ⬅
-                        </button>
-                        <h2 className="top5-header">{top5Categories[selectedCategory].name}</h2>
-                        <ul>
-                            {top5Categories[selectedCategory].items.map((item, idx) => (
-                                <li className="top5Results" key={idx}>
-                                    <strong>{item.name}</strong>
-                                    <p>{item.description}</p>
-                                </li>
-                            ))}
-                        </ul>
-                        <button className="seeInMapBtn" onClick={handleShowInMap}>Show in map</button>
-                        {showPins && <ShowPinsButton places={top5Categories[selectedCategory].items} />}
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
