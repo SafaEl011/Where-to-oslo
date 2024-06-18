@@ -29,7 +29,7 @@ export const FavoriteButton: React.FC = () => {
             </button>
             <h2>Favorite Places</h2>
             <p>
-              This feature will soon be available in the near future..
+              This feature will be available in the near soon future..
             </p>
           </div>
         </div>

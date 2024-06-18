@@ -7,7 +7,6 @@ import { Vector as VectorSource } from "ol/source";
 import IconButton from "./iconsButton";
 import "../css/iconStyles.css";
 import { Icon, Style } from "ol/style";
-import { scale } from "ol/size";
 
 export const CenterOnUser: React.FC = () => {
   const { map } = useContext(MainContext);
