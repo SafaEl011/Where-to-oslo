@@ -12,8 +12,37 @@ type ShowPinsButtonProps = {
   places: Top5Item[];
 };
 
-const getIconForPlace = (place: Top5Item) => {
-  switch (place.type) {
+const REM_TO_PIXELS = 16;
+const DESIRED_REM_SIZE = 3; // 3rem
+const ORIGINAL_SIZE_PX = 48; // Assuming the original size of the SVG icons is 48px
+
+// Function to get the appropriate scale for each pin type
+const getScaleForPlace = (type: Top5CategoryType) => {
+  const desiredPixelSize = DESIRED_REM_SIZE * REM_TO_PIXELS;
+  const uniformScale = desiredPixelSize / ORIGINAL_SIZE_PX;
+
+  switch (type) {
+    case "bar":
+      return uniformScale * 0.0575; // Example adjustment for bar icons
+    case "cafe":
+      return uniformScale * 0.4;
+    case "store":
+      return uniformScale * 0.3; // Example adjustment for bar icons
+    case "restaurant":
+      return uniformScale * 0.3;
+    case "activity":
+      return uniformScale * 0.370; // Example adjustment for bar icons
+    case "hike":
+      return uniformScale * 0.3;
+    default:
+      return uniformScale;
+
+  }
+};
+
+
+const getIconForPlace = (type: Top5CategoryType) => {
+  switch (type) {
     case "store":
       return "./images/storePin_2.svg";
     case "bar":
@@ -50,7 +79,7 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
       feature.setProperties({
         name: place.name,
         description: place.description,
-        type: place.type, // Add this line
+        type: place.type,
       });
       return feature;
     });
@@ -63,10 +92,16 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
       source: vectorSource,
       style: (feature) => {
         const type = feature.get("type") as Top5CategoryType;
+        const iconPath = getIconForPlace(type);
+        const scale = getScaleForPlace(type);
+
+        console.log(`Type: ${type}, Icon Path: ${iconPath}, Scale: ${scale}`);
+
         return new Style({
           image: new Icon({
             anchor: [0.5, 1],
-            src: getIconForPlace({ type } as Top5Item), // Update this line
+            src: iconPath,
+            scale: scale,
           }),
         });
       },
@@ -80,12 +115,12 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
   }, [places, map]);
 
   return (
-    <div ref={overlayRef} className={"pinOverlay"}>
-      {places.length > 0 && (
-        <>
-          <p>{places[0].name}</p>
-        </>
-      )}
-    </div>
+      <div ref={overlayRef} className={"pinOverlay"}>
+        {places.length > 0 && (
+            <>
+              <p>{places[0].name}</p>
+            </>
+        )}
+      </div>
   );
 };
