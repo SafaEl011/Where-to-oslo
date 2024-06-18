@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Top5.css";
 import "../css/BottomNavbar.css";
 import { ShowPinsButton } from "./showTop5Location";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 interface Top5ListProps {
   show: boolean;
@@ -56,12 +58,6 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.77666349677681, 59.90130046600219],
         type: "cafe",
       },
-      {
-        name: "Encore Oslo",
-        description: "French pastry at its best.",
-        coordinates: [10.72883201606511, 59.92691699896708],
-        type: "cafe",
-      },
     ],
   },
   {
@@ -85,18 +81,6 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.77666349677681, 59.90130046600219],
         type: "cafe",
       },
-      {
-        name: "Eight Rooftop Bar",
-        description: "Great city view and drinks.",
-        coordinates: [10.73994545733909, 59.9137713552065],
-        type: "cafe",
-      },
-      {
-        name: "KOK Oslo Sauna",
-        description: "Relaxing and cozy sauna experience on the ocean.",
-        coordinates: [10.726925081838461, 59.909362966503224],
-        type: "activity",
-      },
     ],
   },
   {
@@ -106,30 +90,6 @@ const top5Categories: Top5Category[] = [
         name: "Mamma pizza",
         description: "Best pizza in town.",
         coordinates: [10.74652173182837, 59.911194234363165],
-        type: "restaurant",
-      },
-      {
-        name: "Alex Sushi",
-        description: "Best sushi in town.",
-        coordinates: [10.720706907059435, 59.914778058301984],
-        type: "restaurant",
-      },
-      {
-        name: "Yum Cha",
-        description: "Best Dim Sum in town.",
-        coordinates: [10.731660750746515, 59.92256953053508],
-        type: "restaurant",
-      },
-      {
-        name: "Kanspai Izakaya",
-        description: "Best izakaya in town.",
-        coordinates: [10.74652173182837, 59.911194234363165],
-        type: "restaurant",
-      },
-      {
-        name: "J2 Restaurant BBQ",
-        description: "Best Korean BBQ in town.",
-        coordinates: [10.731196112676916, 59.92397504427017],
         type: "restaurant",
       },
     ],
@@ -154,18 +114,6 @@ const top5Categories: Top5Category[] = [
         description: "Scenic walk with beautiful views.",
         coordinates: [10.703559227464755, 59.92670289745729],
         type: "activity",
-      },
-      {
-        name: "Telthusbakken",
-        description: "Scenic walk with amazing views over Grünerløkka.",
-        coordinates: [10.748014707324646, 59.92343139573817],
-        type: "activity",
-      },
-      {
-        name: "Blå",
-        description: "Colorful and vibrant bar and cafe by the river.",
-        coordinates: [10.75285365012026, 59.92017029777881],
-        type: "bar",
       },
     ],
   },
@@ -196,50 +144,45 @@ const top5Categories: Top5Category[] = [
         coordinates: [10.78569481857125, 59.91005868258227],
         type: "bar",
       },
-      {
-        name: "Hytta Bar",
-        description: "Cozy and dog friendly bar with great beer.",
-        coordinates: [10.759299032896394, 59.92047328491133],
-        type: "bar",
-      },
     ],
   },
   {
     name: "Top 5 walks on a Sunday",
     items: [
       {
-        name: "Kampen to Vålerenga",
+        name: "Kampen-Vålerenga",
         description: "Lovely Sunday walk.",
         coordinates: [10.77922453744859, 59.9140995579135],
         type: "hike",
       },
       {
-        name: "Kvernerbyen toSvartdalsparken",
+        name: "Kvernerbyen-Svartdalsparken",
         description: "Beautiful nature trail.",
         coordinates: [10.798584496777053, 59.904053814495484],
-        type: "hike",
-      },
-      {
-        name: "Ekebergparken",
-        description: "A cultural experience with beautiful sculptures.",
-        coordinates: [10.7664, 59.8995],
-        type: "hike",
-      },
-      {
-        name: "Sognsvann rundt",
-        description: "A popular round trip around Sognsvann.",
-        coordinates: [10.731, 59.9757],
-        type: "hike",
-      },
-      {
-        name: "Frognerseteren to Ullevålseter",
-        description: "A classic forest path through Nordmarka.",
-        coordinates: [10.6674, 59.9974],
         type: "hike",
       },
     ],
   },
 ];
+
+const getIconForType = (type: Top5CategoryType) => {
+  switch (type) {
+    case "store":
+      return "storePin_2.svg";
+    case "bar":
+      return "beerPin.svg";
+    case "restaurant":
+      return "restaurants_4.svg";
+    case "cafe":
+      return "kafePin_4.svg";
+    case "activity":
+      return "activityPin_4.svg";
+    case "hike":
+      return "tripPin.svg";
+    default:
+      return "";
+  }
+};
 
 const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(show);
@@ -247,81 +190,100 @@ const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
   const [showPins, setShowPins] = useState(false);
   const [selectedPlaces, setSelectedPlaces] = useState<Top5Item[]>([]);
 
+  const overlayRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setSelectedPlaces(top5Categories.flatMap((category) => category.items));
     setOverlayVisible(show);
   }, [show]);
 
-  const handleCloseOverlay = () => {
+  const handleCloseOverlayClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setOverlayVisible(false);
     handleClose();
   };
 
+  const handleCloseOverlay = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
+      setOverlayVisible(false);
+      handleClose();
+    }
+  };
+
   const handleShowInMap = () => {
     setShowPins(true);
+    setOverlayVisible(false);
   };
+
   return (
-    <div
-      className={isOverlayVisible ? "overlay show" : "overlay hide"}
-      onClick={handleCloseOverlay}
-    >
+    <>
+      {isOverlayVisible && (
+        <div className="blur-background" onClick={handleCloseOverlay} />
+      )}
       <div
-        className="overlay-content"
-        id="top5Overlay"
-        onClick={(e) => e.stopPropagation()}
+        className={isOverlayVisible ? "overlay show" : "overlay hide"}
+        onClick={handleCloseOverlay}
       >
-        {selectedCategory === null ? (
-          <>
-            <button
-              className="btn btn-success close-button"
-              onClick={handleCloseOverlay}
-            >
-              ×
-            </button>
-            <h2 className="top5-header">Top 5</h2>
-            <hr className="separator"></hr>
-            <div className="top5-list">
-              {top5Categories.map((category, index) => (
-                <div key={index} className="top5-item">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => setSelectedCategory(index)}
-                  >
-                    {category.name}
-                  </button>
-                </div>
-              ))}
+        <div
+          className="overlay-content"
+          id="top5Overlay"
+          ref={overlayRef}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {selectedCategory === null ? (
+            <>
+              <button
+                className="overlay-close-button"
+                onClick={handleCloseOverlayClick}
+              >
+                &times;
+              </button>
+              <h2 className="top5-header">Top 5</h2>
+              <hr className="separator"></hr>
+              <div className="top5-list">
+                {top5Categories.map((category, index) => (
+                  <div key={index} className="top5-item">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => setSelectedCategory(index)}
+                    >
+                      {category.name}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="top5PlacesOverlay">
+              <button
+                className="back-button"
+                onClick={() => setSelectedCategory(null)}
+              >
+                <i className="fas fa-arrow-left"></i>
+              </button>
+              <h2 className="top5-header">
+                {top5Categories[selectedCategory].name}
+              </h2>
+              <ul>
+                {top5Categories[selectedCategory].items.map((item, idx) => (
+                  <li className="top5Results" key={idx}>
+                    <strong>{item.name}</strong>
+                    <p>{item.description}</p>
+                  </li>
+                ))}
+              </ul>
+              <button className="seeInMapBtn" onClick={handleShowInMap}>
+                Show in map
+              </button>
+              {showPins && (
+                <ShowPinsButton
+                  places={top5Categories[selectedCategory].items}
+                />
+              )}
             </div>
-          </>
-        ) : (
-          <div className="top5PlacesOverlay">
-            <button
-              className="back-Button"
-              onClick={() => setSelectedCategory(null)}
-            >
-              ⬅
-            </button>
-            <h2 className="top5-header">
-              {top5Categories[selectedCategory].name}
-            </h2>
-            <ul>
-              {top5Categories[selectedCategory].items.map((item, idx) => (
-                <li className="top5Results" key={idx}>
-                  <strong>{item.name}</strong>
-                  <p>{item.description}</p>
-                </li>
-              ))}
-            </ul>
-            <button className="seeInMapBtn" onClick={handleShowInMap}>
-              Show in map
-            </button>
-            {showPins && (
-              <ShowPinsButton places={top5Categories[selectedCategory].items} />
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
