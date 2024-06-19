@@ -31,7 +31,7 @@ const getScaleForPlace = (type: Top5CategoryType) => {
     case "restaurant":
       return uniformScale * 0.3;
     case "activity":
-      return uniformScale * 0.370; // Example adjustment for bar icons
+      return uniformScale * 0.37; // Example adjustment for bar icons
     case "hike":
       return uniformScale * 0.3;
     default:
@@ -60,7 +60,7 @@ const getIconForPlace = (type: Top5CategoryType) => {
 
 export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
   const { map } = useContext(MainContext);
-  const overlay = useMemo(() => new Overlay({ className: 'top5-overlay' }), []);
+  const overlay = useMemo(() => new Overlay({ className: "top5-overlay" }), []);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [selectedPlace, setSelectedPlace] = useState<Top5Item | null>(null);
 
@@ -107,8 +107,16 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
     map.addLayer(vectorLayer);
 
     const handleMapClick = (event: any) => {
-      const feature = map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
-      if (feature && feature.get('type') && feature.get('type') !== 'category') { // Ensure it's not a category pin
+      const feature = map.forEachFeatureAtPixel(
+        event.pixel,
+        (feature) => feature,
+      );
+      if (
+        feature &&
+        feature.get("type") &&
+        feature.get("type") !== "category"
+      ) {
+        // Ensure it's not a category pin
         const place = feature.getProperties() as Top5Item;
         setSelectedPlace(place);
         overlay.setPosition((feature.getGeometry() as Point).getCoordinates());
@@ -127,12 +135,12 @@ export const ShowPinsButton: React.FC<ShowPinsButtonProps> = ({ places }) => {
   }, [places, map, overlay]);
 
   return (
-      <div ref={overlayRef} className="top5-pinOverlay">
-        {selectedPlace && (
-            <div className="top5-infoBox">
-              <p>{selectedPlace.name}</p>
-            </div>
-        )}
-      </div>
+    <div ref={overlayRef} className="top5-pinOverlay">
+      {selectedPlace && (
+        <div className="top5-infoBox">
+          <p>{selectedPlace.name}</p>
+        </div>
+      )}
+    </div>
   );
 };
