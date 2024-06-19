@@ -4,11 +4,18 @@ import { Map, View } from "ol";
 import { useGeographic } from "ol/proj";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
+import { MapboxVectorLayer } from "ol-mapbox-style";
 
 useGeographic();
 
 export const map = new Map({
-  layers: [new TileLayer({ source: new OSM() })],
+  layers: [
+    new MapboxVectorLayer({
+      styleUrl: "mapbox://styles/sanderchriss/clulbulpb000701qz5d6qg5gf",
+      accessToken:
+        "pk.eyJ1Ijoic2FuZGVyY2hyaXNzIiwiYSI6ImNsbmx6Y2ZqZDJiZjgybHJsZW9yaDZmY2IifQ.2y03s2wFjieEYFZIQgGLvQ",
+    }),
+  ],
   view: new View({ center: [10.7522454, 59.9138688], zoom: 12 }),
 });
 

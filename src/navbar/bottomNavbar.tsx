@@ -52,9 +52,7 @@ export const BottomNavbar: React.FC = () => {
         show={showCategoryOverlay}
         handleClose={handleCloseCategoryOverlay}
       />
-      <Top5List
-          show={showTop5Overlay}
-          handleClose={handleCloseTop5Overlay} />
+      <Top5List show={showTop5Overlay} handleClose={handleCloseTop5Overlay} />
     </div>
   );
 };

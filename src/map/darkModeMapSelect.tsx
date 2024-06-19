@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import TileLayer from "ol/layer/Tile";
 import { OSM, StadiaMaps } from "ol/source";
 import { MainContext } from "./MainContext";
+import { MapboxVectorLayer } from "ol-mapbox-style";
 
 export function ModeSelector() {
   const { setBaseLayer } = useContext(MainContext);
@@ -9,7 +10,11 @@ export function ModeSelector() {
   const options = {
     osm: {
       name: "Open Street Map",
-      layer: new TileLayer({ source: new OSM() }),
+      layer: new MapboxVectorLayer({
+        styleUrl: "mapbox://styles/sanderchriss/clulbulpb000701qz5d6qg5gf",
+        accessToken:
+          "pk.eyJ1Ijoic2FuZGVyY2hyaXNzIiwiYSI6ImNsbmx6Y2ZqZDJiZjgybHJsZW9yaDZmY2IifQ.2y03s2wFjieEYFZIQgGLvQ",
+      }),
     },
     dark: {
       name: "Stadia (dark)",

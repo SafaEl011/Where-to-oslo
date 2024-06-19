@@ -14,6 +14,7 @@ import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { ButtonsColumn } from "./buttons/ButtonsColumn";
 import { BottomNavbar } from "./navbar/bottomNavbar";
+import { MapboxVectorLayer } from "ol-mapbox-style";
 
 export function Application() {
   const { map } = useContext(MainContext);
@@ -30,7 +31,11 @@ export function Application() {
   const [hikeFeatureLayers, setHikeFeatureLayers] = useState<Layer[]>([]);
 
   const [baseLayer, setBaseLayer] = useState<Layer>(
-    new TileLayer({ source: new OSM() }),
+    new MapboxVectorLayer({
+      styleUrl: "mapbox://styles/sanderchriss/clulbulpb000701qz5d6qg5gf",
+      accessToken:
+        "pk.eyJ1Ijoic2FuZGVyY2hyaXNzIiwiYSI6ImNsbmx6Y2ZqZDJiZjgybHJsZW9yaDZmY2IifQ.2y03s2wFjieEYFZIQgGLvQ",
+    }),
   );
 
   const layers = useMemo(
