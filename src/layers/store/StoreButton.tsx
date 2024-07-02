@@ -26,7 +26,7 @@ const storeLayer = new VectorLayer({
 });
 
 export function StoreButton() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [activeFeature, setActiveFeature] = useState<storeStyle | undefined>();
   const { setStoreFeatureLayers, map } = useContext(MainContext);
 

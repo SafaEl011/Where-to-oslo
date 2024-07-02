@@ -25,7 +25,7 @@ const cafeLayer = new VectorLayer({
 });
 
 export function CafeButton() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [activeFeature, setActiveFeature] = useState<cafeStyle | undefined>();
   const { setCafeFeatureLayers, map } = useContext(MainContext);
 

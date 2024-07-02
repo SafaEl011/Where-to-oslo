@@ -26,7 +26,7 @@ const activityLayer = new VectorLayer({
 });
 
 export function ActivityButton() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [activeFeature, setActiveFeature] = useState<
     activityStyle | undefined
   >();

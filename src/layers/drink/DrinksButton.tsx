@@ -25,7 +25,7 @@ const drinkLayer = new VectorLayer({
 });
 
 export function DrinksButton() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [activeFeature, setActiveFeature] = useState<drinkStyle | undefined>();
   const { setDrinkFeatureLayers, map } = useContext(MainContext);
 

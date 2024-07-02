@@ -25,7 +25,7 @@ const restaurantLayer = new VectorLayer({
 });
 
 export function RestaurantButton() {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [activeFeature, setActiveFeature] = useState<
     restaurantStyle | undefined
   >();
