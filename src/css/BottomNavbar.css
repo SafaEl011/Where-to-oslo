@@ -68,7 +68,7 @@
 
 .overlay-content {
   position: relative;
-  top: 110vh; /* Adjust this value to move it closer to the bottom */
+  top: 130vh; /* Adjust this value to move it closer to the bottom */
   left: 50%;
   transform: translateX(-50%);
   width: 100vw; /* Allow the content to determine the width */

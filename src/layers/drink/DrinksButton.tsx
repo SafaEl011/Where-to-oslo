@@ -78,12 +78,12 @@ export function DrinksButton() {
       onClick={() => setClicked((prevClicked) => !prevClicked)}
     >
       <img
-        src="/Where-to-oslo/images/drinkPin_4.svg"
+        src="/Where-to-oslo/images/beerPin.svg"
         alt="Drink"
         className="pin-icon"
         style={{ width: "3rem", height: "3rem" }}
       />
-      <span>Drink</span>
+      <span>Bar</span>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
           <div className="container-box">

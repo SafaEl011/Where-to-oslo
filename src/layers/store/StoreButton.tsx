@@ -84,7 +84,7 @@ export function StoreButton() {
         className="pin-icon"
         style={{ width: "3rem", height: "3rem" }}
       />
-      <span>Store</span>
+      <span>Shopping</span>
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
           <div className="container-box">

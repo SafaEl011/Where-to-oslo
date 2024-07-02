@@ -67,10 +67,7 @@ a {
 
 div.ol-control.ol-unselectable.ol-control button.ol-zoom-out,
 div.ol-control.ol-unselectable.ol-control button.ol-zoom-in {
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(68, 112, 80);
-  border-radius: 100%;
-  outline: 0;
+  display: none;
 
   transition: transform 0.3s; /* Add a transition for smoother scaling */
   transform: translate(-20%, -20%) scale(1);

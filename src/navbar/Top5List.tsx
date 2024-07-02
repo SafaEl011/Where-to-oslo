@@ -337,6 +337,12 @@ const Top5List: React.FC<Top5ListProps> = ({ show, handleClose }) => {
               >
                 <i className="fas fa-arrow-left"></i>
               </button>
+              <button
+                className="overlay-close-button"
+                onClick={handleCloseOverlayClick}
+              >
+                &times;
+              </button>
               <h2 className="top5-header">
                 {top5Categories[selectedCategory].name}
               </h2>
