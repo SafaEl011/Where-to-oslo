@@ -14,6 +14,7 @@ import { FeatureLike } from "ol/Feature";
 import { MainContext } from "../../map/MainContext";
 import { activeDrinkStyle, drinkStyle } from "./DrinkStyle";
 import "../../css/BottomNavbar.css";
+import AddFavoriteButton from "../../buttons/addFavoriteButton";
 
 const drinkLayer = new VectorLayer({
   className: "Drink",
@@ -90,6 +91,14 @@ export function DrinksButton() {
             <p>
               <b>{activeFeature.get("name")}</b>
             </p>
+            <p>
+              spesialiserer seg i øl, og har en hel tavle med en hel masse
+              forskjellige typer øl. Her kan man spille shuffleboard, så er
+              perfekt for en første date, vennegjeng som trenger noe å gjøre en
+              fredagskveld eller lønningspils med jobben. Romslig og chill
+              atmosfære.{" "}
+            </p>
+            <AddFavoriteButton />
           </div>
         )}
       </div>
