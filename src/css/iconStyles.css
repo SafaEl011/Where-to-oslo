@@ -140,7 +140,17 @@
   border-radius: 0.8rem; /* Adjusted border-radius in rem */
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 }
+.withdraw-consent-button {
+  background-color: #ffffff; /* Background color */
+  color: #333; /* Text color */
+  border: 0.1rem solid #447151;
+  padding: 0.5rem 1rem; /* Adjusted padding in rem */
 
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 0.8rem; /* Adjusted border-radius in rem */
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
 .light-dark-buttons {
   background-color: #ffffff; /* Background color */
   color: #333; /* Text color */

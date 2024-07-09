@@ -59,7 +59,12 @@ export const SettingsButton: React.FC = () => {
               activities that you might not find elsewhere. Our goal is to make
               your search for great places easy and enjoyable.
             </p>
-
+            <button
+              onClick={toggleUserAgreement}
+              className="withdraw-consent-button"
+            >
+              Withdraw Consent (WIP)
+            </button>
             <button
               onClick={toggleUserAgreement}
               className="user-agreement-button"

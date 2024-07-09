@@ -108,6 +108,8 @@
   display: flex;
   justify-content: center;
   align-content: space-evenly;
+  font-family: Agrandir;
+  font-size: larger;
 }
 .category-button {
   display: flex;
