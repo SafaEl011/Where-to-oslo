@@ -88,7 +88,9 @@ export function StoreButton() {
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
           <div className="container-box">
-            <p> {activeFeature.get("name")}</p>
+            <p>
+              <b>{activeFeature.get("name")}</b>
+            </p>
           </div>
         )}
       </div>

@@ -87,7 +87,10 @@ export function CafeButton() {
       <div ref={overlayRef} className={"pinOverlay"}>
         {activeFeature && (
           <div className="container-box">
-            <p> {activeFeature.get("name")}</p>
+            <p>
+              <b> {activeFeature.get("name")}</b>
+            </p>
+            <p>lolololololololololololololololol</p>
           </div>
         )}
       </div>
